@@ -5,6 +5,17 @@ html {
 }
 
 
+
+/* Basic Navigation and Flexbox stuff */
+
+body {
+    display: flex;
+  margin: auto auto;
+  color: #c5c3c0; 
+  background-color: #1B3B54;
+  justify-content: space-evenly
+}
+
 right {
     display: flex;
     order: 2;
@@ -16,8 +27,7 @@ right {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    
-    
+    text-align: center;
 }
 
 left {
@@ -29,25 +39,11 @@ left {
     
 }
 
-h1, h2 {
-	font-size: 30px;
-	text-align: right;
-}
-
-
-p, li {
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: 1px;
-}
-
-
-body {
-    display: flex;
-  margin: auto auto;
-  color: #c5c3c0; 
-  background-color: #1B3B54;
-  justify-content: space-evenly
+section {
+	display: column;
+	background-color: #1B3B54;
+	padding: 2em 2em 2em 2em;
+    order: 2;
 }
 
 nav {
@@ -55,7 +51,7 @@ nav {
 	padding: 1em 2em 2em 2em;
     order: 1;
     border: 1px solid grey;
-    border-radius: 0 0 30px 30px;
+    border-radius: 0 0 20px 20px;
 }
 
 subheader {
@@ -63,8 +59,11 @@ subheader {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 2em;
+}
 
-
+controlpanel {
+	display: flex;
+	justify-content: space-evenly;
 }
 
 sID {
@@ -75,23 +74,23 @@ sID {
 
 reqreturn {
 	font-size: 16px;
-
-}
-
-section {
-	display: column;
-	background-color: #1B3B54;
-	padding: 2em 2em 2em 2em;
-    order: 2;
+    text-align: center;
 }
 
 
-controlpanel {
-	display: flex;
-	justify-content: space-evenly;
+
+/* Formatting stuff */
+
+p, li {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 
-
+h1, h2 {
+	font-size: 30px;
+	text-align: right;
+}
 
 img {
   display: block;
@@ -99,15 +98,36 @@ img {
 }
 
 button {
-
- background-color:   #5c7e10;
+background-color:   #5c7e10;
 width: 13em;
 margin: 10px; 
 border: 2px solid black;
-border-radius: 4px;
-
+border-radius: 8px;
 }
+
 button:hover {
 background-color: #85b619;
+}
+
+
+
+/* Table options: */
+
+table {
+    width: 100%;
+    background: #3e5e76;
+    border-radius: 8px;
+}
+
+th {
+    background: #2d4150;
+    border-radius: 8px 8px 5px 5px;
+    text-align: center;
 
 }
+
+td {
+    
+
+}
+

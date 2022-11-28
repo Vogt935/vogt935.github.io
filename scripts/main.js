@@ -9,6 +9,7 @@ let mySID = document.getElementById("my-steam-ID");
 //TODO: Funktionsbuttons umsetzen (Darstellung Liste, sortieren usw)
 
 
+
 //Friendslist:
 {
 // TODO: Zeitlich gesetzte neue Abfrage welche Freunde online sind?
@@ -34,6 +35,8 @@ if(lengthFl > 0) {
 }
 }
 
+
+
 /*
 const steamnews =
 const objSN = JSON.parse(steamnews);
@@ -44,8 +47,8 @@ console.log(objSN.appnews.appid);
 //fetchButton.onclick = () => {}
 
 
-//Steam ID of the websites user
 
+//Steam ID of the websites user
 
 // Change saved User Steam ID
 {
@@ -82,7 +85,6 @@ if (!localStorage.getItem("name")) {
 
 
 // Get information from steam servers
-
 // Serialization variables to be filled
 var serRequestFriendList = "empty";
 var serRequestOwnedGames = "empty";
@@ -99,7 +101,6 @@ function getUserSID(sid) {
 	serRequestGameStats = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid="+sid+"format=json";
 	console.log(serRequestGameStats);
 }
-
 
 
 
