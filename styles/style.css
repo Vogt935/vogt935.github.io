@@ -4,6 +4,31 @@ html {
   background-color: #171a21;
 }
 
+right, left {
+    display: flex;
+
+    }
+
+right {
+    order: 2;
+    width: 150px; 
+    padding: 1em; 
+    border: 1px solid grey;
+    border-radius: 30px 30px 30px 30px;
+    margin: 10px;
+    background: #142a3b;
+    
+    
+}
+
+left {
+    width: 500 px;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    
+}
+
 h1, h2 {
 	font-size: 30px;
 	text-align: right;
@@ -18,16 +43,21 @@ p, li {
 
 
 body {
-  width: 600px;
+    display: flex;
   margin: auto auto;
   color: #c5c3c0; 
   background-color: #1B3B54;
   border: 5px solid black;
+    border-radius: 20px 20px 20px 20px;
+    justify-content: space-evenly
 }
 
 nav {
 	background-color: #142a3b;
 	padding: 1em 2em 2em 2em;
+    order: 1;
+    border: 1px solid grey;
+    border-radius: 0 0 30px 30px;
 }
 
 subheader {
@@ -55,6 +85,7 @@ section {
 	display: column;
 	background-color: #1B3B54;
 	padding: 2em 2em 2em 2em;
+    order: 2;
 }
 
 
@@ -74,6 +105,8 @@ button {
 
  background-color:   #5c7e10;
 width: 13em;
+margin: 10px; 
+border: 2px solid black;
 border-radius: 4px;
 
 }

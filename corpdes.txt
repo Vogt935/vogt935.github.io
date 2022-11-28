@@ -1,0 +1,51 @@
+Mein Design:
+
+Warnung: 	#c6262e
+light: 	#ff8c82
+dark: 	#7a0000
+
+Grün: 	#68b723
+light: 	#d1ff82
+dark: 	#206b00
+
+Blaugrau:	#485a6c
+light:	#95a3ab
+dark:		#0e141f
+
+
+Fonts?
+
+Icons?
+
+
+Steam:
+
+
+
+
+Ressourcen:
+
+Webkey: 5FEC780FE57D3BBEA4B74CDA91C7C72E
+Domain Name: Fabian Vogt
+
+
+
+Mein Steam-ID: 76561198101457809
+
+
+Abruf Game-Infos:
+http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid=236850
+
+
+Abruf Friendlist:
+
+http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid=76561198101457809&relationship=friend
+
+Abruf GameStats für einen User:
+
+http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid=76561197972495328
+
+Abruf Owned Games eines Users:
+
+
+http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid=76561197960434622&format=json
