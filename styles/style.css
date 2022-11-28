@@ -1,27 +1,27 @@
 html {
   font-size: 10px;
   font-family: 'Open Sans', sans-serif;
-  background-color: #171a21;
+
 }
 
-right, left {
-    display: flex;
-
-    }
 
 right {
+    display: flex;
     order: 2;
-    width: 150px; 
     padding: 1em; 
     border: 1px solid grey;
     border-radius: 30px 30px 30px 30px;
     margin: 10px;
     background: #142a3b;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     
     
 }
 
 left {
+    display: flex;
     width: 500 px;
     order: 1;
     display: flex;
@@ -47,8 +47,7 @@ body {
   margin: auto auto;
   color: #c5c3c0; 
   background-color: #1B3B54;
-  border: 5px solid black;
-    border-radius: 20px 20px 20px 20px;
+
     justify-content: space-evenly
 }
 
@@ -76,9 +75,8 @@ sID {
 }
 
 reqreturn {
-	text-align: left;
 	font-size: 16px;
-	order: 2;
+
 }
 
 section {

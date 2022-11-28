@@ -8,10 +8,6 @@ Grün: 	#68b723
 light: 	#d1ff82
 dark: 	#206b00
 
-Blaugrau:	#485a6c
-light:	#95a3ab
-dark:		#0e141f
-
 
 Fonts?
 

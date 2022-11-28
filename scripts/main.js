@@ -28,17 +28,18 @@ if(lengthFl > 0) {
 	while (i <= lengthFl) {
 		let id = "Test"+i;
 		//console.log(id);
-		document.getElementById(id).innerHTML= "Freund Nr. "+(i+1)+": SteamID: "+objFL.friends[i].steamid+", Friend since: "+Date(objFL.friends[i].friend_since);
+		document.getElementById(id).innerHTML= "Freund Nr. "+(i+1)+": SteamID: "+objFL.friends[i].steamid;
 		i++;
 	}
 }
 }
 
+/*
 const steamnews =
 const objSN = JSON.parse(steamnews);
 
 console.log(objSN.appnews.appid);
-
+*/
 
 //fetchButton.onclick = () => {}
 
