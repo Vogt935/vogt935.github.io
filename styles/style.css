@@ -6,6 +6,7 @@ html {
 
 
 
+
 /* Basic Navigation and Flexbox stuff */
 
 body {
@@ -81,10 +82,54 @@ reqreturn {
 
 /* Formatting stuff */
 
-p, li {
+p {
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 1px;
+}
+
+a#adHocCounter{
+    border: 5px solid #c5c3c0;
+    border-radius: 20px;
+    background: #2d4150;
+    color: #c5c3c0;
+    text-align: center;
+    font-size: 29px;
+    /* height: 2.2em; */
+    width: 2em;
+    padding-top: 5;
+    text-align: center;
+    margin: 1px;
+
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+
+li {
+  display: inline;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
 }
 
 h1, h2 {
@@ -99,17 +144,41 @@ img {
 
 button {
 background-color:   #5c7e10;
-width: 13em;
+width: 20em;
+height: 3em;
 margin: 10px; 
 border: 2px solid black;
 border-radius: 8px;
+        text-align: center;
 }
 
 button:hover {
 background-color: #85b619;
 }
 
+button.friendslist {
+  background-color:#c5c3c0;
+    height: 3em;
+    width: 20em;
+    margin: 4px;
+}
 
+button.moreFriends{
+    width: 16em;
+    height: 6em;
+    color: black;
+    padding: 0;
+
+    
+}
+button.newSteamID{
+    width: 20em;
+
+}
+
+button.friendslist:hover {
+  background-color:#2d4150
+}
 
 /* Table options: */
 
@@ -117,16 +186,24 @@ table {
     width: 100%;
     background: #3e5e76;
     border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 th {
     background: #2d4150;
     border-radius: 8px 8px 5px 5px;
     text-align: center;
+    padding: 4px;
 
 }
 
 td {
+  background: lightgrey;
+    color: black;
+    padding: 10px;
+    border: 0px;
+    
     
 
 }

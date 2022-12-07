@@ -15,6 +15,18 @@ Icons?
 
 
 Steam:
+Header: #171a21
+background body: #283d5a (Radiant von #26475a zu #273b58)
+First Buttons: #5c7e10 mit Schrift #ffffff
+Secondary Buttons: #616a72 mit Schrift #fff
+Tertiary Buttons: #2a3f5a mit Schrift #a4d7f5
+quartiery buttons: #212121 mit Schrift #ebebeb
+Foreground: #1d2938
+Blau in Suchleisten usw.: #2a3f5a
+Background von Sections: #0d131b mit Überschrift #d6d7d8  und schrift: #8c8b8a
+
+
+
 
 
 

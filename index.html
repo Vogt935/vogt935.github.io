@@ -14,9 +14,18 @@
     	<img src="https://community.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" alt="The Steam Logo.">
     	<h2>... together!</h2>
     	
-        <subheader> 
-            <sID id="my-steam-ID">Bitte anmelden!</sID>  
-        </subheader>
+        <li class=subheader>
+            <ul>
+            <li>Home</li>
+            <li>News</li>
+            <li style="float:right"><sID id="my-steam-ID">Bitte anmelden!</sID></li>
+            </ul>
+            
+        </li>
+     
+    
+        
+
     </nav>
 
         <section>
@@ -33,19 +42,21 @@
                 <button> Suggestions </button>
             </controlpanel>
 
+            <input type="text" id="inputSearch" onkeyup="searchFunction()" placeholder="Such nach einem Spiel">
             <table> 
                 <tr>
-                  <th></th>
-                  <th> Header 2</th>
+                    <th>Spiel</th>
+                    <th>Anzahl der Mitspieler</th>
+                    <th>Im Besitz:</th>
                 </tr><tr>
-                    <td> Into ! </td>
-                    <td> Zelle 2</td>
+                    <td>Age of Empires 2</td>
+                    <td>3</td>
+                    <td>Peter, Björn, Florian</td>
                 </tr><tr>
-                    <td> Zeile 2</td>
-                    <td> Zelle 2</td>
-                </tr><tr>
-                    <td> Zeile 3</td>
-                </tr>
+                    <td> DOTA 2</td>
+                    <td> 2</td>
+                    <td> Peter, Björn</td>
+
             </table>
             
             <p> Ende </p>
@@ -54,16 +65,20 @@
        
     </left>
     <right>
-       <button id="my-steamid-button"> Neue Steam ID eingeben </button>
+       <button class="newSteamID" id="my-steamid-button"> Neue Steam ID eingeben </button>
        <reqreturn> Heading </reqreturn>
-     
-      <p id="friendlist"> Es sind keine Freunde online. </p>
-      <p id="Test0"> </p>
-      <p id="Test1"> </p>
-      <p id="Test2"> </p>
-      <p id="Test3"> </p>
-      <p id="Test4"> </p>
-      <p id="Test5"> </p>
+        <p>        <a id="friendlist"> Es sind keine Freunde online. </a></p>
+        <button class="friendslist" id="friend0" onclick=addToAdHocGroup(0)></button>
+        <button class="friendslist" id="friend1" onclick=addToAdHocGroup(1)></button>
+        <button class="friendslist" id="friend2" onclick=addToAdHocGroup(2)></button>
+        <button class="friendslist" id="friend3" onclick=addToAdHocGroup(3)></button>
+        <button class="friendslist" id="friend4" onclick=addToAdHocGroup(4)></button>
+        <button class="friendslist" id="friend5" onclick=addToAdHocGroup(5)></button>
+        <button class="friendslist" id="friend6" onclick=addToAdHocGroup(6)></button>
+        <button class="friendslist" id="friend7" onclick=addToAdHocGroup(7)></button>
+        <button class="friendslist" id="friend8" onclick=addToAdHocGroup(8)></button>
+        <button class="friendslist" id="friend9" onclick=addToAdHocGroup(9)></button>
+        <p><button class="moreFriends"><p id="moreFriends"></button><a id="adHocCounter">0</a></p>
       
     </right>
  <script src="scripts/main.js"></script>
