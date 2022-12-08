@@ -21,6 +21,7 @@
       
       console.log("Fetch durchgeführt");
       
+ 
 
 
 //   http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid=76561197960434622&format=json
