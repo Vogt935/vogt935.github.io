@@ -14,7 +14,7 @@
 
       console.log("Script gestartet");
       
-      fetch('https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=440&count=3')
+      fetch('https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=440&count=3', {credentials: "include"})
       .then(res => res.json())
       .then(data => console.log(data));
 
