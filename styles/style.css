@@ -104,16 +104,16 @@ a#adHocCounter{
 }
 
 ul {
-  list-style-type: none;
+  list-style-type: circle;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #333;
+
+
 }
 
 
 li {
-  display: inline;
+
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 1px;
@@ -175,6 +175,15 @@ button.newSteamID{
     width: 20em;
 
 }
+navList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+button.tablink{
+    width: 14em;
+}
 
 button.friendslist:hover {
   background-color:#2d4150
@@ -203,8 +212,40 @@ td {
     color: black;
     padding: 10px;
     border: 0px;
-    
-    
-
 }
+
+
+
+/* Style the tab buttons */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+/* Style each tab content individually */
+#London {background-color:red;}
+#Paris {background-color:green;}
+#Tokyo {background-color:blue;}
+#Oslo {background-color:orange;}
+
 

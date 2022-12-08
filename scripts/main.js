@@ -9,6 +9,23 @@
       
 // Testdaten:
 
+
+
+
+      console.log("Script gestartet");
+      
+      fetch('https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=440&count=3')
+      .then(res => res.json())
+      .then(data => console.log(data));
+
+      
+      console.log("Fetch durchgeführt");
+      
+
+
+//   http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid=76561197960434622&format=json
+
+
 const myFriendslist = {"friendslist":{"friends":[{"steamid":"76561197966953159","relationship":"friend","friend_since":1394392802},
                                                  {"steamid":"76561197969067270","relationship":"friend","friend_since":1452304416},{"steamid":"76561197979247125","relationship":"friend","friend_since":1620943081},{"steamid":"76561197984913701","relationship":"friend","friend_since":1401274804},{"steamid":"76561198011593392","relationship":"friend","friend_since":1551454004},{"steamid":"76561198017068250","relationship":"friend","friend_since":1456168382},{"steamid":"76561198036118525","relationship":"friend","friend_since":1394392809},{"steamid":"76561198038501532","relationship":"friend","friend_since":1394396986},{"steamid":"76561198053250556","relationship":"friend","friend_since":1617043740},{"steamid":"76561198113162927","relationship":"friend","friend_since":1403461061},{"steamid":"76561198170826159","relationship":"friend","friend_since":1419784457},{"steamid":"76561198297302899","relationship":"friend","friend_since":1460301328},{"steamid":"76561198983798096","relationship":"friend","friend_since":1643480286}]}};
                                                  
@@ -208,8 +225,8 @@ if(lengthFl > 0) {
 
 
 
-/* 
-Excess functions
+
+//Excess functions
 
 function getUserName(userProfile) {
     console.log("function started");
@@ -217,6 +234,7 @@ function getUserName(userProfile) {
 
 }
 
+/* 
 function fetchOwnedGames(userProfile){
     gameslist = [1,2];
     //fetch gameslist from steam API
