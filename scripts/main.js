@@ -8,9 +8,9 @@
 
 //Stufe 2:
 //Icons neben Benutzernamen
-      
+
 // Testdaten:
-const myFriendslist = {"friendslist":{"friends":[{"steamid":"76561197966953159","relationship":"friend","friend_since":1394392802},
+var myFriendslist = {"friendslist":{"friends":[{"steamid":"76561197966953159","relationship":"friend","friend_since":1394392802},
                                                  {"steamid":"76561197969067270","relationship":"friend","friend_since":1452304416},{"steamid":"76561197979247125","relationship":"friend","friend_since":1620943081},{"steamid":"76561197984913701","relationship":"friend","friend_since":1401274804},{"steamid":"76561198011593392","relationship":"friend","friend_since":1551454004},{"steamid":"76561198017068250","relationship":"friend","friend_since":1456168382},{"steamid":"76561198036118525","relationship":"friend","friend_since":1394392809},
                                                  /*
                                                  {"steamid":"76561198038501532","relationship":"friend","friend_since":1394396986},{"steamid":"76561198053250556","relationship":"friend","friend_since":1617043740},{"steamid":"76561198113162927","relationship":"friend","friend_since":1403461061},{"steamid":"76561198170826159","relationship":"friend","friend_since":1419784457},{"steamid":"76561198297302899","relationship":"friend","friend_since":1460301328},{"steamid":"76561198983798096","relationship":"friend","friend_since":1643480286}*/
@@ -19,8 +19,15 @@ const myFriendslist = {"friendslist":{"friends":[{"steamid":"76561197966953159",
                                                  ]}};
                                                  
 
-//classes:
 
+console.log("Testdaten erstellt!");
+
+
+
+
+
+
+//classes:
     class User {
         constructor(steamID){
             this.name = "Test"; //fetchGetName
@@ -28,7 +35,6 @@ const myFriendslist = {"friendslist":{"friends":[{"steamid":"76561197966953159",
             this.online = false; //fetchStatus
             this.ownedGames = [0]; //fetchOwnedGames
             this.friendsListInput = [] //fetchFriendlist
-            this.friendsListIDs = []; 
             this.friendsListObjects = [];
             this.savedID= false;
             this.adHocGroup=false;
@@ -81,7 +87,7 @@ function getAndSaveUserID() {
 //Access functions
     function getUserName(userProfile) {
         console.log("function started");
-        return userProfile.myName
+        return userProfile.Name
     }
 
 // build the frontend friendlist from the friendlist (not jet user-centered but input-centered)
@@ -93,9 +99,9 @@ function getAndSaveUserID() {
             let i = 0;
             while (i <= lengthFl) {
                 let id = "friend"+i;
-                console.log(id);
+                //console.log(id);
                 let friendToAdd = new User(actingUser.friendsListInput[i].steamid);
-                console.log(friendToAdd.steamID);
+                //console.log(friendToAdd.steamID);
                 actingUser.friendsListObjects.push(friendToAdd);
                 if (i < 10){
                     const element = document.getElementById(id);
@@ -108,8 +114,8 @@ function getAndSaveUserID() {
                     element.style.visibility="visible";
                     document.getElementById("moreFriends").innerHTML=("Es sind mehr als 10 Freunde online!");
                 i++;
-                }
-            }}}
+                } } } }
+
 
 //reload the number of friends in AdHoc-Group
     function reloadAdHocStatus(){
@@ -120,7 +126,7 @@ function getAndSaveUserID() {
     function addToAdHocGroup(clickedFriend){
         if (actingUser.friendsListObjects[clickedFriend].adHocGroup == true){
                 actingUser.friendsListObjects[clickedFriend].adHocGroup = false;
-                console.log("Changed adHocGroup for Friend "+clickedFriend+" to false.");
+                    //console.log("Changed adHocGroup for Friend "+clickedFriend+" to false. Adhoc-group is "+(adHocCounter-1)+" friends.");
                 document.getElementById("friend"+clickedFriend).style.background="#c5c3c0";
                 document.getElementById("friend"+clickedFriend).style.color="black";
             //start routine to reload the tables
@@ -130,7 +136,7 @@ function getAndSaveUserID() {
             }
         else{
             actingUser.friendsListObjects[clickedFriend].adHocGroup=true;
-            console.log("Changed adHocGroup for Friend "+clickedFriend+" to true.");
+                //console.log("Changed adHocGroup for Friend "+clickedFriend+" to true. Adhoc-group is "+(adHocCounter+1)+" friends.");
             document.getElementById("friend"+clickedFriend).style.background="#577e87";
             document.getElementById("friend"+clickedFriend).style.color="white";
             //start routine to reload the tables
@@ -148,7 +154,7 @@ function getAndSaveUserID() {
   
 //request to save a Steam ID if there is non in local storage
 
-//Abfrage, ob eine Steam-ID im localStorage ist
+//Abfrage, ob eine Steam-ID im localStorage ist und ein paar Darstellungsänderungen
     if (!localStorage.getItem("savedIDstring")) {
         mySID.textContent = "Nicht angemeldet!";
         userHeading.textContent = "";
@@ -161,9 +167,7 @@ function getAndSaveUserID() {
     }
 
 //Erstellung der Friendslist
-    let FLl=actingUser.friendsListObjects.length;
-    console.log(FLl);
-    const lengthFl= FLl-1;
+    const lengthFl= actingUser.friendsListObjects.length-1;
     if(lengthFl > 0) {
         document.getElementById("friendlist").innerHTML="Es sind "+actingUser.friendsListObjects.length+" Freunde online:";
     }
@@ -171,13 +175,14 @@ function getAndSaveUserID() {
 
 
 
-//events
+
+
+//eventhandling
     
     newSIDButton.onclick = () => {
         getAndSaveUserID();
         alert("User-ID geändert!")
         mySID.textContent = "Willkommen, "+actingUser.name;
-    var response;
     };
 
 
@@ -244,3 +249,8 @@ function buildUpByNewSteamID(activeSteamUser){
 */
 
 console.log("Script durchgelaufen!");
+
+      
+
+
+
