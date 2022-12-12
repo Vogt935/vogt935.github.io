@@ -1,13 +1,17 @@
 //Stufe 1:
-//Über-TODO: Import JSON; Get Game Infos; Show it all; node.js
+//ÜberTODO: Import JSON; Get Game Infos; Show it all; node.js
 //highTODO: node.js einrichten
-//TODO: Funktionsbuttons/Filter umsetzen (Darstellung Liste, sortieren usw)
-//TODO: Tabelle Games-List erstellen, CSS für Games-List
-//lowTODO: Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer Freund dazu kommt?
-//lowTODO: Friendslist suchbar machen
+//highTODO: andere Testobjekte reinladen, aus Steam-Darstellung in eigenes Programm übersetzen
+//highTODO: Tabellenlogik bauen
+//TODO:     Funktionsbuttons/Filter umsetzen (Darstellung Liste, sortieren usw)
+//TODO:     Tabelle Games-List erstellen, CSS für Games-List
+//lowTODO:  Aus einer Skript-Datei mehrere machen?
+//lowTODO:  Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer             Freund dazu kommt?
+//lowTODO:  Friendslist suchbar machen
 
 //Stufe 2:
-//Icons neben Benutzernamen
+//TODO:Icons neben Benutzernamen
+//TODO:Responsiveness
 
 // Testdaten:
 var myFriendslist = {"friendslist":{"friends":[{"steamid":"76561197966953159","relationship":"friend","friend_since":1394392802},
@@ -258,3 +262,61 @@ console.log("Script durchgelaufen!");
 
 
 
+//Spielwiese, Table-Erstellung
+
+
+
+
+let mountains = [
+  { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
+  { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
+  { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
+  { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
+  { name: "Monte Amiata", height: 1738, place: "Siena" }
+];
+
+function generateTableHead(table, data){
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for (let key of data) {
+        let th = document.createElement("th");
+        let text = document.createTextNode(key);
+        th.appendChild(text);
+        row.appendChild(th);
+  }
+}
+
+function generateTable(table, data) {
+  for (let element of data) {
+    let row = table.insertRow();
+    for (key in element) {
+      let cell = row.insertCell();
+      let text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
+
+let table = document.querySelector("table");
+let data = Object.keys(mountains[0]);
+generateTableHead(table, data);
+generateTable(table, mountains);
+
+
+
+/*
+<tr>
+                        <th>Spiel</th>
+                        <th>Anzahl der Mitspieler</th>
+                        <th>Im Besitz:</th>
+                    </tr><tr>
+                        <td>Age of Empires 2</td>
+                        <td>3</td>
+                        <td>Peter, Björn, Florian</td>
+                    </tr><tr>
+                        <td> DOTA 2</td>
+                        <td> 2</td>
+                        <td> Peter, Björn</td>
+*/
+
+console.log("Table Spielwiese durchgelaufen");
