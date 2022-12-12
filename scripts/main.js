@@ -1,15 +1,22 @@
-//Über-TODO: Import JSON; Get Game Infos; Show it all
-//TODO: node.js einrichten
-//TODO: HTML/CSS: Darstellung Games-List
+//Stufe 1:
+//Über-TODO: Import JSON; Get Game Infos; Show it all; node.js
+//highTODO: node.js einrichten
 //TODO: Funktionsbuttons/Filter umsetzen (Darstellung Liste, sortieren usw)
-//TODO: Umbenennung SID-Button: Wenn eine Steam-ID eingegeben ist, dann zu "STeam ID ändern" umbenennen
-//TODO: Friends as Buttons, CSS für Friend-Button und Checkboxen, onclick einen two-way-process starten (wenn in group, dann raus, wenn nicht, dann rein), Friends in AdHocGroup werden blau hervorgehoben in Tabelle
-//TODO: Friendslist suchbar machen
-//TODO: Tabelle Games-List erstellen, CSS für Games-List, Filter für Friendslist
+//TODO: Tabelle Games-List erstellen, CSS für Games-List
+//lowTODO: Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer Freund dazu kommt?
+//lowTODO: Friendslist suchbar machen
+
+//Stufe 2:
+//Icons neben Benutzernamen
       
 // Testdaten:
 const myFriendslist = {"friendslist":{"friends":[{"steamid":"76561197966953159","relationship":"friend","friend_since":1394392802},
-                                                 {"steamid":"76561197969067270","relationship":"friend","friend_since":1452304416},{"steamid":"76561197979247125","relationship":"friend","friend_since":1620943081},{"steamid":"76561197984913701","relationship":"friend","friend_since":1401274804},{"steamid":"76561198011593392","relationship":"friend","friend_since":1551454004},{"steamid":"76561198017068250","relationship":"friend","friend_since":1456168382},{"steamid":"76561198036118525","relationship":"friend","friend_since":1394392809},{"steamid":"76561198038501532","relationship":"friend","friend_since":1394396986},{"steamid":"76561198053250556","relationship":"friend","friend_since":1617043740},{"steamid":"76561198113162927","relationship":"friend","friend_since":1403461061},{"steamid":"76561198170826159","relationship":"friend","friend_since":1419784457},{"steamid":"76561198297302899","relationship":"friend","friend_since":1460301328},{"steamid":"76561198983798096","relationship":"friend","friend_since":1643480286}]}};
+                                                 {"steamid":"76561197969067270","relationship":"friend","friend_since":1452304416},{"steamid":"76561197979247125","relationship":"friend","friend_since":1620943081},{"steamid":"76561197984913701","relationship":"friend","friend_since":1401274804},{"steamid":"76561198011593392","relationship":"friend","friend_since":1551454004},{"steamid":"76561198017068250","relationship":"friend","friend_since":1456168382},{"steamid":"76561198036118525","relationship":"friend","friend_since":1394392809},
+                                                 /*
+                                                 {"steamid":"76561198038501532","relationship":"friend","friend_since":1394396986},{"steamid":"76561198053250556","relationship":"friend","friend_since":1617043740},{"steamid":"76561198113162927","relationship":"friend","friend_since":1403461061},{"steamid":"76561198170826159","relationship":"friend","friend_since":1419784457},{"steamid":"76561198297302899","relationship":"friend","friend_since":1460301328},{"steamid":"76561198983798096","relationship":"friend","friend_since":1643480286}*/
+                                                 
+                                                 
+                                                 ]}};
                                                  
 
 //classes:
@@ -91,10 +98,14 @@ function getAndSaveUserID() {
                 console.log(friendToAdd.steamID);
                 actingUser.friendsListObjects.push(friendToAdd);
                 if (i < 10){
+                    const element = document.getElementById(id);
+                    element.style.visibility="visible";
                     document.getElementById(id).innerHTML= (""+actingUser.friendsListInput[i].steamid+" ist online");
                     i++;
                 }
                 else{
+                    const element = document.getElementById("moreFriends");
+                    element.style.visibility="visible";
                     document.getElementById("moreFriends").innerHTML=("Es sind mehr als 10 Freunde online!");
                 i++;
                 }
@@ -137,6 +148,7 @@ function getAndSaveUserID() {
   
 //request to save a Steam ID if there is non in local storage
 
+//Abfrage, ob eine Steam-ID im localStorage ist
     if (!localStorage.getItem("savedIDstring")) {
         mySID.textContent = "Nicht angemeldet!";
         userHeading.textContent = "";
@@ -145,9 +157,10 @@ function getAndSaveUserID() {
         routineActingUser(storedIDstring);
         actingUser.savedID = true;
         mySID.textContent = "Willkommen zurück, "+actingUser.name;
+        newSIDButton.textContent = "Gespeicherte Steam-ID ändern";
     }
 
-
+//Erstellung der Friendslist
     let FLl=actingUser.friendsListObjects.length;
     console.log(FLl);
     const lengthFl= FLl-1;
@@ -169,6 +182,8 @@ function getAndSaveUserID() {
 
 
 
+
+//TO BE USED oder zu ersetzen:
 
 // Get information from steam servers
 // Serialization variables to be filled
@@ -197,20 +212,7 @@ function getAndSaveUserID() {
 
 
 
-
-
-
-/*
-function friendsCounter(){
-    actingUser.friendsListObjects.forEach(g)
-}
-getAdHocStatus(i){
-    actingUser.friendsListObjects[i].adHocGroup==true:
-}
-*/
-
-
-
+//Fetch-Funktionen? -> Nach node.js erst notwendig bzw. für Node.js notwendig
 /* 
 function fetchOwnedGames(userProfile){
     gameslist = [1,2];
@@ -240,34 +242,5 @@ function buildUpByNewSteamID(activeSteamUser){
     fetchGameStats(activeSteamUser);
     }
 */
-/*
-const steamnews =
-const objSN = JSON.parse(steamnews);
 
-console.log(objSN.appnews.appid);
-*/
-
-//Friendslist:
-{
-// TODO: Zeitlich gesetzte neue Abfrage welche Freunde online sind?
-
-
-
-//console.log(FLl);
-
-//myFriendslist.friendslist.friends.forEach()
-
-
-}
-
-
-/*
-//function to build User-Object from steam IDs
-function buildFriendsListObjects (user){
-    while (i < n){
-        user.friendsListObjects[i] = new User(user.friendsListIDs[i]);
-        console.log("Neuer User angelegt, Nr.: "+i);
-        i++
-    }
-}*/
 console.log("Script durchgelaufen!");

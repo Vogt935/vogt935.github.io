@@ -94,12 +94,14 @@ button {
 
         button.friendslist {
           background-color:#c5c3c0;
+            visibility: hidden;
             height: 3em;
             width: 20em;
             margin: 4px;
         }
 
-        button.moreFriends{
+        button#moreFriends{
+            visibility: hidden;
             width: 16em;
             height: 6em;
             color: black;
