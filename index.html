@@ -1,109 +1,97 @@
 <!DOCTYPE html>
 <html lang="d">
-  <head>
+<head>
     <meta charset="utf-8">
-    <title>What could we play?!</title>
+    <title>What should we play?!</title>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
-  </head>
+</head>
 
-  <body>
+<body>
 
    <left>
-    <nav>
-    	<img src="https://community.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" alt="The Steam Logo.">
-    	<h2>... together!</h2>
-    	
-<sID id="my-steam-ID">Bitte anmelden!</sID>
+       <nav>
+    	    <img src="https://community.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" alt="The Steam Logo.">
+    	    <h2>... together!</h2>
+    	    <sID id="my-steam-ID">Bitte anmelden!</sID>
         
-<navList> 
-
-<button class="tablink" onclick="firstTryFetch()" id="defaultOpen">Home</button>
-<button class="tablink" onclick="">Meistgespielt</button>
-<button class="tablink" onclick="">Meiste Spieler</button>
-<button class="tablink" onclick="">Vorschläge</button>      
-        
-</navList>
-</nav>
+            <navList> 
+            <button class="tablink" onclick="firstTryFetch()" id="defaultOpen">Home</button>
+            <button class="tablink" onclick="">Meistgespielt</button>
+            <button class="tablink" onclick="">Meiste Spieler</button>
+            <button class="tablink" onclick="">Vorschläge</button>          
+            </navList>
+       </nav>
        
-<section>
-            <p>Hallo! Schön das Ihr da seid! Mit "What could we play?" (WCWP) könnt Ihr:</p>
-            <ul>
-                <li>endlich sehen, welche Spiele eure Freunde haben</li>
-                <li>sehen, welche Spiele ihr teilt</li>
-                <li>Vorschläge bekommen, was eure Gruppe spielen könnte</li>
-            </ul>
-          <ul>
-<ul>
-  <li>first item</li>
-  <li>second item</li>
-  <li>third item</li>
-</ul>
-
-            <p>Was Ihr tun müsst? Gebt einfach eure Steam-ID über den Button oben rechts ein, der Rest ist Magie!</p>
-            <p>Rechts seht ihr alle Freunde, die im Moment bei Steam online sind. Klick Sie an, um eine AdHocGruppe zu bilden, welche die WCWP-Tabelle filtert.</p>
-            <p>Über diese Buttons könnt Ihr die unten zu findende Spieleliste filtern:</p>
-
-            <controlpanel>
-                <button id="my-fetch-button"> Meistgespielten Spiele </button>
-                <button> Am meisten geteilte Spiele </button>
-                <button> Suggestions </button>
-            </controlpanel>
-
-            <input type="text" id="inputSearch" onkeyup="searchFunction()" placeholder="Such nach einem Spiel">
-            <table> 
-                <tr>
-                    <th>Spiel</th>
-                    <th>Anzahl der Mitspieler</th>
-                    <th>Im Besitz:</th>
-                </tr><tr>
-                    <td>Age of Empires 2</td>
-                    <td>3</td>
-                    <td>Peter, Björn, Florian</td>
-                </tr><tr>
-                    <td> DOTA 2</td>
-                    <td> 2</td>
-                    <td> Peter, Björn</td>
-
-            </table>
-            
+       <section>
+            <home>
+                <p>Hallo! Schön das Ihr da seid! Mit "What could we play?" (WCWP) könnt Ihr:</p>
+                <ul>
+                    <li>endlich sehen, welche Spiele eure Freunde haben</li>
+                    <li>sehen, welche Spiele ihr teilt</li>
+                    <li>Vorschläge bekommen, was eure Gruppe spielen könnte</li>
+                </ul>
+                <p>Was Ihr tun müsst? Gebt einfach eure Steam-ID über den Button oben rechts ein, der Rest ist Magie!</p>
+                <p>Rechts seht ihr alle Freunde, die im Moment bei Steam online sind. Klick Sie an, um eine AdHocGruppe zu bilden, welche die WCWP-Tabelle filtert.</p>
+            </home>
+                
+            <ergebnisListe>
+                <p>Über diese Buttons könnt Ihr die unten zu findende Spieleliste filtern:</p>
+                
+                <input type="text" id="inputSearch" onkeyup="searchFunction()" placeholder="Such nach einem Spiel">
+                <table> 
+                    <tr>
+                        <th>Spiel</th>
+                        <th>Anzahl der Mitspieler</th>
+                        <th>Im Besitz:</th>
+                    </tr><tr>
+                        <td>Age of Empires 2</td>
+                        <td>3</td>
+                        <td>Peter, Björn, Florian</td>
+                    </tr><tr>
+                        <td> DOTA 2</td>
+                        <td> 2</td>
+                        <td> Peter, Björn</td>
+                    </tr>
+                </table>
+            </ergebnisListe>
             <p> Ende </p>
 
 	   </section>
        
     </left>
-    <right>
-       <button class="newSteamID" id="my-steamid-button"> Neue Steam ID eingeben </button>
-       <reqreturn> Heading </reqreturn>
-        <p>        <a id="friendlist"> Es sind keine Freunde online. </a></p>
-        <button class="friendslist" id="friend0" onclick=addToAdHocGroup(0)></button>
-        <button class="friendslist" id="friend1" onclick=addToAdHocGroup(1)></button>
-        <button class="friendslist" id="friend2" onclick=addToAdHocGroup(2)></button>
-        <button class="friendslist" id="friend3" onclick=addToAdHocGroup(3)></button>
-        <button class="friendslist" id="friend4" onclick=addToAdHocGroup(4)></button>
-        <button class="friendslist" id="friend5" onclick=addToAdHocGroup(5)></button>
-        <button class="friendslist" id="friend6" onclick=addToAdHocGroup(6)></button>
-        <button class="friendslist" id="friend7" onclick=addToAdHocGroup(7)></button>
-        <button class="friendslist" id="friend8" onclick=addToAdHocGroup(8)></button>
-        <button class="friendslist" id="friend9" onclick=addToAdHocGroup(9)></button>
-        <p><button class="moreFriends"><p id="moreFriends"></button><a id="adHocCounter">0</a></p>
+    
       
+    <right>
+        <flHeader>
+            <button class="newSteamID" id="my-steamid-button"> Neue Steam ID eingeben</button>
+            <p id="userHeading">Nicht angemeldet...</p>
+        </flHeader>
+        
+        <friendslist> 
+            <p><a id="friendlist"> Es sind keine Freunde online.</a></p>
+            <button class="friendslist" id="friend0" onclick=addToAdHocGroup(0)></button>
+            <button class="friendslist" id="friend1" onclick=addToAdHocGroup(1)></button>
+            <button class="friendslist" id="friend2" onclick=addToAdHocGroup(2)></button>
+            <button class="friendslist" id="friend3" onclick=addToAdHocGroup(3)></button>
+            <button class="friendslist" id="friend4" onclick=addToAdHocGroup(4)></button>
+            <button class="friendslist" id="friend5" onclick=addToAdHocGroup(5)></button>
+            <button class="friendslist" id="friend6" onclick=addToAdHocGroup(6)></button>
+            <button class="friendslist" id="friend7" onclick=addToAdHocGroup(7)></button>
+            <button class="friendslist" id="friend8" onclick=addToAdHocGroup(8)></button>
+            <button class="friendslist" id="friend9" onclick=addToAdHocGroup(9)></button>
+        </friendslist>
+        
+        <flBottom>
+            <p>
+                <button id="moreFriends"></button>
+                <a id="adHocCounter">0</a>
+            </p>
+        </flBottom>  
     </right>
-       
        
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="scripts/main.js"></script>
 
  </body>
  </html>
-
-
-
-<!--
-
-TODO:
-- Header sortieren
--
-
-
--->

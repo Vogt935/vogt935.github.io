@@ -1,44 +1,53 @@
 html {
-  font-size: 10px;
+  font-size: 16px;
   font-family: 'Open Sans', sans-serif;
-
+  line-height: 1.5;
+  letter-spacing: 1px;
 }
 
 
 
 
-/* Basic Navigation and Flexbox stuff */
+
+                        /* Basic Navigation and Flexbox stuff */
 
 body {
     display: flex;
-  margin: auto auto;
-  color: #c5c3c0; 
-  background-color: #1B3B54;
-  justify-content: space-evenly
+    
+    margin: auto auto;
+    color: #c5c3c0; 
+    background-color: #1B3B54;
+    justify-content: space-evenly
 }
 
 right {
-    display: flex;
     order: 2;
     padding: 1em; 
-    border: 1px solid grey;
-    border-radius: 30px 30px 30px 30px;
+    border-radius: 14px;
     margin: 10px;
     background: #142a3b;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     text-align: center;
+    width: 400px;
 }
 
+
 left {
-    display: flex;
-    width: 500 px;
     order: 1;
     display: flex;
     flex-direction: column;
-    
 }
+
+
+nav {
+	background-color: #142a3b;
+	padding: 1em 2em 2em 2em;
+    order: 1;
+    border-radius: 0 0 14px 14px;
+}
+
 
 section {
 	display: column;
@@ -47,161 +56,126 @@ section {
     order: 2;
 }
 
-nav {
-	background-color: #142a3b;
-	padding: 1em 2em 2em 2em;
-    order: 1;
-    border: 1px solid grey;
-    border-radius: 0 0 20px 20px;
-}
-
-subheader {
-	border: white 10px;
-	display: flex;
-	justify-content: space-between;
-	margin-top: 2em;
-}
-
-controlpanel {
-	display: flex;
-	justify-content: space-evenly;
-}
-
-sID {
-	text-align: left;
-	font-size: 16px;
-	order:1
-}
-
-reqreturn {
-	font-size: 16px;
-    text-align: center;
-}
 
 
-
-/* Formatting stuff */
-
-p {
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: 1px;
-}
-
-a#adHocCounter{
-    border: 5px solid #c5c3c0;
-    border-radius: 20px;
-    background: #2d4150;
-    color: #c5c3c0;
-    text-align: center;
-    font-size: 29px;
-    /* height: 2.2em; */
-    width: 2em;
-    padding-top: 5;
-    text-align: center;
-    margin: 1px;
-
-}
-
-ul {
-  list-style-type: circle;
-  margin: 0;
-  padding: 0;
-
-
-}
-
-
-li {
-
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: 1px;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #111;
-}
+                                    /* Formatting stuff */
 
 h1, h2 {
-	font-size: 30px;
-	text-align: right;
+    font-size: 30px;
+    text-align: right;
 }
+
 
 img {
-  display: block;
-  margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 }
+
+
+ul {
+    list-style-type: circle;
+}
+
 
 button {
-background-color:   #5c7e10;
-width: 20em;
-height: 3em;
-margin: 10px; 
-border: 2px solid black;
-border-radius: 8px;
-        text-align: center;
-}
-
-button:hover {
-background-color: #85b619;
-}
-
-button.friendslist {
-  background-color:#c5c3c0;
+    background-color:   #d2a747;
+    width: 20em;
     height: 3em;
-    width: 20em;
-    margin: 4px;
+    margin: 10px; 
+    border-radius: 8px;
+    text-align: center;
 }
 
-button.moreFriends{
-    width: 16em;
-    height: 6em;
-    color: black;
-    padding: 0;
 
-    
-}
-button.newSteamID{
-    width: 20em;
+        button:hover {
+        background-color: #ffcc5a;
+        }
 
-}
+
+        button.friendslist {
+          background-color:#c5c3c0;
+            height: 3em;
+            width: 20em;
+            margin: 4px;
+        }
+
+        button.moreFriends{
+            width: 16em;
+            height: 6em;
+            color: black;
+            padding: 0;
+
+
+        }
+        button.newSteamID{
+            width: 20em;
+        }
+
+
 navList{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    
 }
+
+        .tablink {
+          background-color: #555;
+          color: white;
+          float: left;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          font-size: 17px;
+          width: 25%;
+        }
+
+
+        .tablink:hover {
+          background-color: #777;
+        }
+
+
+
+
+
 button.tablink{
     width: 14em;
 }
 
+
 button.friendslist:hover {
   background-color:#2d4150
 }
+
+
+
+a#adHocCounter{
+    border-radius: 10px;
+    background: #2d4150;
+    color: #c5c3c0;
+    text-align: center;
+    font-size: 30px;
+    /* height: 2.2em; */
+    width: 2.4em;
+    padding-top: 5;
+    text-align: center;
+    margin: 14px;
+
+}
+
+
 
 /* Table options: */
 
 table {
     width: 100%;
     background: #3e5e76;
-    border-radius: 8px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
 
 th {
-    background: #2d4150;
-    border-radius: 8px 8px 5px 5px;
+    background: #142a3b;
     text-align: center;
     padding: 4px;
 
@@ -211,41 +185,9 @@ td {
   background: lightgrey;
     color: black;
     padding: 10px;
-    border: 0px;
+
 }
 
 
-
-/* Style the tab buttons */
-.tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
-}
-
-/* Change background color of buttons on hover */
-.tablink:hover {
-  background-color: #777;
-}
-
-/* Set default styles for tab content */
-.tabcontent {
-  color: white;
-  display: none;
-  padding: 50px;
-  text-align: center;
-}
-
-/* Style each tab content individually */
-#London {background-color:red;}
-#Paris {background-color:green;}
-#Tokyo {background-color:blue;}
-#Oslo {background-color:orange;}
 
 
