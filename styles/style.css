@@ -152,6 +152,7 @@ button.friendslist:hover {
 
 
 a#adHocCounter{
+    visibility: hidden;
     border-radius: 10px;
     background: #2d4150;
     color: #c5c3c0;

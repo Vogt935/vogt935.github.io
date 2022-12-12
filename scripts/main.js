@@ -95,7 +95,8 @@ function getAndSaveUserID() {
         console.log("Die Friendslist ist "+actingUser.friendsListInput.length+" Freunde lang.");
         const lengthFl= actingUser.friendsListInput.length-1;
         if(lengthFl > 0) {
-            document.getElementById("friendlist").innerHTML="Es sind Freunde online:";
+            document.getElementById("adHocCounter").style.visibility="visible";
+            document.getElementById("friendlist").innerHTML="Es sind "+(lengthFl+1)+" Freunde online:";
             let i = 0;
             while (i <= lengthFl) {
                 let id = "friend"+i;
@@ -114,7 +115,10 @@ function getAndSaveUserID() {
                     element.style.visibility="visible";
                     document.getElementById("moreFriends").innerHTML=("Es sind mehr als 10 Freunde online!");
                 i++;
-                } } } }
+                } } }
+        else{
+            document.getElementById("friendslist").innerHTML="Es sind keine Freunde online.";
+        }}
 
 
 //reload the number of friends in AdHoc-Group
