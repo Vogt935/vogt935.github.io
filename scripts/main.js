@@ -3,7 +3,6 @@
 //highTODO: node.js einrichten
 //highTODO: andere Testobjekte reinladen, aus Steam-Darstellung in eigenes Programm übersetzen
 //highTODO: Tabellenlogik bauen
-//TODO:     Funktionsbuttons/Filter umsetzen (Darstellung Liste, sortieren usw)
 //TODO:     Tabelle Games-List erstellen, CSS für Games-List
 //lowTODO:  Aus einer Skript-Datei mehrere machen?
 //lowTODO:  Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer             Freund dazu kommt?

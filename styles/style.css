@@ -27,15 +27,16 @@ right {
     padding-top: 2em;
     border-radius: 14px;
     margin: 10px;
-	background-color: #142a3b;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     text-align: center;
     width: 400px;
+    background-color: #142a3b;
     border: 2px #0c1118 solid;
     box-shadow: 4px 4px 20px #0c1118;
 }
+
 
 
 left {
@@ -168,6 +169,7 @@ table {
     background: #c5c3c0;
     margin-top: 20px;
     margin-bottom: 30px;
+    border-radius: 14px;
 }
 
 th {
@@ -177,19 +179,17 @@ th {
 }
 
 th:first-child{
-    border-radius: 10px 0px 0px 0px;
-}
-
-th:first-child{
-    width: 40%
+    width: 40%;
+    border-radius: 14px 0px 0px 0px;
 }
 th:last-child{
     width: 40%;
+    border-radius: 0px 14px 0px 0px;
 }
 
 
 td {
-  background: lightgrey;
+
     color: black;
     padding: 10px;
 
