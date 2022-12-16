@@ -268,11 +268,11 @@ console.log("Script durchgelaufen!");
 
 
 let mountains = [
-  { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
-  { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
-  { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
-  { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
-  { name: "Monte Amiata", height: 1738, place: "Siena" }
+  { name: "Age of Empires II", groupPlaytime: 1658, yourPlaytime: 320 },
+  { name: "World of Warcraft", groupPlaytime: 1654, yourPlaytime: 234 },
+  { name: "Valheim", groupPlaytime: 1520, yourPlaytime: 210 },
+  { name: "DOTA 2", groupPlaytime: 1592, yourPlaytime: 110 },
+  { name: "Broforce", groupPlaytime: 1738, yourPlaytime: 54 }
 ];
 
 function generateTableHead(table, data){
@@ -301,7 +301,27 @@ let table = document.querySelector("table");
 let data = Object.keys(mountains[0]);
 generateTableHead(table, data);
 generateTable(table, mountains);
+  let input, filter, tr, td, txtValue;
 
+function searchFunctionErgebnisliste() {
+  // Variablen für die Suchleiste etablieren
+      input = document.getElementById("inputSearchErgebnisliste");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("ergebnisListe");
+      tr = table.getElementsByTagName("tr");
+
+      // Durch die einzelnen Reihen laufen
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.innerHTML;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = ""; 
+            } 
+            else {
+            tr[i].style.display = "none";
+                  console.log(5); 
+    } } } }
 
 
 /*
