@@ -15,12 +15,7 @@
     	    <h2>... together!</h2>
     	    <sID id="my-steam-ID">Bitte anmelden!</sID>
         
-            <navList> 
-            <button class="tablink" onclick="firstTryFetch()" id="defaultOpen">Home</button>
-            <button class="tablink" onclick="">Meistgespielt</button>
-            <button class="tablink" onclick="">Meiste Spieler</button>
-            <button class="tablink" onclick="">Vorschläge</button>          
-            </navList>
+
        </nav>
        
        <section>
@@ -37,10 +32,17 @@
                 
             <ergebnisListe>
                 <p>Über diese Buttons könnt Ihr die unten zu findende Spieleliste filtern:</p>
-                
+                 
                 <input type="text" id="inputSearchErgebnisliste" onkeyup="searchFunctionErgebnisliste()" placeholder="Such nach einem Spiel">
-                <table id="ergebnisListe"> 
+                
+                <navList> 
+                    <button class="tablink" onclick="sortTablePlaytime()">Meiste Spielzeit</button>
+                    <button class="tablink" onclick="sortTablePlayers()">Meiste Spieler</button>
+                    <button class="tablink" onclick="">Vorschläge</button>          
+                </navList>
+                
 
+                <table id="ergebnisListe"> 
                 </table>
             </ergebnisListe>
             <p> Ende </p>

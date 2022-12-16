@@ -16,7 +16,7 @@ body {
     
     margin: auto auto;
     color: #c5c3c0; 
-    background: rgb(27,40,56);
+
     background: linear-gradient(90deg, rgba(27,40,56,1) 0%, rgba(46,66,90,1) 25%, rgba(51,73,98,1) 50%, rgba(37,54,74,1) 75%, rgba(27,40,56,1) 100%);
     justify-content: space-evenly
 }
@@ -24,6 +24,7 @@ body {
 right {
     order: 2;
     padding: 1em; 
+    padding-top: 2em;
     border-radius: 14px;
     margin: 10px;
 	background-color: #142a3b;
@@ -100,8 +101,8 @@ button {
           background-color:#c5c3c0;
             visibility: hidden;
             height: 3em;
-            width: 20em;
-            margin: 4px;
+            width: 80%;
+            margin-top: 8px;
         }
 
         button#moreFriends{
@@ -110,48 +111,42 @@ button {
             height: 6em;
             color: black;
             padding: 0;
-
-
         }
+
         button.newSteamID{
-            width: 20em;
+            width: 80%;
         }
 
 
 navList{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
         .tablink {
-          background-color: #555;
-          color: white;
           float: left;
           outline: none;
           cursor: pointer;
-          padding: 14px 16px;
           font-size: 17px;
           width: 25%;
         }
 
-
-        .tablink:hover {
-          background-color: #777;
+        #inputSearchErgebnisliste {
+            background: #c5c3c0;
+            margin-left: 4.3%;
+            margin-top: 15px;
+            width: 25%;
+            font-size: 16px; /* Increase font-size */
+            padding: 12px 20px 12px 40px; /* Add some padding */
+            border: 1px solid #ddd; /* Add a grey border */
+            border-radius: 8px;
+            margin-bottom: 12px; /* Add some space below the input */
         }
+        #inputSearchErgebnisliste:hover{
+            width: 51.4%;
 
-
-
-
-
-button.tablink{
-    width: 14em;
-}
-
-
-button.friendslist:hover {
-  background-color:#2d4150
-}
+        }
 
 
 
@@ -160,14 +155,8 @@ a#adHocCounter{
     border-radius: 10px;
     background: #2d4150;
     color: #c5c3c0;
-    text-align: center;
     font-size: 30px;
-    /* height: 2.2em; */
-    width: 2.4em;
-    padding-top: 5;
-    text-align: center;
-    margin: 14px;
-
+    padding: 10px 22px 10px 22px;
 }
 
 
@@ -176,8 +165,8 @@ a#adHocCounter{
 
 table {
     width: 100%;
-    background: #3e5e76;
-    margin-top: 30px;
+    background: #c5c3c0;
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
@@ -185,8 +174,12 @@ th {
     background: #142a3b;
     text-align: center;
     padding: 10px;
-
 }
+
+th:first-child{
+    border-radius: 10px 0px 0px 0px;
+}
+
 th:first-child{
     width: 40%
 }
@@ -202,17 +195,6 @@ td {
 
 }
 
-
-
-#inputSearchErgebnisliste {
-    background: lightgrey;
-    width: 34%; /* Full-width */
-    font-size: 16px; /* Increase font-size */
-    padding: 12px 20px 12px 40px; /* Add some padding */
-    border: 1px solid #ddd; /* Add a grey border */
-    border-radius: 8px;
-    margin-bottom: 12px; /* Add some space below the input */
-}
 
 
 

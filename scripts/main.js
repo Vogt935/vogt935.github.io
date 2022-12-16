@@ -267,12 +267,12 @@ console.log("Script durchgelaufen!");
 
 
 
-let mountains = [
-  { name: "Age of Empires II", groupPlaytime: 1658, yourPlaytime: 320 },
-  { name: "World of Warcraft", groupPlaytime: 1654, yourPlaytime: 234 },
-  { name: "Valheim", groupPlaytime: 1520, yourPlaytime: 210 },
-  { name: "DOTA 2", groupPlaytime: 1592, yourPlaytime: 110 },
-  { name: "Broforce", groupPlaytime: 1738, yourPlaytime: 54 }
+let gamesList = [
+  { name: "Age of Empires II", groupPlaytime: 1658, yourPlaytime: 3 },
+  { name: "World of Warcraft", groupPlaytime: 1654, yourPlaytime: 2 },
+  { name: "Valheim", groupPlaytime: 1520, yourPlaytime: 5 },
+  { name: "DOTA 2", groupPlaytime: 1592, yourPlaytime: 1 },
+  { name: "Broforce", groupPlaytime: 1738, yourPlaytime: 2 }
 ];
 
 function generateTableHead(table, data){
@@ -295,12 +295,17 @@ function generateTable(table, data) {
       cell.appendChild(text);
     }
   }
+    var headers = document.getElementsByTagName("th");
+    headers[0].innerHTML = "Name des Spiels";
+    headers[1].innerHTML = "Gemeinsame Spielzeit";
+    headers[2].innerHTML = "Online-Freunde, die das Spiel besitzen";
+    
 }
 
 let table = document.querySelector("table");
-let data = Object.keys(mountains[0]);
+let data = Object.keys(gamesList[0]);
 generateTableHead(table, data);
-generateTable(table, mountains);
+generateTable(table, gamesList);
   let input, filter, tr, td, txtValue;
 
 function searchFunctionErgebnisliste() {
@@ -322,6 +327,78 @@ function searchFunctionErgebnisliste() {
             tr[i].style.display = "none";
                   console.log(5); 
     } } } }
+
+
+function sortTablePlaytime() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("ergebnisListe");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[1];
+      y = rows[i + 1].getElementsByTagName("TD")[1];
+      // Check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+        // If so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+function sortTablePlayers() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("ergebnisListe");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[2];
+      y = rows[i + 1].getElementsByTagName("TD")[2];
+      // Check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+        // If so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
 
 
 /*
