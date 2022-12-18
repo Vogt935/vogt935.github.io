@@ -8,7 +8,9 @@
 </head>
 
 <body>
-
+    <script src="scripts/main.js" defer></script>
+    
+    
    <left>
        <nav>
     	    <img src="https://community.akamai.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016" alt="The Steam Logo.">
@@ -29,6 +31,10 @@
                 <p>Was Ihr tun müsst? Gebt einfach eure Steam-ID über den Button oben rechts ein, der Rest ist Magie!</p>
                 <p>Rechts seht ihr alle Freunde, die im Moment bei Steam online sind. Klick Sie an, um eine AdHocGruppe zu bilden, welche die WCWP-Tabelle filtert.</p>
             </home>
+        <friendPic>
+            <img class="friendsPic" src="https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png" >
+            <playtimeNumber>12345</playtimeNumber>
+        </friendPic>
                 
             <ergebnisListe>
                 <p>Über diese Buttons könnt Ihr die unten zu findende Spieleliste filtern:</p>
@@ -71,7 +77,7 @@
             <button class="friendslist" id="friend8" onclick=addToAdHocGroup(8)></button>
             <button class="friendslist" id="friend9" onclick=addToAdHocGroup(9)></button>
         </friendslist>
-        
+
         <flBottom>
             <p>
                 <button id="moreFriends"></button>
@@ -81,7 +87,7 @@
     </right>
        
 
-    <script src="scripts/main.js"></script>
+
 
  </body>
  </html>

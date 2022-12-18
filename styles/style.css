@@ -7,7 +7,21 @@ html {
 
 
 
+playtimeNumber{
+    background: #577e87;
+    position: absolute;
+    color:white;
+    left: 60px;
+    border: 3px white solid;
+    border-radius: 13px;
+}
 
+img.friendsPic{
+        width: 60px;
+        height: 60px;
+        border: 6px #d2a747 solid;
+        border-radius: 400px;
+}
 
                         /* Basic Navigation and Flexbox stuff */
 
@@ -69,12 +83,6 @@ section {
 h1, h2 {
     font-size: 30px;
     text-align: right;
-}
-
-
-img {
-    display: block;
-    margin: 0 auto;
 }
 
 
