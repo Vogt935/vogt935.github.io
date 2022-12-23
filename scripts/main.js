@@ -1,22 +1,33 @@
-//Stufe 1:
-//ÜberTODO: Import JSON; Get Game Infos; Show it all; node.js
+//Stufe 1 - Basic Function:
+//ÜberTODO: Import JSON; Get Game Infos; Show it all; node.js; 
 //highTODO: node.js einrichten
-//highTODO: andere Testobjekte reinladen, aus Steam-Darstellung in eigenes Programm übersetzen
-//highTODO: Tabellenlogik bauen
-//TODO:     Tabelle Games-List erstellen, CSS für Games-List
+//highTODO: Die Abfragen "scharf schalten"
+//TODO:     Code-Review und Refractoring!
 //lowTODO:  Aus einer Skript-Datei mehrere machen?
-//lowTODO:  Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer             Freund dazu kommt?
-//lowTODO:  Friendslist suchbar machen
 
-//Stufe 2:
-//TODO:Icons neben Benutzernamen
-//TODO:Responsiveness
+
+//Stufe 2 - Added Group Functions:
+//ÜberTODO: Share-Funktion; Chat-Funktion
+//highTOOD: Die verschiedenen Webfunktionen als Buttons einbauen (Starte Chat, starte Spiel, starte ... direkt von der Website!)
+//TODO:     Share-Button in Friendslist einbauen
+//TODO:     Chatfunktion in node.js? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
+//lowTODO:  Friendslist suchbar machen?
+
+
+//Stufe 3 - Polish:
+//TODO:     Icons neben Benutzernamen
+//TODO:     Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer             Freund dazu kommt?
+//TODO:     Responsiveness noch verbessern? (Ist eigentlich schon ganz ok...)
+//TODO:     Letzte Code-Review, noch mal alles an Müll rausschmeißen!
+//lowTODO:  Home ausblenden in LocalStorage?
+
+
 
 // Testdaten:
 var myFriendslist = {"friendslist":{"friends":[{"steamid":"76561197966953159","relationship":"friend","friend_since":1394392802},
                                                  {"steamid":"76561197969067270","relationship":"friend","friend_since":1452304416},{"steamid":"76561197979247125","relationship":"friend","friend_since":1620943081},{"steamid":"76561197984913701","relationship":"friend","friend_since":1401274804},{"steamid":"76561198011593392","relationship":"friend","friend_since":1551454004},{"steamid":"76561198017068250","relationship":"friend","friend_since":1456168382},{"steamid":"76561198036118525","relationship":"friend","friend_since":1394392809},
-                                                 /*
-                                                 {"steamid":"76561198038501532","relationship":"friend","friend_since":1394396986},{"steamid":"76561198053250556","relationship":"friend","friend_since":1617043740},{"steamid":"76561198113162927","relationship":"friend","friend_since":1403461061},{"steamid":"76561198170826159","relationship":"friend","friend_since":1419784457},{"steamid":"76561198297302899","relationship":"friend","friend_since":1460301328},{"steamid":"76561198983798096","relationship":"friend","friend_since":1643480286}*/
+                                                 
+                                                 {"steamid":"76561198038501532","relationship":"friend","friend_since":1394396986},{"steamid":"76561198053250556","relationship":"friend","friend_since":1617043740},{"steamid":"76561198113162927","relationship":"friend","friend_since":1403461061},/*{"steamid":"76561198170826159","relationship":"friend","friend_since":1419784457},{"steamid":"76561198297302899","relationship":"friend","friend_since":1460301328},{"steamid":"76561198983798096","relationship":"friend","friend_since":1643480286}*/
                                                  
                                                  
                                                  ]}};
@@ -63,7 +74,7 @@ console.log("Testdaten erstellt!");
     let clickedFriend=10;
     let adHocCounter=0;
     let lengthFL=myFriendslist.friendslist.friends.length;
-
+    let homeText = document.getElementsByTagName("home");
 
 
 //functions: 
@@ -153,7 +164,10 @@ function getAndSaveUserID() {
         }}
 
 
-
+    function hideHomeText(){
+        homeText[0].innerHTML="";
+        homeButton.style.visibility="visible";
+    }
 
 
 
