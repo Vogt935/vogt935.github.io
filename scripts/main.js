@@ -24,14 +24,6 @@
 
 
 // Testdaten:
-var myFriendslist = {"friendslist":{"friends":[{"steamid":"76561197966953159","relationship":"friend","friend_since":1394392802},
-                                                 {"steamid":"76561197969067270","relationship":"friend","friend_since":1452304416},{"steamid":"76561197979247125","relationship":"friend","friend_since":1620943081},{"steamid":"76561197984913701","relationship":"friend","friend_since":1401274804},{"steamid":"76561198011593392","relationship":"friend","friend_since":1551454004},{"steamid":"76561198017068250","relationship":"friend","friend_since":1456168382},{"steamid":"76561198036118525","relationship":"friend","friend_since":1394392809},
-                                                 
-                                                 {"steamid":"76561198038501532","relationship":"friend","friend_since":1394396986},{"steamid":"76561198053250556","relationship":"friend","friend_since":1617043740},{"steamid":"76561198113162927","relationship":"friend","friend_since":1403461061},/*{"steamid":"76561198170826159","relationship":"friend","friend_since":1419784457},{"steamid":"76561198297302899","relationship":"friend","friend_since":1460301328},{"steamid":"76561198983798096","relationship":"friend","friend_since":1643480286}*/
-                                                 
-                                                 
-                                                 ]}};
-                                                 
 
 
 console.log("Testdaten erstellt!");
@@ -173,25 +165,6 @@ function getAndSaveUserID() {
 
 //script 
   
-//request to save a Steam ID if there is non in local storage
-
-//Abfrage, ob eine Steam-ID im localStorage ist und ein paar Darstellungsänderungen
-    if (!localStorage.getItem("savedIDstring")) {
-        mySID.textContent = "Nicht angemeldet!";
-        userHeading.textContent = "";
-    } else {
-        const storedIDstring = localStorage.getItem("savedIDstring");
-        routineActingUser(storedIDstring);
-        actingUser.savedID = true;
-        mySID.textContent = "Willkommen zurück, "+actingUser.name;
-        newSIDButton.textContent = "Gespeicherte Steam-ID ändern";
-    }
-
-//Erstellung der Friendslist
-    const lengthFl= actingUser.friendsListObjects.length-1;
-    if(lengthFl > 0) {
-        document.getElementById("friendlist").innerHTML="Es sind "+actingUser.friendsListObjects.length+" Freunde online:";
-    }
 
 
 
@@ -210,32 +183,6 @@ function getAndSaveUserID() {
 
 
 //TO BE USED oder zu ersetzen:
-
-// Get information from steam servers
-// Serialization variables to be filled
-    var serRequestFriendList = "empty";
-    var serRequestOwnedGames = "empty";
-    var serRequestGameStats = "empty";
-    var serRequestGameInfo= "empty";
-
-//Serialization with the saved User Steam ID
-    function getUserSID(sid) {
-        console.log(sid);
-        serRequestFriendList = "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid="+sid+"&relationship=friend&format=json";
-        console.log(serRequestFriendList);
-        serRequestOwnedGames = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid="+sid+"&format=json";
-        console.log(serRequestOwnedGames);
-        serRequestGameStats = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid="+sid+"format=json";
-        console.log(serRequestGameStats);
-    }
-
-//Get information about a specific game
-    function getGameStats(appid) {
-        console.log(appid);
-        serRequestGameInfo = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?appid=440&key=5FEC780FE57D3BBEA4B74CDA91C7C72E&steamid="+appid;
-        console.log(serRequestGameInfo);
-    }
-
 
 
 //Fetch-Funktionen? -> Nach node.js erst notwendig bzw. für Node.js notwendig
@@ -276,157 +223,3 @@ console.log("Script durchgelaufen!");
 
 
 //Spielwiese, Table-Erstellung
-
-
-
-
-let gamesList = [
-  { name: "Age of Empires II", groupPlaytime: 1658, yourPlaytime: 3 },
-  { name: "World of Warcraft", groupPlaytime: 1654, yourPlaytime: 2 },
-  { name: "Valheim", groupPlaytime: 1520, yourPlaytime: 5 },
-  { name: "DOTA 2", groupPlaytime: 1592, yourPlaytime: 1 },
-  { name: "Broforce", groupPlaytime: 1738, yourPlaytime: 2 }
-];
-
-function generateTableHead(table, data){
-    let thead = table.createTHead();
-    let row = thead.insertRow();
-    for (let key of data) {
-        let th = document.createElement("th");
-        let text = document.createTextNode(key);
-        th.appendChild(text);
-        row.appendChild(th);
-  }
-}
-
-function generateTable(table, data) {
-  for (let element of data) {
-    let row = table.insertRow();
-    for (key in element) {
-      let cell = row.insertCell();
-      let text = document.createTextNode(element[key]);
-      cell.appendChild(text);
-    }
-  }
-    var headers = document.getElementsByTagName("th");
-    headers[0].innerHTML = "Name des Spiels";
-    headers[1].innerHTML = "Gemeinsame Spielzeit";
-    headers[2].innerHTML = "Online-Freunde, die das Spiel besitzen";
-    
-}
-
-let table = document.querySelector("table");
-let data = Object.keys(gamesList[0]);
-generateTableHead(table, data);
-generateTable(table, gamesList);
-  let input, filter, tr, td, txtValue;
-
-function searchFunctionErgebnisliste() {
-  // Variablen für die Suchleiste etablieren
-      input = document.getElementById("inputSearchErgebnisliste");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("ergebnisListe");
-      tr = table.getElementsByTagName("tr");
-
-      // Durch die einzelnen Reihen laufen
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.innerHTML;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = ""; 
-            } 
-            else {
-            tr[i].style.display = "none";
-                  console.log(5); 
-    } } } }
-
-
-function sortTablePlaytime() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("ergebnisListe");
-  switching = true;
-  /* Make a loop that will continue until
-  no switching has been done: */
-  while (switching) {
-    // Start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /* Loop through all table rows (except the
-    first, which contains table headers): */
-    for (i = 1; i < (rows.length - 1); i++) {
-      // Start by saying there should be no switching:
-      shouldSwitch = false;
-      /* Get the two elements you want to compare,
-      one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[1];
-      y = rows[i + 1].getElementsByTagName("TD")[1];
-      // Check if the two rows should switch place:
-      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-        // If so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      /* If a switch has been marked, make the switch
-      and mark that a switch has been done: */
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
-}
-
-function sortTablePlayers() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("ergebnisListe");
-  switching = true;
-  /* Make a loop that will continue until
-  no switching has been done: */
-  while (switching) {
-    // Start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /* Loop through all table rows (except the
-    first, which contains table headers): */
-    for (i = 1; i < (rows.length - 1); i++) {
-      // Start by saying there should be no switching:
-      shouldSwitch = false;
-      /* Get the two elements you want to compare,
-      one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[2];
-      y = rows[i + 1].getElementsByTagName("TD")[2];
-      // Check if the two rows should switch place:
-      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-        // If so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      /* If a switch has been marked, make the switch
-      and mark that a switch has been done: */
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
-}
-
-
-
-/*
-<tr>
-                        <th>Spiel</th>
-                        <th>Anzahl der Mitspieler</th>
-                        <th>Im Besitz:</th>
-                    </tr><tr>
-                        <td>Age of Empires 2</td>
-                        <td>3</td>
-                        <td>Peter, Björn, Florian</td>
-                    </tr><tr>
-                        <td> DOTA 2</td>
-                        <td> 2</td>
-                        <td> Peter, Björn</td>
-*/
-
-console.log("Table Spielwiese durchgelaufen");

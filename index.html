@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <script src="scripts/main.js" defer></script>
+
     
     
    <left>
@@ -41,7 +41,7 @@
                 <input type="text" id="inputSearchErgebnisliste" onkeyup="searchFunctionErgebnisliste()" placeholder="Such nach einem Spiel">
                 
                 <navList> 
-                    <button class="tablink" onclick="sortTablePlaytime()">Meiste Spielzeit</button>
+                    <button class="tablink" onclick="sortOwnedGames()">Meiste Spielzeit</button>
                     <button class="tablink" onclick="sortTablePlayers()">Meiste Spieler</button>
                     <button class="tablink" onclick="">Vorschläge</button>          
                 </navList>
@@ -83,9 +83,13 @@
             </p>
         </flBottom>  
     </right>
-       
+      
+    <script src="scripts/testdaten.js"></script>
+    
 
-
+    <script src="scripts/tableJS.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/requestSteamJS.js"></script>
 
  </body>
  </html>
