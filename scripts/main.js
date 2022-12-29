@@ -4,6 +4,8 @@
 //highTODO: Die Abfragen "scharf schalten"
 //TODO:     Code-Review und Refractoring!
 //lowTODO:  Aus einer Skript-Datei mehrere machen?
+//TODO:     Friendslist nach Online durchsuchen
+
 
 
 //Stufe 2 - Added Group Functions:
