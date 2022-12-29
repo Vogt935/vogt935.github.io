@@ -23,13 +23,6 @@
 
 
 
-// Testdaten:
-
-
-console.log("Testdaten erstellt!");
-
-
-
 
 
 
@@ -44,12 +37,14 @@ console.log("Testdaten erstellt!");
             this.friendsListObjects = [];
             this.savedID= false;
             this.adHocGroup=false;
-        }}
+        }            
+    }
 
     class steamApp {
         constructor(appid){
             this.appid = appid;
-        }}
+        }
+    }
     
 
 //variables:
@@ -60,13 +55,16 @@ console.log("Testdaten erstellt!");
 
     
 // backend
+    const webApiKey = "9DE0CBEBE65E780B49D58853EA3CAA15";
     const actingUser = new User();
+    
     let i = 0;
     let n = 0;
     let clickedFriend=10;
     let adHocCounter=0;
-    let lengthFL=myFriendslist.friendslist.friends.length;
+    let lengthFL=actingUser.friendsListObjects.length;
     let homeText = document.getElementsByTagName("home");
+
 
 
 //functions: 
@@ -81,6 +79,19 @@ console.log("Testdaten erstellt!");
         userHeading.textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
     }
 
+
+    function fillUserData(searchedUser){
+        let id = ""+searchedUser.steamID;
+        let idResponse = friendsUserData.response.players.find(({steamid}) => steamid === id)
+        searchedUser.name = idResponse.personaname;
+        searchedUser.avatar = idResponse.avatarmedium;
+        searchedUser.online = idResponse.profilestate;
+        console.log("Tada!");
+    }
+function userDataList(){
+    actingUser.friendsListObjects.forEach(element => fillUserData(element));
+}
+
 //function to set the Users Steam ID and save it as "name" in local storage
 function getAndSaveUserID() {
     const myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:");
@@ -90,32 +101,31 @@ function getAndSaveUserID() {
 }
 
 
-//Access functions
-    function getUserName(userProfile) {
-        console.log("function started");
-        return userProfile.Name
-    }
-
-// build the frontend friendlist from the friendlist (not jet user-centered but input-centered)
+// build the frontend friendlist from the friendlist (not yet user-centered but input-centered)
     function buildFriendsList(){
-        console.log("Die Friendslist ist "+actingUser.friendsListInput.length+" Freunde lang.");
         const lengthFl= actingUser.friendsListInput.length-1;
+        console.log(lengthFl);
         if(lengthFl > 0) {
             document.getElementById("adHocCounter").style.visibility="visible";
             document.getElementById("friendlist").innerHTML="Es sind "+(lengthFl+1)+" Freunde online:";
+
             let i = 0;
             while (i <= lengthFl) {
                 let id = "friend"+i;
+
                 //console.log(id);
                 let friendToAdd = new User(actingUser.friendsListInput[i].steamid);
                 //console.log(friendToAdd.steamID);
                 actingUser.friendsListObjects.push(friendToAdd);
+                userDataList();
+                actingUser.friendsListObjects.forEach()
                 if (i < 10){
                     const element = document.getElementById(id);
                     element.style.visibility="visible";
-                    document.getElementById(id).innerHTML= (""+actingUser.friendsListInput[i].steamid+" ist online");
+                    document.getElementById(id).innerHTML= (""+actingUser.friendsListObjects[i].name+" ist online");
                     i++;
                 }
+                
                 else{
                     const element = document.getElementById("moreFriends");
                     element.style.visibility="visible";
@@ -158,17 +168,10 @@ function getAndSaveUserID() {
 
     function hideHomeText(){
         homeText[0].innerHTML="";
-        homeButton.style.visibility="visible";
+        //document.getElementById("homeButton").style.visibility="visible"; -> Noch nicht richtig implementiert, dass hier wieder der Home-Text angezeigt wird.
+
     }
-
-
-
-//script 
-  
-
-
-
-
+    
 
 
 //eventhandling
@@ -181,6 +184,21 @@ function getAndSaveUserID() {
 
 
 
+
+
+console.log("Script durchgelaufen!");
+
+      
+
+
+
+//Folgendes ist probably useless:
+
+//Access functions
+    function getUserName(userProfile) {
+        console.log("function started");
+        return userProfile.Name
+    }
 
 //TO BE USED oder zu ersetzen:
 
@@ -216,10 +234,3 @@ function buildUpByNewSteamID(activeSteamUser){
     }
 */
 
-console.log("Script durchgelaufen!");
-
-      
-
-
-
-//Spielwiese, Table-Erstellung

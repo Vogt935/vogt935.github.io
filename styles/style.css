@@ -14,8 +14,8 @@ button.xHome{
     background: lightgrey;
     color: black;
     border-radius:15px;
-    margin: 0;
 }
+
 
 
 playtimeNumber{
@@ -236,7 +236,10 @@ td {
 
 }
 
+button#homeButton{
+    visibility: hidden;
 
+}
 
 
 
