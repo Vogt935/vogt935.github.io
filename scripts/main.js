@@ -92,6 +92,8 @@ function userDataList(){
     actingUser.friendsListObjects.forEach(element => fillUserData(element));
 }
 
+
+
 //function to set the Users Steam ID and save it as "name" in local storage
 function getAndSaveUserID() {
     const myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:");
@@ -118,7 +120,7 @@ function getAndSaveUserID() {
                 //console.log(friendToAdd.steamID);
                 actingUser.friendsListObjects.push(friendToAdd);
                 userDataList();
-                actingUser.friendsListObjects.forEach()
+
                 if (i < 10){
                     const element = document.getElementById(id);
                     element.style.visibility="visible";
