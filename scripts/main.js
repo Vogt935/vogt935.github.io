@@ -1,11 +1,7 @@
 //Stufe 1 - Basic Function:
-//ÜberTODO: Import JSON; Get Game Infos; Show it all; node.js; 
-//highTODO: node.js einrichten
-//highTODO: Die Abfragen "scharf schalten"
+//ÜberTODO: Import JSON; Get Game Infos; Show it all;  
 //TODO:     Code-Review und Refractoring!
-//lowTODO:  Aus einer Skript-Datei mehrere machen?
-//TODO:     Friendslist nach Online durchsuchen
-
+//lowTODO:  Friendslist nach Online durchsuchen
 
 
 //Stufe 2 - Added Group Functions:
@@ -15,6 +11,9 @@
 //TODO:     Chatfunktion in node.js? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
 //lowTODO:  Friendslist suchbar machen?
 
+//Stufe 2.5 - Abfrage
+//highTODO: Die Abfragen "scharf schalten"
+//highTODO: node.js einrichten
 
 //Stufe 3 - Polish:
 //TODO:     Icons neben Benutzernamen
@@ -81,7 +80,7 @@
         userHeading.textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
     }
 
-
+//Diese Funktion befüllt die Friends-Objekte mit Infos
     function fillUserData(searchedUser){
         let id = ""+searchedUser.steamID;
         let idResponse = friendsUserData.response.players.find(({steamid}) => steamid === id)
@@ -90,6 +89,8 @@
         searchedUser.online = idResponse.profilestate;
         console.log("Tada!");
     }
+
+//Alle Friendsobjekte werden befüllt
 function userDataList(){
     actingUser.friendsListObjects.forEach(element => fillUserData(element));
 }

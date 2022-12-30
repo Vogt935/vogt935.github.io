@@ -1,9 +1,10 @@
 
 function sortOwnedGames(){
     let sortedGameList = ownedGames.response.games.sort((a,b) => b.playtime_forever - a.playtime_forever);
-    console.log(sortedGameList);
     
-    let table = document.querySelector("table");
+        sortedGameList.forEach((element) => {delete element.appid; delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids});
+    
+    let table = document.getElementById("ergebnisListe");
     let data = Object.keys(sortedGameList[0]);
     generateTableHead(table, data);
     generateTable(table, sortedGameList);
@@ -15,33 +16,30 @@ function sortOwnedGames(){
 function generateTableHead(table, data){
     let thead = table.createTHead();
     let row = thead.insertRow();
-    for (let key of data) {
+    for (let j=0; j<4; j++){
         let th = document.createElement("th");
-        let text = document.createTextNode(key);
+        let text = document.createTextNode("...");
         th.appendChild(text);
         row.appendChild(th);
-  }
+        }
+    var headers = document.getElementsByTagName("th");
+    headers[0].innerHTML = "Titel des Spiels";
+    headers[1].innerHTML = "Spielzeit letzte 2 Wochen";
+    headers[2].innerHTML = "Spielzeit Gesamt";
+    headers[3].innerHTML = "Freunde, die das Spiel besitzen";
+
 }
 
 function generateTable(table, data) {
   for (let element of data) {
     let row = table.insertRow();
     for (key in element) {
-      let cell = row.insertCell();
-      let text = document.createTextNode(element[key]);
-      cell.appendChild(text);
+        let cell = row.insertCell();
+        let text = document.createTextNode(element[key]);
+        cell.appendChild(text);
+        
     }
   }
-    var headers = document.getElementsByTagName("th");
-    headers[0].innerHTML = "AppID";
-    headers[1].innerHTML = "Spielzeit letzte 2 Wochen";
-    headers[2].innerHTML = "Spielzeit immer";
-    headers[3].innerHTML = "Spielzeit Linux";
-    headers[4].innerHTML = "Spielzeit Mac";
-    headers[5].innerHTML = "Spielzeit Windows";    
-    headers[6].innerHTML = "Datum zuletzt gespielt";
-
-
 }
 
 
@@ -64,7 +62,10 @@ function searchFunctionErgebnisliste() {
             else {
             tr[i].style.display = "none";
                   console.log(5); 
-    } } } }
+            } 
+        } 
+      } 
+}
 
 
 function sortTablePlaytime() {
