@@ -1,48 +1,55 @@
+var filteredGamesList;
 
-function sortOwnedGames(){
-    let sortedGameList = ownedGames.response.games.sort((a,b) => b.playtime_forever - a.playtime_forever);
-    
-        sortedGameList.forEach((element) => {delete element.appid; delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids});
-    
+function buildGamesList(){
     let table = document.getElementById("ergebnisListe");
-    let data = Object.keys(sortedGameList[0]);
+    table.innerHTML="";
+    filteredGamesList = ownedGames.response.games;
+    
+    filteredGamesList.forEach((element) => {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
+    let data = Object.keys(filteredGamesList[0]);
+    var reducedList = filteredGamesList.slice(0,20);
     generateTableHead(table, data);
-    generateTable(table, sortedGameList);
-      let input, filter, tr, td, txtValue;
+    generateTable(table, reducedList);
+}
+
+
+//Sort Array of Games functions:
+
+function sortTablePlaytimeMost(){
+    let table = document.getElementById("ergebnisListe");
+    table.innerHTML="";
+    let sortedGamesList = filteredGamesList.sort((a,b) => b.playtime_forever - a.playtime_forever);
+    let data = Object.keys(sortedGamesList[0]);
+    let reducedList = sortedGamesList.filter(sortedGamesList => sortedGamesList.playtime_forever > 60);
+    generateTableHead(table, data);
+    generateTable(table, reducedList);
+    let input, filter, tr, td, txtValue;
+    
+
+}
+
+function sortTablePlaytimeLeast(){
+    let table = document.getElementById("ergebnisListe");
+    table.innerHTML="";
+    let sortedGamesList = filteredGamesList.sort((a,b) => a.playtime_forever - b.playtime_forever);
+    let data = Object.keys(sortedGamesList[0]);
+    generateTableHead(table, data);
+    generateTable(table, sortedGamesList);
+    let input, filter, tr, td, txtValue;
+}
+
+function sortAllSteamGames(){
+    let table = document.getElementById("ergebnisListe");
+    table.innerHTML="";
+    filteredGamesList = ownedGames.response.games;
+    let data = Object.keys(filteredGamesList[0]);
+    generateTableHead(table, data);
+    generateTable(table, filteredGamesList);
 
 }
 
 
-function generateTableHead(table, data){
-    let thead = table.createTHead();
-    let row = thead.insertRow();
-    for (let j=0; j<4; j++){
-        let th = document.createElement("th");
-        let text = document.createTextNode("...");
-        th.appendChild(text);
-        row.appendChild(th);
-        }
-    var headers = document.getElementsByTagName("th");
-    headers[0].innerHTML = "Titel des Spiels";
-    headers[1].innerHTML = "Spielzeit letzte 2 Wochen";
-    headers[2].innerHTML = "Spielzeit Gesamt";
-    headers[3].innerHTML = "Freunde, die das Spiel besitzen";
-
-}
-
-function generateTable(table, data) {
-  for (let element of data) {
-    let row = table.insertRow();
-    for (key in element) {
-        let cell = row.insertCell();
-        let text = document.createTextNode(element[key]);
-        cell.appendChild(text);
-        
-    }
-  }
-}
-
-
+//Searchbar function
 
 function searchFunctionErgebnisliste() {
   // Variablen für die Suchleiste etablieren
@@ -53,7 +60,7 @@ function searchFunctionErgebnisliste() {
 
       // Durch die einzelnen Reihen laufen
       for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
+        td = tr[i].getElementsByTagName("td")[1];
         if (td) {
             txtValue = td.innerHTML;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -68,91 +75,49 @@ function searchFunctionErgebnisliste() {
 }
 
 
-function sortTablePlaytime() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("ergebnisListe");
-  switching = true;
-  /* Make a loop that will continue until
-  no switching has been done: */
-  while (switching) {
-    // Start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /* Loop through all table rows (except the
-    first, which contains table headers): */
-    for (i = 1; i < (rows.length - 1); i++) {
-      // Start by saying there should be no switching:
-      shouldSwitch = false;
-      /* Get the two elements you want to compare,
-      one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[1];
-      y = rows[i + 1].getElementsByTagName("TD")[1];
-      // Check if the two rows should switch place:
-      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-        // If so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      /* If a switch has been marked, make the switch
-      and mark that a switch has been done: */
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
+//Generate Table functions:
+
+
+function generateTableHead(table, data){
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for (let j=0; j<4; j++){
+        let th = document.createElement("th");
+        let text = document.createTextNode("...");
+        th.appendChild(text);
+        row.appendChild(th);
+        }
+    var headers = document.getElementsByTagName("th");
+    headers[0].innerHTML = "Steam-App-ID";
+    headers[1].innerHTML = "Titel des Spiels";
+    headers[2].innerHTML = "Spielzeit Gesamt";
+    headers[3].innerHTML = "Freunde, die das Spiel besitzen";
+    
+}
+
+function generateTable(table, data) {
+  for (let element of data) {
+    let row = table.insertRow();
+    for (key in element) {
+        let cell = row.insertCell();
+        let text = document.createTextNode(element[key]);
+        cell.appendChild(text);
+        
     }
   }
 }
 
-function sortTablePlayers() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("ergebnisListe");
-  switching = true;
-  /* Make a loop that will continue until
-  no switching has been done: */
-  while (switching) {
-    // Start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /* Loop through all table rows (except the
-    first, which contains table headers): */
-    for (i = 1; i < (rows.length - 1); i++) {
-      // Start by saying there should be no switching:
-      shouldSwitch = false;
-      /* Get the two elements you want to compare,
-      one from current row and one from the next: */
-      x = rows[i].getElementsByTagName("TD")[2];
-      y = rows[i + 1].getElementsByTagName("TD")[2];
-      // Check if the two rows should switch place:
-      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-        // If so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
+function generateTableButtons(){
+    let table = document.getElementById("ergebnisListe").firstChild;
+    console.log(table.childElementCount);
+    for (let l = 1; l <= table.childElementCount; l++){
+        var varAppID = table.children[l].firstChild.innerHTML;
+        console.log(varAppID);
+        table.children[l].firstChild.innerHTML='<a href="steam://rungameid/'+varAppID+'"><button class="iconButton" > <i class="fa-solid fa-share"></i> Spiel starten!</button></a>';
     }
-    if (shouldSwitch) {
-      /* If a switch has been marked, make the switch
-      and mark that a switch has been done: */
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
+
 }
 
 
 
-/*
-<tr>
-                        <th>Spiel</th>
-                        <th>Anzahl der Mitspieler</th>
-                        <th>Im Besitz:</th>
-                    </tr><tr>
-                        <td>Age of Empires 2</td>
-                        <td>3</td>
-                        <td>Peter, Björn, Florian</td>
-                    </tr><tr>
-                        <td> DOTA 2</td>
-                        <td> 2</td>
-                        <td> Peter, Björn</td>
-*/
-
-console.log("Table Spielwiese durchgelaufen");
+console.log("Skript tableJS durchgelaufen.")

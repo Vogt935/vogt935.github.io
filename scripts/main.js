@@ -67,7 +67,7 @@
     let homeText = document.getElementsByTagName("home");
 
 
-
+buildGamesList();
 //functions: 
 //main function, set Steam ID, fetch information from Steam Web API
     function routineActingUser(mySteamID){
@@ -191,7 +191,7 @@ function getAndSaveUserID() {
 
 
 
-console.log("Script durchgelaufen!");
+console.log("Script main durchgelaufen!");
 
       
 

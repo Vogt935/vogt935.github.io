@@ -116,6 +116,7 @@ button {
     margin: 10px; 
     border-radius: 8px;
     text-align: center;
+    font-size: large;
 }
 
 
@@ -220,7 +221,7 @@ th {
 }
 
 th:first-child{
-    width: 40%;
+    width: 20%;
     border-radius: 14px 0px 0px 0px;
 }
 th:last-child{
@@ -230,11 +231,23 @@ th:last-child{
 
 
 td {
-
+    border-bottom: 1px solid lightgrey;
     color: black;
     padding: 10px;
 
 }
+
+
+td:first-child{
+
+}
+
+tr:last-child{
+    border-bottom: 0px solid black;
+}
+
+
+
 
 button#homeButton{
     visibility: hidden;

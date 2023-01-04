@@ -31,6 +31,11 @@
                 <p>Was Ihr tun müsst? Gebt einfach eure Steam-ID über den Button oben rechts ein, der Rest ist Magie!</p>
                 <p>Rechts seht ihr alle Freunde, die im Moment bei Steam online sind. Klick Sie an, um eine AdHocGruppe zu bilden, welche die WCWP-Tabelle filtert.</p>
             </home>
+
+
+           <a href='steam://rungameid/594650'><button class="iconButton" > <i class="fa-solid fa-share"></i> Spiel starten!</button></a>
+           
+           
         <friendPic>
             <img class="friendsPic" src="https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png" >
             <playtimeNumber>12345</playtimeNumber>
@@ -42,14 +47,14 @@
                 <input type="text" id="inputSearchErgebnisliste" onkeyup="searchFunctionErgebnisliste()" placeholder="Such nach einem Spiel">
                 
                 <navList> 
-                    <button class="tablink" onclick="sortOwnedGames()">Meiste Spielzeit</button>
-                    <button class="tablink" onclick="sortTablePlayers()">Meiste Spieler</button>
-                    <button class="tablink" onclick="">Vorschläge</button>          
+                    <button class="tablink" onclick="sortTablePlaytimeMost()"><i class="fa-solid fa-clock"></i>   Meiste Spielzeit</button>
+                    <button class="tablink" onclick=""><i class="fa-solid fa-user-group"></i>   Meisten Freunde</button>
+                    <button class="tablink" onclick="sortTablePlaytimeLeast()"><i class="fa-solid fa-champagne-glasses"></i>   Vorschläge</button>
+                    <button class="tablink" onclick="sortAllSteamGames()"><i class="fa-brands fa-steam"></i>   Alle Steam-Spiele</button>
                 </navList>
                 
 
-                <table id="ergebnisListe"> 
-                </table>
+                <table id="ergebnisListe"></table>
             </ergebnisListe>
 
 	   </section>
@@ -87,6 +92,7 @@
       
     <script src="scripts/testdaten.js"></script>
     <script src="scripts/userData.js"></script>
+    <script src="https://kit.fontawesome.com/6e40f6aa4b.js" crossorigin="anonymous"></script>
 
     <script src="scripts/tableJS.js"></script>
     <script src="scripts/main.js"></script>
