@@ -10,6 +10,7 @@ function buildGamesList(){
     var reducedList = filteredGamesList.slice(0,20);
     generateTableHead(table, data);
     generateTable(table, reducedList);
+    generateTableButtons();
 }
 
 
@@ -24,6 +25,7 @@ function sortTablePlaytimeMost(){
     generateTableHead(table, data);
     generateTable(table, reducedList);
     let input, filter, tr, td, txtValue;
+    generateTableButtons();
     
 
 }
@@ -36,6 +38,7 @@ function sortTablePlaytimeLeast(){
     generateTableHead(table, data);
     generateTable(table, sortedGamesList);
     let input, filter, tr, td, txtValue;
+    generateTableButtons();
 }
 
 function sortAllSteamGames(){
@@ -45,6 +48,7 @@ function sortAllSteamGames(){
     let data = Object.keys(filteredGamesList[0]);
     generateTableHead(table, data);
     generateTable(table, filteredGamesList);
+    generateTableButtons();
 
 }
 
