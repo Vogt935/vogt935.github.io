@@ -1,25 +1,24 @@
-//Stufe 1 - Basic Function:
 //ÜberTODO: Import JSON; Get Game Infos; Show it all;  
-//TODO:     Code-Review und Refractoring!
-//lowTODO:  Friendslist nach Online durchsuchen
 
-
-//Stufe 2 - Added Group Functions:
+//TODO:     Friendslist nur Online
+//TODO:     deleteSteamID programmieren
 //ÜberTODO: Share-Funktion; Chat-Funktion
-//highTOOD: Die verschiedenen Webfunktionen als Buttons einbauen (Starte Chat, starte Spiel, starte ... direkt von der Website!)
+
+//easyTOOD: Die verschiedenen Webfunktionen als Buttons einbauen (Starte Chat, starte ... direkt von der Website!)
 //TODO:     Share-Button in Friendslist einbauen
-//TODO:     Chatfunktion in node.js? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
-//lowTODO:  Friendslist suchbar machen?
+//TODO:     Chatfunktion in node.js, websockets? Gibts da ein NPM Package? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
 
-//Stufe 2.5 - Abfrage
-//highTODO: Die Abfragen "scharf schalten"
+
 //highTODO: node.js einrichten
+//highTODO: Die Abfragen "scharf schalten"
 
-//Stufe 3 - Polish:
+
+
 //TODO:     Icons neben Benutzernamen
 //TODO:     Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer             Freund dazu kommt?
-//TODO:     Responsiveness noch verbessern? (Ist eigentlich schon ganz ok...)
-//TODO:     Letzte Code-Review, noch mal alles an Müll rausschmeißen!
+
+
+
 //lowTODO:  Home ausblenden in LocalStorage?
 
 
@@ -64,7 +63,6 @@
     let clickedFriend=10;
     let adHocCounter=0;
     let lengthFL=actingUser.friendsListObjects.length;
-    let homeText = document.getElementsByTagName("home");
 
 
 buildGamesList();
@@ -77,7 +75,10 @@ buildGamesList();
             actingUser.friendsListInput=myFriendslist.friendslist.friends;
             //formInputToUsers(actingUser.friendsListInput)
             buildFriendsList();
-        userHeading.textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
+        document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
+        if (localStorage.getItem("homeHidden") = true) {
+                homeText[0].innerHTML="";
+        }
     }
 
 //Diese Funktion befüllt die Friends-Objekte mit Infos
@@ -112,6 +113,7 @@ function getAndSaveUserID() {
         console.log(lengthFl);
         if(lengthFl > 0) {
             document.getElementById("adHocCounter").style.visibility="visible";
+            document.getElementById("deleteSteamID").style.visibility="visible"
             document.getElementById("friendlist").innerHTML="Es sind "+(lengthFl+1)+" Freunde online:";
 
             let i = 0;
@@ -140,6 +142,14 @@ function getAndSaveUserID() {
         else{
             document.getElementById("friendslist").innerHTML="Es sind keine Freunde online.";
         }}
+
+// delete the saved Steam-ID
+    function deleteSteamIDfromLocalStorage(){
+        localStorage.removeItem("savedIDstring");
+        window.location.reload();
+        alert("Steam-ID gelöscht!");
+        
+}
 
 
 //reload the number of friends in AdHoc-Group
@@ -172,11 +182,19 @@ function getAndSaveUserID() {
 
 
     function hideHomeText(){
-        homeText[0].innerHTML="";
-        //document.getElementById("homeButton").style.visibility="visible"; -> Noch nicht richtig implementiert, dass hier wieder der Home-Text angezeigt wird.
+        document.getElementById("home").style.display="none";
+        localStorage.setItem("homeHidden", true);
+       document.getElementById("homeButton").style.display="block";
+        
+        
+        //document.getElementById("xHome").innerHTML="Home";
 
     }
     
+    function showHomeText(){
+        document.getElementById("home").style.display="";
+        document.getElementById("homeButton").style.display="none";
+    }
 
 
 //eventhandling

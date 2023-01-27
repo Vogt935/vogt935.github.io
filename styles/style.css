@@ -145,20 +145,6 @@ button {
             width: 80%;
         }
         
-/*    Für den Einbau des Sharebuttons in die
-<img class="shareButton" src="https://cdn-icons-png.flaticon.com/512/61/61020.png">
-
-
-display: flex;
-    visibility: visible;
-    background: rgb(197, 195, 192);
-    color: black;
-    align-items: center;
-    flex-flow: row nowrap;
-    place-content: center space-between;
-    padding-right: 0px;
-    padding-left: 1em;
-}*/
 
 navList{
     display: flex;
@@ -250,11 +236,23 @@ button.iconButton{
     width:95%;
 }
 
-
-button#homeButton{
+button#deleteSteamID{
+    width: 3em;
+    background: #c5c3c0;
     visibility: hidden;
-
 }
 
 
+button#homeButton{
+    display: none;
+    width: 5em;
+    background: #c5c3c0;    
+
+}
+
+flHeader{
+    display: flex;
+    flex-direction: row;
+    
+}
 
