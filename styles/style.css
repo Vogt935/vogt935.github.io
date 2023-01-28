@@ -98,11 +98,16 @@ section {
 
                                     /* Formatting stuff */
 
-h1, h2 {
+h2 {
     font-size: 30px;
     text-align: right;
 }
 
+
+h1 {
+    font-size: 40px;
+    text-align: left;
+}
 
 ul {
     list-style-type: circle;

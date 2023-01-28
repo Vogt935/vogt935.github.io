@@ -1,22 +1,15 @@
 //ÜberTODO: Import JSON; Get Game Infos; Show it all; 
 
-
-//TODO:     Home ausblenden in LocalStorage, Bugs ausmerzen
-
 //highTODO: node.js einrichten
 //highTODO: Die Abfragen "scharf schalten"
 //TODO:     Friendslist nur Online-Friends
-
-//highTODO: Icons der besessenen Spiele in Tabelle einfügen usw.
-
-
-//TODO:     Icons neben Benutzernamen
 //TODO:     Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer             Freund dazu kommt?
 
+//lowTODO:     Home ausblenden in LocalStorage
 
 //lateTODO:     Chatfunktion in node.js, websockets? Gibts da ein NPM Package? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
 //lateTODO:     Share-Button in Friendslist einbauen
-
+//lateTODO:     Icons der besessenen Spiele in Tabelle einfügen usw.
 
 
 //classes:
