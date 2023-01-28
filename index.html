@@ -32,15 +32,15 @@
                 </ul>
                 <p>Was Ihr tun müsst? Gebt einfach eure Steam-ID über den Button oben rechts ein, der Rest ist Magie!</p>
                 <p>Rechts seht ihr alle Freunde, die im Moment bei Steam online sind. Klick Sie an, um eine AdHocGruppe zu bilden, welche die WCWP-Tabelle filtert.</p>
+               
+                       <friendPic>
+            <img class="friendsPic" src="https://avatars.akamai.steamstatic.com/08b4b85ea46ed3ee30726e87a3ef787194c9dcbd_medium.jpg" >
+            <playtimeNumber>12345</playtimeNumber>
+        </friendPic>
             </home>
 
 
-           
-           
-        <friendPic>
-            <img class="friendsPic" src="https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_960_720.png" >
-            <playtimeNumber>12345</playtimeNumber>
-        </friendPic>
+
                 
             <ergebnisListe>
                 <p>Über diese Buttons könnt Ihr die unten zu findende Spieleliste filtern:</p>
@@ -61,9 +61,10 @@
 	   </section>
        
     </left>
-    
+
       
     <right>
+
         <button class="newSteamID" id="my-steamid-button" onclick="getAndSaveUserID()"> Neue Steam ID eingeben</button>
         <flHeader>
             <p id="userHeading">Nicht angemeldet...</p>       
@@ -71,18 +72,9 @@
         </flHeader>
 
         
-        <friendslist> 
+        <friendslist id="friendslist"> 
             <p><a id="friendlist"></a></p>
-            <button class="friendslist" id="friend0" onclick=addToAdHocGroup(0)></button>
-            <button class="friendslist" id="friend1" onclick=addToAdHocGroup(1)></button>
-            <button class="friendslist" id="friend2" onclick=addToAdHocGroup(2)></button>
-            <button class="friendslist" id="friend3" onclick=addToAdHocGroup(3)></button>
-            <button class="friendslist" id="friend4" onclick=addToAdHocGroup(4)></button>
-            <button class="friendslist" id="friend5" onclick=addToAdHocGroup(5)></button>
-            <button class="friendslist" id="friend6" onclick=addToAdHocGroup(6)></button>
-            <button class="friendslist" id="friend7" onclick=addToAdHocGroup(7)></button>
-            <button class="friendslist" id="friend8" onclick=addToAdHocGroup(8)></button>
-            <button class="friendslist" id="friend9" onclick=addToAdHocGroup(9)></button>
+
         </friendslist>
 
         <flBottom>

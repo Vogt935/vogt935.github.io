@@ -1,28 +1,21 @@
-//ÜberTODO: Import JSON; Get Game Infos; Show it all;  
+//ÜberTODO: Import JSON; Get Game Infos; Show it all; 
 
-//TODO:     Friendslist nur Online
-//TODO:     deleteSteamID programmieren
-//ÜberTODO: Share-Funktion; Chat-Funktion
 
-//easyTOOD: Die verschiedenen Webfunktionen als Buttons einbauen (Starte Chat, starte ... direkt von der Website!)
-//TODO:     Share-Button in Friendslist einbauen
-//TODO:     Chatfunktion in node.js, websockets? Gibts da ein NPM Package? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
-
+//TODO:     Home ausblenden in LocalStorage, Bugs ausmerzen
 
 //highTODO: node.js einrichten
 //highTODO: Die Abfragen "scharf schalten"
+//TODO:     Friendslist nur Online-Friends
 
+//highTODO: Icons der besessenen Spiele in Tabelle einfügen usw.
 
 
 //TODO:     Icons neben Benutzernamen
 //TODO:     Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer             Freund dazu kommt?
 
 
-
-//lowTODO:  Home ausblenden in LocalStorage?
-
-
-
+//lateTODO:     Chatfunktion in node.js, websockets? Gibts da ein NPM Package? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
+//lateTODO:     Share-Button in Friendslist einbauen
 
 
 
@@ -57,6 +50,14 @@
 // backend
     const webApiKey = "9DE0CBEBE65E780B49D58853EA3CAA15";
     const actingUser = new User();
+
+
+
+                    
+
+
+
+
     
     let i = 0;
     let n = 0;
@@ -76,7 +77,7 @@ buildGamesList();
             //formInputToUsers(actingUser.friendsListInput)
             buildFriendsList();
         document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
-        if (localStorage.getItem("homeHidden") = true) {
+        if (localStorage.getItem("homeHidden") == true) {
                 homeText[0].innerHTML="";
         }
     }
@@ -126,22 +127,51 @@ function getAndSaveUserID() {
                 actingUser.friendsListObjects.push(friendToAdd);
                 userDataList();
 
-                if (i < 10){
-                    const element = document.getElementById(id);
-                    element.style.visibility="visible";
-                    document.getElementById(id).innerHTML= (""+actingUser.friendsListObjects[i].name+" ist online");
-                    i++;
+                if (i < 25){
+                    let friendEntry = document.createElement("p");
+                    friendEntry.classList.add("friendEntry");
+                    
+                    let avatar = document.createElement("img");
+                    avatar.src = actingUser.friendsListObjects[i].avatar;
+                    avatar.classList.add("friendsPic");
+                    friendEntry.appendChild(avatar);
+                    
+                    let friendButton = document.createElement("button");
+                    friendButton.innerHTML= (""+actingUser.friendsListObjects[i].name+" ist online");
+                    friendButton.classList.add("flButton");
+                    friendButton.id="friend"+i;
+                    let n = ""+i;
+                    friendButton.onclick=function(){addToAdHocGroup(n)};
+                    friendEntry.appendChild(friendButton);
+                                      
+
+                    let link = document.createElement('chatLink');
+                    link.innerHTML='<a href="steam://friends/message/'+actingUser.friendsListObjects[i].steamID+'"><button class="chatButton" > <i class="fa-regular fa-message"></i> </button></a>';
+                    friendEntry.appendChild(link);
+                                                         
+                    document.getElementById("friendslist").appendChild(friendEntry);
+                    
+                    
+                     i++;
+
                 }
                 
                 else{
                     const element = document.getElementById("moreFriends");
                     element.style.visibility="visible";
-                    document.getElementById("moreFriends").innerHTML=("Es sind mehr als 10 Freunde online!");
+                    document.getElementById("moreFriends").innerHTML=("Es sind mehr als 25 Freunde online!");
                 i++;
                 } } }
         else{
             document.getElementById("friendslist").innerHTML="Es sind keine Freunde online.";
         }}
+
+//onclick function for starting a chat with friends
+
+    function startChatWithThisID(id){
+        re
+    }
+
 
 // delete the saved Steam-ID
     function deleteSteamIDfromLocalStorage(){
@@ -211,7 +241,9 @@ function getAndSaveUserID() {
 
 console.log("Script main durchgelaufen!");
 
-      
+
+
+
 
 
 

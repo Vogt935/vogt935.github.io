@@ -92,7 +92,7 @@ function generateTableHead(table, data){
         row.appendChild(th);
         }
     var headers = document.getElementsByTagName("th");
-    headers[0].innerHTML = "Steam-App-ID";
+    headers[0].innerHTML = "";
     headers[1].innerHTML = "Titel des Spiels";
     headers[2].innerHTML = "Spielzeit Gesamt";
     headers[3].innerHTML = "Freunde, die das Spiel besitzen";
@@ -115,7 +115,7 @@ function generateTableButtons(){
     let table = document.getElementById("ergebnisListe").firstChild;
     console.log(table.childElementCount);
     for (let l = 1; l <= table.childElementCount; l++){
-        var varAppID = table.children[l].firstChild.innerHTML;
+        let varAppID = table.children[l].firstChild.innerHTML;
         console.log(varAppID);
         table.children[l].firstChild.innerHTML='<a href="steam://rungameid/'+varAppID+'"><button class="iconButton" > <i class="fa-solid fa-share"></i> Spiel starten!</button></a>';
     }

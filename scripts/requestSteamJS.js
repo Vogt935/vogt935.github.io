@@ -8,7 +8,7 @@
         const storedIDstring = localStorage.getItem("savedIDstring");
         routineActingUser(storedIDstring);
         actingUser.savedID = true;
-        mySID.textContent = "Willkommen zurück, "+actingUser.name;
+//        mySID.textContent = "Willkommen zurück, "+actingUser.name;
         newSIDButton.textContent = "Gespeicherte Steam-ID ändern";
     }
 

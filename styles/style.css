@@ -63,7 +63,7 @@ right {
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    width: 400px;
+    width: 40%;
     background-color: #142a3b;
     border: 2px #0c1118 solid;
     box-shadow: 4px 4px 20px #0c1118;
@@ -125,12 +125,15 @@ button {
         }
 
 
-        button.friendslist {
+        button.flButton {
           background-color:#c5c3c0;
-            visibility: hidden;
             height: 3em;
-            width: 80%;
+            width: 60%;
             margin-top: 8px;
+        }
+        
+        button.friendslist:hover{
+            background: #d2d1ce;
         }
 
         button#moreFriends{
@@ -145,6 +148,35 @@ button {
             width: 80%;
         }
         
+
+        button.iconButton{
+            width:95%;
+        }
+
+        button#deleteSteamID{
+            width: 3.5em;
+            background: #c5c3c0;
+            visibility: hidden;
+        }
+        button#deleteSteamID:hover{
+            background: #d2d1ce;
+        }
+
+        button#homeButton{
+            display: none;
+            width: 5em;
+            background: #c5c3c0;    
+
+        }
+
+        button.chatButton{
+            width: 3.5em;
+            background: #c5c3c0;
+        }
+        button.chatButton:hover{
+            background: #d2d1ce;
+        }
+
 
 navList{
     display: flex;
@@ -232,27 +264,23 @@ tr:last-child{
     border-bottom: 0px solid black;
 }
 
-button.iconButton{
-    width:95%;
+
+/* sonstiges */
+
+p.friendEntry {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
-button#deleteSteamID{
-    width: 3em;
-    background: #c5c3c0;
-    visibility: hidden;
-}
-
-
-button#homeButton{
-    display: none;
-    width: 5em;
-    background: #c5c3c0;    
-
-}
 
 flHeader{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     
 }
 
