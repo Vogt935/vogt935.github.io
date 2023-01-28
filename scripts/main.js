@@ -66,7 +66,7 @@
     let lengthFL=actingUser.friendsListObjects.length;
 
 
-buildGamesList();
+
 //functions: 
 //main function, set Steam ID, fetch information from Steam Web API
     function routineActingUser(mySteamID){
@@ -80,6 +80,8 @@ buildGamesList();
         if (localStorage.getItem("homeHidden") == true) {
                 homeText[0].innerHTML="";
         }
+        buildGamesList();
+        document.getElementById("absatzListe").style.display="inline";
     }
 
 //Diese Funktion befüllt die Friends-Objekte mit Infos
@@ -248,6 +250,18 @@ console.log("Script main durchgelaufen!");
 
 
 //Folgendes ist probably useless:
+
+
+/*
+Das Friendpic mit Playtime-Nummer, was in index.html lag:
+
+           <friendPic>
+            <img class="friendsPic" src="https://avatars.akamai.steamstatic.com/08b4b85ea46ed3ee30726e87a3ef787194c9dcbd_medium.jpg" >
+            <playtimeNumber>12345</playtimeNumber>
+        </friendPic>
+            </home>
+
+
 
 //Access functions
     function getUserName(userProfile) {

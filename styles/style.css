@@ -275,6 +275,9 @@ p.friendEntry {
     align-items: center;
 }
 
+#absatzListe {
+    display: none;
+}
 
 flHeader{
     display: flex;

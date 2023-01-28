@@ -10,6 +10,8 @@ function buildGamesList(){
     var reducedList = filteredGamesList.slice(0,20);
     generateTableHead(table, data);
     generateTable(table, reducedList);
+
+    generateTableAvatars();
     generateTableButtons();
 }
 
@@ -26,7 +28,8 @@ function sortTablePlaytimeMost(){
     generateTable(table, reducedList);
     let input, filter, tr, td, txtValue;
     generateTableButtons();
-    
+    generateTableAvatars();
+
 
 }
 
@@ -39,6 +42,8 @@ function sortTablePlaytimeLeast(){
     generateTable(table, sortedGamesList);
     let input, filter, tr, td, txtValue;
     generateTableButtons();
+    generateTableAvatars();
+
 }
 
 function sortAllSteamGames(){
@@ -49,6 +54,7 @@ function sortAllSteamGames(){
     generateTableHead(table, data);
     generateTable(table, filteredGamesList);
     generateTableButtons();
+    generateTableAvatars();
 
 }
 
@@ -111,16 +117,39 @@ function generateTable(table, data) {
   }
 }
 
+
 function generateTableButtons(){
+
     let table = document.getElementById("ergebnisListe").firstChild;
     console.log(table.childElementCount);
-    for (let l = 1; l <= table.childElementCount; l++){
+    for (let l = 1; l < table.childElementCount; l++){
         let varAppID = table.children[l].firstChild.innerHTML;
-        console.log(varAppID);
-        table.children[l].firstChild.innerHTML='<a href="steam://rungameid/'+varAppID+'"><button class="iconButton" > <i class="fa-solid fa-share"></i> Spiel starten!</button></a>';
+        //console.log(varAppID);
+        document.getElementById("ergebnisListe").firstChild.children[l].firstChild.innerHTML='<a href="steam://rungameid/'+varAppID+'"><button class="iconButton" > <i class="fa-solid fa-share"></i> Spiel starten!</button></a>';
     }
 
 }
+
+
+function generateTableAvatars(){
+    let table = document.getElementById("ergebnisListe").firstChild;
+        for (let l = 1; l < table.childElementCount; l++){
+        let owner = document.createElement("td");
+            for (let o = 0; o < 5; o++){    
+            let picAvatar = document.createElement("img");
+            picAvatar.classList.add("friendsPic");
+            let picSrc = actingUser.friendsListObjects[o].avatar;
+            picAvatar.src=picSrc;
+            owner.appendChild(picAvatar);
+            }
+        table.children[l].appendChild(owner);
+            
+            
+            //'<img src="https://avatars.akamai.steamstatic.com/08b4b85ea46ed3ee30726e87a3ef787194c9dcbd_medium.jpg" class="friendsPic" ><img>'
+            
+        }
+    }
+
 
 
 
