@@ -3,13 +3,17 @@
 //highTODO: node.js einrichten
 //highTODO: Die Abfragen "scharf schalten"
 //TODO:     Friendslist nur Online-Friends
-//TODO:     Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer             Freund dazu kommt?
+//TODO:     Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer Freund dazu kommt?
+//TODO:     Bug: Wenn man die Steam-ID löscht, auch die Freundesliste löschen!!!
+//TODO:     Bug: Gaming-Zeiten in Std. 
 
 //lowTODO:     Home ausblenden in LocalStorage
 
 //lateTODO:     Chatfunktion in node.js, websockets? Gibts da ein NPM Package? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
 //lateTODO:     Share-Button in Friendslist einbauen
 //lateTODO:     Icons der besessenen Spiele in Tabelle einfügen usw.
+
+
 
 
 //classes:
