@@ -96,10 +96,27 @@ function userDataList(){
 
 //function to set the Users Steam ID and save it as "name" in local storage
 function getAndSaveUserID() {
-    const myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:");
+    console.log("get input!");
+    let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:");
+    console.log("got input!");
+    let myIDnumber = Number(myIDstring);
+    console.log("myIDnumber ist vom Typ:"); console.log(typeof myIDnumber)
+    let numberCheck = Number.isInteger(myIDnumber);
+    while (numberCheck == false){
+        myIDstring = prompt("Bitte geben Sie NUR Zahlen ein. Ihre Steam-ID besteht ausschließlich aus Zahlen.")
+        console.log(myIDstring);
+        console.log("try to change MyIDNUMBER")
+        myIDnumber = Number(myIDstring);
+        console.log(myIDnumber);
+        console.log("Neue Eingabe myIDnumber"); console.log(typeof myIDnumber)
+        numberCheck = Number.isInteger(myIDnumber);
+
+    }
+        
     localStorage.setItem("savedIDstring", myIDstring);
     routineActingUser(myIDstring);  
-	//getUserSID(localStorage.getItem("name")); 
+    //getUserSID(localStorage.getItem("name")); 
+    
 }
 
 
