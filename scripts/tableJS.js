@@ -3,7 +3,7 @@ var filteredGamesList;
 function buildGamesList(){
     let table = document.getElementById("ergebnisListe");
     table.innerHTML="";
-    filteredGamesList = ownedGames.response.games;
+    filteredGamesList = actingUser.ownedGames;
     
     filteredGamesList.forEach((element) => {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
     let data = Object.keys(filteredGamesList[0]);

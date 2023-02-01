@@ -1,3 +1,8 @@
+			
+			root
+Digital Ocean PW: wcwp2022Hagen
+
+
 https://miro.com/welcomeonboard/REw3eGFQaUQ0T2IwakNONlMxd2E3U2EzSk1jUjl3dnRSRTRhcVRZa1NmOThrN000WU9IZDhEY05ScGlVVkJLVnwzNDU4NzY0NTM3NzU5NjcxNjUxfDI=?share_link_id=381698514691
 
 
@@ -40,11 +45,16 @@ Background von Sections: #0d131b mit Überschrift #d6d7d8  und schrift: #8c8b8a
 Ressourcen:
 
 Webkey: 5FEC780FE57D3BBEA4B74CDA91C7C72E
+
 Domain Name: Fabian Vogt
 
 
 
 Mein Steam-ID: 76561198101457809
+
+var steam = require('steam-web');
+
+5
 
 
 Abruf Game-Infos:
