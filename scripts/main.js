@@ -443,7 +443,7 @@ function buildUpByNewSteamID(activeSteamUser){
 */
 
 async function getPlayerSummary(reqsid1) {
-  const response = await fetch(`https://207.154.234.205:3000/player_summaries/${reqsid1}`);
+  const response = await fetch(`https://157.245.17.114:3000/player_summaries/${reqsid1}`);
   const data = await response.json();
   return data;
 }
@@ -454,13 +454,13 @@ getPlayerSummary(actingUser.steamID).then(response => {
     
 
 async function getFriendList(reqsid2) {
-  const response = await fetch(`https://207.154.234.205:3000/friend_list/${reqsid2}`);
+  const response = await fetch(`https://157.245.17.114:3000/friend_list/${reqsid2}`);
   const data = await response.json();
   return data;
 }
 
 async function getOwnedGames(reqsid3) {
-  const response = await fetch(`https://207.154.234.205:3000/owned_games/${reqsid3}`);
+  const response = await fetch(`https://157.245.17.114:3000/owned_games/${reqsid3}`);
   const data = await response.json();
   return data;
 }
