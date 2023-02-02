@@ -212,7 +212,7 @@ function restartFL(){
                     friendEntry.appendChild(avatar);
                     
                 let friendButton = document.createElement("button");
-                    friendButton.innerHTML= (""+actingUser.friendsListObjects[i].name+" ist online");
+                    friendButton.innerHTML= (""+actingUser.friendsListObjects[i].name+" ");
                     friendButton.classList.add("flButton");
                     friendButton.id="friend"+i;
                     let n = ""+i;
