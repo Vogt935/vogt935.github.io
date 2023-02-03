@@ -60,36 +60,36 @@
         actingUser.steamID = mySteamID;
         
         fillUserStats(mySteamID, actingUser);
-        fillFriendList(mySteamID, actingUser);        
+        fillFriendList(mySteamID, actingUser);   
+        loadingAnimationFreunde(50, 0);
         fillOwnedGames(mySteamID, actingUser);
         console.log("fill-Sachen durchgelaufen.")
-         
+        lengthFL = actingUser.friends.length;         
         console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
         // actingUser.steamID=myID;
         //  actingUser.friendsListInput=myFriendslist.friendslist.friends;
         //formInputToUsers(actingUser.friendsListInput)
-        lengthFL = actingUser.friends.length;
+
         buildFriendsList();
-        loadingAnimationFreunde(); 
-        
-        
+        loadingAnimationFreunde(50, 50); //Erzeugt eine Zeitverzögerung, um der Abfrage Zeit zu geben
+                
         document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
         if (localStorage.getItem("homeHidden") == true) {
                 homeText[0].innerHTML="";
         }
-        loadingAnimationSpiele();
+        loadingAnimationSpiele(); //Erzeugt eine Zeitverzögerung, um der Abfrage Zeit zu geben
         
         
- document.getElementById("absatzListe").style.display="inline";
+    document.getElementById("absatzListe").style.display="inline";
     }
 
 //function to set the Users Steam ID and save it as "name" in local storage
     function getAndSaveUserID() {
         console.log("Erstmal alten Kram löschen!")
         //deleteSteamIDfromLocalStorage();
-        console.log("get input!");
+        //console.log("get input!");
         let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:", "76561198101457809");
-        console.log("got input!");
+        //console.log("got input!");
 
             //Check, ob die Zahl in Ordnung ist
                 let myIDnumber = parseFloat(myIDstring);
@@ -347,13 +347,13 @@ function sleep(ms){
         }
 
 
-async function loadingAnimationFreunde() {
-  let i = 0;
+async function loadingAnimationFreunde(duration, start) {
+  let i = start;
   while (i < 100) {
     console.log("Loading: " + i + "%");
     document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
     i++;
-    await sleep(35);
+    await sleep(duration);
       
   }
     restartFL();
