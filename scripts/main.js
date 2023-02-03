@@ -204,7 +204,9 @@ console.log("Teilabschnitt 2 geladen");
 
 //EN: request to save a Steam ID if there is non in local storage
 //DE: Abfrage, ob eine Steam-ID im localStorage ist und ein paar Darstellungsänderungen
-    if (!localStorage.getItem("savedIDstring")) {
+function start (){
+
+if (!localStorage.getItem("savedIDstring")) {
         userHeading.textContent = "";
     } else {
         const storedIDstring = localStorage.getItem("savedIDstring");
@@ -222,7 +224,7 @@ console.log("Teilabschnitt 2 geladen");
         alert("Steam-ID gelöscht!");
         
 }
-
+}
 
 //reload the number of friends in AdHoc-Group
     function reloadAdHocStatus(){
@@ -365,10 +367,10 @@ function buildUpByNewSteamID(activeSteamUser){
       return data;
     }
 
-    getPlayerSummary(actingUser.steamID).then(response => {
+/*    getPlayerSummary(actingUser.steamID).then(response => {
       console.log(response.response.players);
     });
-
+*/
 
     async function getFriendList(reqsid2) {
       const response = await fetch(`http://157.245.17.114:3000/friend_list/${reqsid2}`);
@@ -383,7 +385,7 @@ function buildUpByNewSteamID(activeSteamUser){
     }
 
 
-
+/*
     getPlayerSummary(actingUser.steamID).then(response => {
       console.log(response.response.players);
     });
@@ -395,7 +397,7 @@ function buildUpByNewSteamID(activeSteamUser){
     getPlayerSummary(actingUser.friendsListObjects[3].steamID).then(response => {
       console.log(response.response.players);
     });
-
+*/
 
 
 console.log("Ende des Skripts");
