@@ -28,11 +28,6 @@
         }            
     }
 
-    class steamApp {
-        constructor(appid){
-            this.appid = appid;
-        }
-    }
     
 
 
@@ -115,107 +110,103 @@
 
 //Abfrage der Daten von Steam-Web-API
 
-function fillUserStats(steamID, user){
-    getPlayerSummary(steamID).then(({response}) => {
-    const players = response.players;
-    user.name = players[0].personaname;
-    user.lastlogoff = players[0].lastlogoff;
-    user.name = players[0].personaname;
-    user.avatar = players[0].avatarfull;
-});
+    function fillUserStats(steamID, user){
+        getPlayerSummary(steamID).then(({response}) => {
+            const players = response.players;
+            user.name = players[0].personaname;
+            user.lastlogoff = players[0].lastlogoff;
+            user.name = players[0].personaname;
+            user.avatar = players[0].avatarfull;
+        });
         console.log("Fill UserStats fertig")
-}
+    }
     
 
-function fillOwnedGames(steamID, user){
-    getOwnedGames(steamID).then(({response}) => {
-        const games = response.games;
-        console.log(games);
-        user.ownedGames = games;
-    });
+    function fillOwnedGames(steamID, user){
+        getOwnedGames(steamID).then(({response}) => {
+            const games = response.games;
+            console.log(games);
+            user.ownedGames = games;
+        });
         console.log("Fill OwnedGames fertig")
-}
+    }
 
 
-function fillFriendList(steamID, user) {
-  getFriendList(steamID).then(({ friendslist }) => {
-    const { friends } = friendslist;
-    user.friends = friends;
-  });
-    console.log("Fill Friends List fertig")
-}
+    function fillFriendList(steamID, user) {
+        getFriendList(steamID).then(({ friendslist }) => {
+            const { friends } = friendslist;
+            user.friends = friends;
+      });
+        console.log("Fill Friends List fertig")
+    }
 
 
 
 // build the frontend friendlist from the friendlist (not yet user-centered but input-centered)
-function buildFriendsList(){
-        lengthFL = (actingUser.friends.length)-1;
-        
-        console.log("Die länge der Freundesliste ist: "+lengthFL);
-        actingUser.friendsListObjects = [];
+    function buildFriendsList(){
+            lengthFL = (actingUser.friends.length)-1;
 
-        if(lengthFL > 0) {
+            console.log("Die länge der Freundesliste ist: "+lengthFL);
+            actingUser.friendsListObjects = [];
 
+            if(lengthFL > 0) {
+                let i = 0;
+                while (i <= lengthFL) {
+                    let id = "friend"+i;
 
-            let i = 0;
-            while (i <= lengthFL) {
-                let id = "friend"+i;
+                    console.log(id);
+                    let friendToAdd = new User(actingUser.friends[i].steamid);
+                    fillUserStats(friendToAdd.steamID, friendToAdd);
+                    fillOwnedGames(friendToAdd.steamID, friendToAdd); 
+                    actingUser.friendsListObjects.push(friendToAdd);
+                    console.log("Freund hinzugefügt: "+friendToAdd.name);
 
-                console.log(id);
-                let friendToAdd = new User(actingUser.friends[i].steamid);
-                fillUserStats(friendToAdd.steamID, friendToAdd);
-                fillOwnedGames(friendToAdd.steamID, friendToAdd); 
-                actingUser.friendsListObjects.push(friendToAdd);
-                console.log("Freund hinzugefügt: "+friendToAdd.name);
-                
-                let friendEntry = document.createElement("p");
+                    let friendEntry = document.createElement("p");
                     friendEntry.classList.add("friendEntry");
                     friendEntry.id="entryFriend"+i;
 
-                 document.getElementById("friendslist").appendChild(friendEntry);
-                
-                
-                i++;
-                } 
-        } 
-}
+                    document.getElementById("friendslist").appendChild(friendEntry);
+                    i++;
+                    } 
+            } 
+    }
 
-function restartFL(){
-    lengthFL = (actingUser.friendsListObjects.length)-1;
-    document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
-    document.getElementById("adHocCounter").style.visibility="visible";
-    document.getElementById("deleteSteamID").style.visibility="visible"
-            
-    let i = 0;
-                            console.log("i ist wieder: "+i);
-            while (i <= lengthFL){
-                console.log("start der erstellung");
+    function restartFL(){
+        lengthFL = (actingUser.friendsListObjects.length)-1;
+        document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
+        document.getElementById("adHocCounter").style.visibility="visible";
+        document.getElementById("deleteSteamID").style.visibility="visible"
 
-                            
-                var id = "entryFriend"+i;
-                let friendEntry = document.getElementById(id);
-                
-                let avatar = document.createElement("img");
-                    avatar.src = actingUser.friendsListObjects[i].avatar;
-                    avatar.classList.add("friendsPic");
-                    friendEntry.appendChild(avatar);
-                    
-                let friendButton = document.createElement("button");
-                    friendButton.innerHTML= (""+actingUser.friendsListObjects[i].name+" ");
-                    friendButton.classList.add("flButton");
-                    friendButton.id="friend"+i;
-                    let n = ""+i;
-                    friendButton.onclick=function(){addToAdHocGroup(n)};
-                    friendEntry.appendChild(friendButton);
-                                      
+        let i = 0;
+                                console.log("i ist wieder: "+i);
+                while (i <= lengthFL){
+                    console.log("start der erstellung");
 
-                let link = document.createElement('chatLink');
-                    link.innerHTML='<a href="steam://friends/message/'+actingUser.friendsListObjects[i].steamID+'"><button class="chatButton" > <i class="fa-regular fa-message"></i> </button></a>';
-                    friendEntry.appendChild(link);       
 
-                i++;
-}
-}
+                    var id = "entryFriend"+i;
+                    let friendEntry = document.getElementById(id);
+
+                    let avatar = document.createElement("img");
+                        avatar.src = actingUser.friendsListObjects[i].avatar;
+                        avatar.classList.add("friendsPic");
+                        friendEntry.appendChild(avatar);
+
+                    let friendButton = document.createElement("button");
+                        friendButton.innerHTML= (""+actingUser.friendsListObjects[i].name+" ");
+                        friendButton.classList.add("flButton");
+                        friendButton.id="friend"+i;
+                        let n = ""+i;
+                        friendButton.onclick=function(){addToAdHocGroup(n)};
+                        friendEntry.appendChild(friendButton);
+
+
+                    let link = document.createElement('chatLink');
+                        link.innerHTML='<a href="steam://friends/message/'+actingUser.friendsListObjects[i].steamID+'"><button class="chatButton" > <i class="fa-regular fa-message"></i> </button></a>';
+                        friendEntry.appendChild(link);       
+
+                    i++;
+    }
+    }
 
 
 
