@@ -163,7 +163,7 @@ console.log("Teilabschnitt 1 geladen");
                     friendEntry.classList.add("friendEntry");
                     friendEntry.id="entryFriend"+i;
 
-<<<<<<< HEAD
+
                     document.getElementById("friendslist").appendChild(friendEntry);
                     i++;
                     } 
