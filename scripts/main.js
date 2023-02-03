@@ -58,6 +58,7 @@
             console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
 
         console.log("Warten rum?")
+        sleep(6000);
         lengthFL = actingUser.friends.length;
         buildFriendsList();
         loadingAnimationFreunde(20, 80, true);
