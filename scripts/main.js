@@ -37,7 +37,6 @@
     let userHeading =document.getElementById("userHeading");
 
     const actingUser = new User(); //Dieses JS-Objekt steht für den Nutzer, vor dem PC sitzt und sich anmeldet
-    //var apiResponse;
 
     let i = 0;
     let n = 0;
@@ -50,23 +49,17 @@
 //functions: 
 //main function, set Steam ID, fetch information from Steam Web API
     function routineActingUser(mySteamID){
-        
-        var apiResponse;
         actingUser.steamID = mySteamID;
-        
         fillUserStats(mySteamID, actingUser);
         fillFriendList(mySteamID, actingUser);
-        loadingAnimationFreunde(70, 0);
         fillOwnedGames(mySteamID, actingUser);
-        console.log("fill-Sachen durchgelaufen.")  
-        console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
-        // actingUser.steamID=myID;
-        //  actingUser.friendsListInput=myFriendslist.friendslist.friends;
-        //formInputToUsers(actingUser.friendsListInput)
+            loadingAnimationFreunde(80, 0, false);
+            console.log("fill-Sachen durchgelaufen.")  
+            console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
 
         buildFriendsList();
-        loadingAnimationFreunde(50, 50); //Erzeugt eine Zeitverzögerung, um der Abfrage Zeit zu geben
-        restartFL();
+        loadingAnimationFreunde(20, 80, true); load
+
         document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
         if (localStorage.getItem("homeHidden") == true) {
                 homeText[0].innerHTML="";
@@ -282,13 +275,16 @@
             }
 
 
-    async function loadingAnimationFreunde(duration, start) {
+    async function loadingAnimationFreunde(duration, start, reloadNeeded) {
         let i = start;
         while (i < duration) {
             //console.log("Loading: " + i + "%");
             document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
             i++;
             await sleep(55);
+        }
+        if (reloadNeeded == true){
+            restartFL();
         }
         console.log("loading Animation done, duration: "+duration+", start: "+start);
     }
