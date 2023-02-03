@@ -12,16 +12,16 @@
 //lateTODO:     Icons der besessenen Spiele in Tabelle einfügen usw.
 
 
-
+//Kommentierung ist möglichst in Englisch gehalten
 
 //classes:
     class User {
         constructor(steamID){
-            this.name = "Test"; //fetchGetName
+            this.name = "Test"; 
             this.steamID = steamID;
-            //this.online = false; //fetchStatus
-            this.ownedGames = [0]; //fetchOwnedGames
-            //this.friendsListInput = [] //fetchFriendlist
+            //this.online = false; 
+            this.ownedGames = [0]; 
+            //this.friendsListInput = [] 
             this.friendsListObjects = [];
             this.savedID= false;
             this.adHocGroup=false;
@@ -35,25 +35,14 @@
     }
     
 
+
 //variables:
-// frontend
     let newSIDButton = document.getElementById("my-steamid-button");
     let mySID = document.getElementById("my-steam-ID");
     let userHeading =document.getElementById("userHeading");
 
-    
-// backend
-   // const webApiKey = "9DE0CBEBE65E780B49D58853EA3CAA15";
-    const actingUser = new User();
-
-    var apiResponse;
-
-
-       
-
-
-    
-    
+    const actingUser = new User(); //Dieses JS-Objekt steht für den Nutzer, vor dem PC sitzt und sich anmeldet
+    //var apiResponse;
 
     let i = 0;
     let n = 0;
@@ -69,14 +58,13 @@
         
         var apiResponse;
         actingUser.steamID = mySteamID;
+        
         fillUserStats(mySteamID, actingUser);
-
-        fillFriendList(mySteamID, actingUser);
-        
-        
+        fillFriendList(mySteamID, actingUser);        
         fillOwnedGames(mySteamID, actingUser);
         console.log("fill-Sachen durchgelaufen.")
-                console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
+         
+        console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
         // actingUser.steamID=myID;
         //  actingUser.friendsListInput=myFriendslist.friendslist.friends;
         //formInputToUsers(actingUser.friendsListInput)
@@ -96,33 +84,33 @@
     }
 
 //function to set the Users Steam ID and save it as "name" in local storage
-function getAndSaveUserID() {
-    console.log("Erstmal alten Kram löschen!")
-    //deleteSteamIDfromLocalStorage();
-    console.log("get input!");
-    let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:", "76561198101457809");
-    console.log("got input!");
-            
-        //Check, ob die Zahl in Ordnung ist
-            let myIDnumber = parseFloat(myIDstring);
-            console.log("myIDnumber ist vom Typ:"); console.log(typeof myIDnumber); console.log(myIDstring); console.log(myIDnumber);
-            let numberCheck = Number.isInteger(myIDnumber);
-            while (numberCheck == false){
-            myIDstring = prompt("Bitte geben Sie NUR Zahlen ein. Ihre Steam-ID besteht ausschließlich aus Zahlen.")
-            console.log(myIDstring);
-            console.log("try to change MyIDNUMBER")
-            myIDnumber = Number(myIDstring);
-            console.log(myIDnumber);
-            console.log("Neue Eingabe myIDnumber"); console.log(typeof myIDnumber)
-            numberCheck = Number.isInteger(myIDnumber);
+    function getAndSaveUserID() {
+        console.log("Erstmal alten Kram löschen!")
+        //deleteSteamIDfromLocalStorage();
+        console.log("get input!");
+        let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:", "76561198101457809");
+        console.log("got input!");
+
+            //Check, ob die Zahl in Ordnung ist
+                let myIDnumber = parseFloat(myIDstring);
+                console.log("myIDnumber ist vom Typ:"); console.log(typeof myIDnumber); console.log(myIDstring); console.log(myIDnumber);
+                let numberCheck = Number.isInteger(myIDnumber);
+                while (numberCheck == false){
+                myIDstring = prompt("Bitte geben Sie NUR Zahlen ein. Ihre Steam-ID besteht ausschließlich aus Zahlen.")
+                console.log(myIDstring);
+                console.log("try to change MyIDNUMBER")
+                myIDnumber = Number(myIDstring);
+                console.log(myIDnumber);
+                console.log("Neue Eingabe myIDnumber"); console.log(typeof myIDnumber)
+                numberCheck = Number.isInteger(myIDnumber);
+
+        }
+
+        localStorage.setItem("savedIDstring", myIDstring);
+        routineActingUser(myIDstring);  
+
 
     }
-        
-    localStorage.setItem("savedIDstring", myIDstring);
-    routineActingUser(myIDstring);  
-
-    
-}
 
 
 //Abfrage der Daten von Steam-Web-API
