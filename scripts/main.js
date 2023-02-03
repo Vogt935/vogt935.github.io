@@ -66,7 +66,7 @@
 
         buildFriendsList();
         loadingAnimationFreunde(50, 50); //Erzeugt eine Zeitverzögerung, um der Abfrage Zeit zu geben
-                
+        restartFL();
         document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
         if (localStorage.getItem("homeHidden") == true) {
                 homeText[0].innerHTML="";
@@ -283,25 +283,20 @@
 
 
     async function loadingAnimationFreunde(duration, start) {
-      let i = start;
-      while (i < duration) {
-       console.log("loading Animation start, duration: "+duration+", start: "+start);
-
-        console.log("Loading: " + i + "%");
-        document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
-        i++;
-        await sleep(55);
-
-      }
-        restartFL();
-
-      console.log("loading Animation done, duration: "+duration+", start: "+start);
+        let i = start;
+        while (i < duration) {
+            //console.log("Loading: " + i + "%");
+            document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
+            i++;
+            await sleep(55);
+        }
+        console.log("loading Animation done, duration: "+duration+", start: "+start);
     }
 
     async function loadingAnimationSpiele() {
       i= 0;
       while (i < 100) {
-        console.log("Loading: " + i + "%");
+        //console.log("Loading: " + i + "%");
         document.getElementById("platzhalterLadebalken").innerHTML="Spiele werden geladen: "+i+" %";
         i++;
         await sleep(35);
