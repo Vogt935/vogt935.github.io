@@ -58,7 +58,7 @@
             console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
 
         buildFriendsList();
-        loadingAnimationFreunde(20, 80, true); load
+        loadingAnimationFreunde(20, 80, true);
 
         document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
         if (localStorage.getItem("homeHidden") == true) {
