@@ -209,40 +209,8 @@
     }
 
 
-
-
-/*
-
-//Diese Funktion befüllt die Friends-Objekte mit Infos
-    function fillUserData(searchedUser){
-        let id = ""+searchedUser.steamID;
-        let idResponse = friendsUserData.response.players.find(({steamid}) => steamid === id)
-        searchedUser.name = idResponse.personaname;
-        searchedUser.avatar = idResponse.avatarmedium;
-        searchedUser.online = idResponse.profilestate;
-        console.log("Tada!");
-    }
-
-//Alle Friendsobjekte werden befüllt
-function userDataList(){
-    actingUser.friendsListObjects.forEach(element => fillUserData(element));
-}
-
-*/
-
-
-
-
-
-
-
-
-
-//request to save a Steam ID if there is non in local storage
-
-
-
-//Abfrage, ob eine Steam-ID im localStorage ist und ein paar Darstellungsänderungen
+//EN: request to save a Steam ID if there is non in local storage
+//DE: Abfrage, ob eine Steam-ID im localStorage ist und ein paar Darstellungsänderungen
     if (!localStorage.getItem("savedIDstring")) {
         mySID.textContent = "Nicht angemeldet!";
         userHeading.textContent = "";
@@ -252,20 +220,6 @@ function userDataList(){
         actingUser.savedID = true;
 //        mySID.textContent = "Willkommen zurück, "+actingUser.name;
         newSIDButton.textContent = "Gespeicherte Steam-ID ändern";
-    }
-
-/*
-//Erstellung der Friendslist
-    const lengthFl= actingUser.friends.length-1;
-    if(lengthFl > 0) {
-        document.getElementById("friendlist").innerHTML="Es sind "+actingUser.friendsListObjects.length+" Freunde online:";
-    }
-*/
-
-//onclick function for starting a chat with friends
-
-    function startChatWithThisID(id){
-        re
     }
 
 
@@ -339,17 +293,20 @@ function sleep(ms){
 
 
 async function loadingAnimationFreunde(duration, start) {
-  let i = start;
+    let i = 0;
+    let i = start;
   while (i < 100) {
-    console.log("Loading: " + i + "%");
+   console.log("loading Animation start, duration:"+35+", start: "+start);
+      
+      console.log("Loading: " + i + "%");
     document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
     i++;
-    await sleep(duration);
+    await sleep(35);
       
   }
     restartFL();
   
-  console.log("Done");
+  console.log("loading Animation done, duration:"+duration+", start: "+start);
 }
 
 async function loadingAnimationSpiele() {
