@@ -80,10 +80,10 @@
         // actingUser.steamID=myID;
         //  actingUser.friendsListInput=myFriendslist.friendslist.friends;
         //formInputToUsers(actingUser.friendsListInput)
-        
+        lengthFL = actingUser.friends.length;
         buildFriendsList();
         loadingAnimationFreunde(); 
-        //lengthFL = actingUser.friends.length;
+        
         
         document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
         if (localStorage.getItem("homeHidden") == true) {
