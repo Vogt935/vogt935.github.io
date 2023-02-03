@@ -1,10 +1,8 @@
-//ÜberTODO: Import JSON; Get Game Infos; Show it all; 
+//ÜberTODO: Get Game Infos; Show it all; 
 
-//highTODO: node.js einrichten
-//highTODO: Die Abfragen "scharf schalten"
+
 //TODO:     Friendslist nur Online-Friends
 //TODO:     Zeitlich gesetzte neue Abfrage welche Freunde online sind? Krücke über aktulisierungsbutton, Toast wenn neuer Freund dazu kommt?
-//TODO:     Bug: Wenn man die Steam-ID löscht, auch die Freundesliste löschen!!!
 //TODO:     Bug: Gaming-Zeiten in Std. 
 
 //lowTODO:     Home ausblenden in LocalStorage
@@ -85,7 +83,7 @@
         
         buildFriendsList();
         loadingAnimationFreunde(); 
-        lengthFL = actingUser.friends.length;
+        //lengthFL = actingUser.friends.length;
         
         document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
         if (localStorage.getItem("homeHidden") == true) {
@@ -100,7 +98,7 @@
 //function to set the Users Steam ID and save it as "name" in local storage
 function getAndSaveUserID() {
     console.log("Erstmal alten Kram löschen!")
-    deleteSteamIDfromLocalStorage();
+    //deleteSteamIDfromLocalStorage();
     console.log("get input!");
     let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:", "76561198101457809");
     console.log("got input!");
