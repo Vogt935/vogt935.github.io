@@ -55,11 +55,10 @@
         actingUser.steamID = mySteamID;
         
         fillUserStats(mySteamID, actingUser);
-        fillFriendList(mySteamID, actingUser);   
+        fillFriendList(mySteamID, actingUser);
         loadingAnimationFreunde(50, 0);
         fillOwnedGames(mySteamID, actingUser);
-        console.log("fill-Sachen durchgelaufen.")
-        lengthFL = actingUser.friends.length;         
+        console.log("fill-Sachen durchgelaufen.")  
         console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
         // actingUser.steamID=myID;
         //  actingUser.friendsListInput=myFriendslist.friendslist.friends;
@@ -290,7 +289,7 @@
       while (i < duration) {
        console.log("loading Animation start, duration: "+duration+", start: "+start);
 
-          console.log("Loading: " + i + "%");
+        console.log("Loading: " + i + "%");
         document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
         i++;
         await sleep(35);
