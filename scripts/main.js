@@ -53,10 +53,12 @@
         fillUserStats(mySteamID, actingUser);
         fillFriendList(mySteamID, actingUser);
         fillOwnedGames(mySteamID, actingUser);
+        console.log("fill-Sachen durchgelaufen.")
             loadingAnimationFreunde(80, 0, false);
-            console.log("fill-Sachen durchgelaufen.")  
             console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
 
+        console.log("Warten rum?")
+        lengthFL = actingUser.friends.length;
         buildFriendsList();
         loadingAnimationFreunde(20, 80, true);
 
@@ -277,8 +279,8 @@ console.log("Teilabschnitt 3 geladen");
         while (i < duration) {
             //console.log("Loading: " + i + "%");
             document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
-            i++;
             await sleep(55);
+            i++;
         }
         if (reloadNeeded == true){
             restartFL();
@@ -287,19 +289,17 @@ console.log("Teilabschnitt 3 geladen");
     }
 
     async function loadingAnimationSpiele() {
-      i= 0;
-      while (i < 100) {
-        //console.log("Loading: " + i + "%");
-        document.getElementById("platzhalterLadebalken").innerHTML="Spiele werden geladen: "+i+" %";
-        i++;
-        await sleep(35);
+        i= 0;
+        while (i < 100) {
+            //console.log("Loading: " + i + "%");
+            document.getElementById("platzhalterLadebalken").innerHTML="Spiele werden geladen: "+i+" %";
+            i++;
+            await sleep(35);
 
       }
         document.getElementById("platzhalterLadebalken").innerHTML="";
         buildGamesList();
-
-
-      console.log("Done");
+        console.log("Done");
     }
 
 console.log("Teilabschnitt 4 geladen");
