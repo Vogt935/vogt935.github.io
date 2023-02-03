@@ -346,12 +346,12 @@ function userDataList(){
 
 //eventhandling
     
-    newSIDButton.onclick = () => {
+/*    newSIDButton.onclick = () => {
         getAndSaveUserID();
         alert("User-ID geändert!")
         mySID.textContent = "Willkommen, "+actingUser.name;
     };
-
+*/
 
 
 function sleep(ms){
