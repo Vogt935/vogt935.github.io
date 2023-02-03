@@ -295,8 +295,8 @@ function sleep(ms){
 async function loadingAnimationFreunde(duration, start) {
     let i = 0;
     let i = start;
-  while (i < 100) {
-   console.log("loading Animation start, duration:"+35+", start: "+start);
+  while (i < duration) {
+   console.log("loading Animation start, duration: "+duration+", start: "+start);
       
       console.log("Loading: " + i + "%");
     document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
@@ -306,7 +306,7 @@ async function loadingAnimationFreunde(duration, start) {
   }
     restartFL();
   
-  console.log("loading Animation done, duration:"+duration+", start: "+start);
+  console.log("loading Animation done, duration: "+duration+", start: "+start);
 }
 
 async function loadingAnimationSpiele() {
