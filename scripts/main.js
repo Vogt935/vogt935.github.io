@@ -56,7 +56,7 @@
         
         fillUserStats(mySteamID, actingUser);
         fillFriendList(mySteamID, actingUser);
-        loadingAnimationFreunde(50, 0);
+        loadingAnimationFreunde(70, 0);
         fillOwnedGames(mySteamID, actingUser);
         console.log("fill-Sachen durchgelaufen.")  
         console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
@@ -170,6 +170,7 @@
             } 
     }
 
+
     function restartFL(){
         lengthFL = (actingUser.friendsListObjects.length)-1;
         document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
@@ -177,10 +178,8 @@
         document.getElementById("deleteSteamID").style.visibility="visible"
 
         let i = 0;
-                                console.log("i ist wieder: "+i);
-                while (i <= lengthFL){
-                    console.log("start der erstellung");
-
+            while (i <= lengthFL){
+                    console.log("start der Erstellung der Freundesliste");
 
                     var id = "entryFriend"+i;
                     let friendEntry = document.getElementById(id);
@@ -198,14 +197,13 @@
                         friendButton.onclick=function(){addToAdHocGroup(n)};
                         friendEntry.appendChild(friendButton);
 
-
                     let link = document.createElement('chatLink');
                         link.innerHTML='<a href="steam://friends/message/'+actingUser.friendsListObjects[i].steamID+'"><button class="chatButton" > <i class="fa-regular fa-message"></i> </button></a>';
                         friendEntry.appendChild(link);       
-
                     i++;
+            }
     }
-    }
+
 
 
 //EN: request to save a Steam ID if there is non in local storage
@@ -292,7 +290,7 @@
         console.log("Loading: " + i + "%");
         document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
         i++;
-        await sleep(35);
+        await sleep(55);
 
       }
         restartFL();
