@@ -277,53 +277,45 @@
     }
 
 
-//eventhandling
-    
-/*    newSIDButton.onclick = () => {
-        getAndSaveUserID();
-        alert("User-ID geändert!")
-        mySID.textContent = "Willkommen, "+actingUser.name;
-    };
-*/
+
+//Sleep functions
+
+    function sleep(ms){
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
 
 
-function sleep(ms){
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+    async function loadingAnimationFreunde(duration, start) {
+      let i = start;
+      while (i < duration) {
+       console.log("loading Animation start, duration: "+duration+", start: "+start);
+
+          console.log("Loading: " + i + "%");
+        document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
+        i++;
+        await sleep(35);
+
+      }
+        restartFL();
+
+      console.log("loading Animation done, duration: "+duration+", start: "+start);
+    }
+
+    async function loadingAnimationSpiele() {
+      i= 0;
+      while (i < 100) {
+        console.log("Loading: " + i + "%");
+        document.getElementById("platzhalterLadebalken").innerHTML="Spiele werden geladen: "+i+" %";
+        i++;
+        await sleep(35);
+
+      }
+        document.getElementById("platzhalterLadebalken").innerHTML="";
+        buildGamesList();
 
 
-async function loadingAnimationFreunde(duration, start) {
-    let i = 0;
-    let i = start;
-  while (i < duration) {
-   console.log("loading Animation start, duration: "+duration+", start: "+start);
-      
-      console.log("Loading: " + i + "%");
-    document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
-    i++;
-    await sleep(35);
-      
-  }
-    restartFL();
-  
-  console.log("loading Animation done, duration: "+duration+", start: "+start);
-}
-
-async function loadingAnimationSpiele() {
-  let i = 0;
-  while (i < 100) {
-    console.log("Loading: " + i + "%");
-    document.getElementById("platzhalterLadebalken").innerHTML="Spiele werden geladen: "+i+" %";
-    i++;
-    await sleep(35);
-      
-  }
-    document.getElementById("platzhalterLadebalken").innerHTML="";
-    buildGamesList();
-
-  
-  console.log("Done");
-}
+      console.log("Done");
+    }
 
 //Folgendes ist probably useless:
 
@@ -379,40 +371,46 @@ function buildUpByNewSteamID(activeSteamUser){
     }
 */
 
-async function getPlayerSummary(reqsid1) {
-  const response = await fetch(`http://157.245.17.114:3000/player_summaries/${reqsid1}`);
-  const data = await response.json();
-  return data;
-}
 
-getPlayerSummary(actingUser.steamID).then(response => {
-  console.log(response.response.players);
-});
-    
+//EN: Server-request-functions
+//DE: Server-Abfrage-Funktionen
+    async function getPlayerSummary(reqsid1) {
+      const response = await fetch(`http://157.245.17.114:3000/player_summaries/${reqsid1}`);
+      const data = await response.json();
+      return data;
+    }
 
-async function getFriendList(reqsid2) {
-  const response = await fetch(`http://157.245.17.114:3000/friend_list/${reqsid2}`);
-  const data = await response.json();
-  return data;
-}
+    getPlayerSummary(actingUser.steamID).then(response => {
+      console.log(response.response.players);
+    });
 
-async function getOwnedGames(reqsid3) {
-  const response = await fetch(`http://157.245.17.114:3000/owned_games/${reqsid3}`);
-  const data = await response.json();
-  return data;
-}
+
+    async function getFriendList(reqsid2) {
+      const response = await fetch(`http://157.245.17.114:3000/friend_list/${reqsid2}`);
+      const data = await response.json();
+      return data;
+    }
+
+    async function getOwnedGames(reqsid3) {
+      const response = await fetch(`http://157.245.17.114:3000/owned_games/${reqsid3}`);
+      const data = await response.json();
+      return data;
+    }
+
+
+
+    getPlayerSummary(actingUser.steamID).then(response => {
+      console.log(response.response.players);
+    });
+
+
+    getPlayerSummary(actingUser.friendsListObjects[0].steamID).then(response => {
+      console.log(response.response.players);
+    });
+    getPlayerSummary(actingUser.friendsListObjects[3].steamID).then(response => {
+      console.log(response.response.players);
+    });
+
 
 
 console.log("Ende des Skripts");
-
-getPlayerSummary(actingUser.steamID).then(response => {
-  console.log(response.response.players);
-});
-
-
-getPlayerSummary(actingUser.friendsListObjects[0].steamID).then(response => {
-  console.log(response.response.players);
-});
-getPlayerSummary(actingUser.friendsListObjects[3].steamID).then(response => {
-  console.log(response.response.players);
-});
