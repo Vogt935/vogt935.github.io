@@ -200,10 +200,11 @@ console.log("Teilabschnitt 1 geladen");
 
 console.log("Teilabschnitt 2 geladen");
 
+
+
 //EN: request to save a Steam ID if there is non in local storage
 //DE: Abfrage, ob eine Steam-ID im localStorage ist und ein paar Darstellungsänderungen
     if (!localStorage.getItem("savedIDstring")) {
-        mySID.textContent = "Nicht angemeldet!";
         userHeading.textContent = "";
     } else {
         const storedIDstring = localStorage.getItem("savedIDstring");
@@ -231,35 +232,26 @@ console.log("Teilabschnitt 2 geladen");
 //add friend to AdHoc-Group by clicking on his Name
     function addToAdHocGroup(clickedFriend){
         if (actingUser.friendsListObjects[clickedFriend].adHocGroup == true){
-                actingUser.friendsListObjects[clickedFriend].adHocGroup = false;
-                    //console.log("Changed adHocGroup for Friend "+clickedFriend+" to false. Adhoc-group is "+(adHocCounter-1)+" friends.");
+                actingUser.friendsListObjects[clickedFriend].adHocGroup = false; //console.log("Changed adHocGroup for Friend "+clickedFriend+" to false. Adhoc-group is "+(adHocCounter-1)+" friends.");
                 document.getElementById("friend"+clickedFriend).style.background="#c5c3c0";
-                document.getElementById("friend"+clickedFriend).style.color="black";
-            //start routine to reload the tables
-            //reload counterFriends
-                adHocCounter--;
+                document.getElementById("friend"+clickedFriend).style.color="black"; //start routine to reload the tables
+                adHocCounter--; //reload counterFriends
                 reloadAdHocStatus();
             }
         else{
-            actingUser.friendsListObjects[clickedFriend].adHocGroup=true;
-                //console.log("Changed adHocGroup for Friend "+clickedFriend+" to true. Adhoc-group is "+(adHocCounter+1)+" friends.");
-            document.getElementById("friend"+clickedFriend).style.background="#577e87";
-            document.getElementById("friend"+clickedFriend).style.color="white";
-            //start routine to reload the tables
-            //reload counterFriends
-            adHocCounter++; 
-            reloadAdHocStatus();
+                actingUser.friendsListObjects[clickedFriend].adHocGroup=true; //console.log("Changed adHocGroup for Friend "+clickedFriend+" to true. Adhoc-group is "+(adHocCounter+1)+" friends.");
+                document.getElementById("friend"+clickedFriend).style.background="#577e87";
+                document.getElementById("friend"+clickedFriend).style.color="white"; //start routine to reload the tables
+                adHocCounter++; //reload counterFriends
+                reloadAdHocStatus();
         }}
 
 
     function hideHomeText(){
         document.getElementById("home").style.display="none";
         localStorage.setItem("homeHidden", true);
-       document.getElementById("homeButton").style.display="block";
-        
-        
+        document.getElementById("homeButton").style.display="block";
         //document.getElementById("xHome").innerHTML="Home";
-
     }
     
     function showHomeText(){
@@ -268,6 +260,8 @@ console.log("Teilabschnitt 2 geladen");
     }
 
 console.log("Teilabschnitt 3 geladen");
+
+
 
 //Sleep functions
 
