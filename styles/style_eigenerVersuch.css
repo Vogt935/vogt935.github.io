@@ -1,0 +1,252 @@
+html {
+    font-size: 10px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+
+
+
+/* Basic Navigation and Flexbox stuff */
+
+body {
+    display: flex;
+    color: #ebf0f2; 
+    background-color: #f2f2f2;
+    justify-content: space-evenly;
+}
+
+right {
+    display: flex;
+    order: 1;
+    padding: 1em; 
+    border-radius: 30px 30px 30px 30px;
+    margin: 20px;
+    background: #696969;
+    color: #f2f2f2;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    align-items: center;
+    text-align: center;
+}
+
+left {
+    display: flex;
+    order: 2;
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+section {
+	display: column;
+    background: #696969;
+    border-radius: 30px;
+	padding: 2em 2em 2em 2em;
+    order: 2;
+    margin-top: 4em;
+}
+
+nav {
+    background: #696969;
+    color: #f2f2f2;
+	padding: 1em 2em 2em 2em;
+    order: 1;
+
+    border-radius: 0 0 20px 20px;
+}
+
+subheader {
+	border: white 10px;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2em;
+}
+
+controlpanel {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+sID {
+	text-align: left;
+	font-size: 16px;
+	order:1
+}
+
+reqreturn {
+	font-size: 16px;
+    text-align: center;
+}
+
+
+
+/* Formatting stuff */
+
+p {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+a#adHocCounter{
+    border: 5px solid #c5c3c0;
+    border-radius: 20px;
+    background: #2d4150;
+    color: #c5c3c0;
+    text-align: center;
+    font-size: 29px;
+    /* height: 2.2em; */
+    width: 2em;
+    padding-top: 5;
+    text-align: center;
+    margin: 1px;
+
+}
+
+ul {
+  list-style-type: circle;
+  margin: 0;
+  padding: 0;
+
+
+}
+
+
+li {
+
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+h1, h2 {
+	font-size: 30px;
+	text-align: right;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+button {
+    background-color:   #ffa821;
+    font-size: 17px;
+    width: 20em;
+    height: 3em;
+    margin: 10px; 
+    border-radius: 8px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #e6951a;
+}
+
+button.friendslist {
+    background-color:#f2f2f2;;
+    height: 3em;
+    width: 20em;
+    margin: 4px;
+}
+
+button.moreFriends{
+    width: 16em;
+    height: 6em;
+    color: black;
+    padding: 0;
+
+    
+}
+button.newSteamID{
+    width: 20em;
+
+}
+navList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+button.tablink{
+    width: 14em;
+}
+
+button.friendslist:hover {
+    background-color:#2d4150
+}
+
+/* Table options: */
+
+table {
+    width: 100%;
+    background: #3e5e76;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+th {
+    background: #2d4150;
+    border-radius: 8px 8px 5px 5px;
+    text-align: center;
+    padding: 4px;
+
+}
+
+td {
+    background: lightgrey;
+    color: black;
+    padding: 10px;
+    border: 0px;
+}
+
+
+
+/* Style the tab buttons */
+.tablink {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+/* Style each tab content individually */
+#London {background-color:red;}
+#Paris {background-color:green;}
+#Tokyo {background-color:blue;}
+#Oslo {background-color:orange;}
+
+
