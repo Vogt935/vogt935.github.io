@@ -84,7 +84,8 @@
         //formInputToUsers(actingUser.friendsListInput)
         
         buildFriendsList();
-        loadingAnimationFreunde();        
+        loadingAnimationFreunde(); 
+        lengthFL = actingUser.friends.length;
         
         document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
         if (localStorage.getItem("homeHidden") == true) {
@@ -98,6 +99,8 @@
 
 //function to set the Users Steam ID and save it as "name" in local storage
 function getAndSaveUserID() {
+    console.log("Erstmal alten Kram löschen!")
+    deleteSteamIDfromLocalStorage();
     console.log("get input!");
     let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:", "76561198101457809");
     console.log("got input!");
