@@ -163,10 +163,71 @@ console.log("Teilabschnitt 1 geladen");
                     friendEntry.classList.add("friendEntry");
                     friendEntry.id="entryFriend"+i;
 
+<<<<<<< HEAD
                     document.getElementById("friendslist").appendChild(friendEntry);
                     i++;
                     } 
             } 
+=======
+                 document.getElementById("friendslist").appendChild(friendEntry);
+                
+                
+                i++;
+                } 
+        } 
+}
+
+function restartFL(){
+    lengthFL = (actingUser.friendsListObjects.length)-1;
+    document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
+    document.getElementById("adHocCounter").style.visibility="visible";
+    document.getElementById("deleteSteamID").style.visibility="visible"
+            
+    let i = 0;
+                            console.log("i ist wieder: "+i);
+            while (i <= lengthFL){
+                console.log("start der erstellung");
+
+                            
+                var id = "entryFriend"+i;
+                let friendEntry = document.getElementById(id);
+                
+                let avatar = document.createElement("img");
+                    avatar.src = actingUser.friendsListObjects[i].avatar;
+                    avatar.classList.add("friendsPic");
+                    friendEntry.appendChild(avatar);
+                    
+                let friendButton = document.createElement("button");
+                    friendButton.innerHTML= (""+actingUser.friendsListObjects[i].name+" ist online");
+                    friendButton.classList.add("flButton");
+                    friendButton.id="friend"+i;
+                    let n = ""+i;
+                    friendButton.onclick=function(){addToAdHocGroup(n)};
+                    friendEntry.appendChild(friendButton);
+                                      
+
+                let link = document.createElement('chatLink');
+                    link.innerHTML='<a href="steam://friends/message/'+actingUser.friendsListObjects[i].steamID+'"><button class="chatButton" > <i class="fa-regular fa-message"></i> </button></a>';
+                    friendEntry.appendChild(link);       
+
+                i++;
+}
+}
+
+
+
+
+/*
+
+//Diese Funktion befüllt die Friends-Objekte mit Infos
+    function fillUserData(searchedUser){
+        let id = ""+searchedUser.steamID;
+        let idResponse = friendsUserData.response.players.find(({steamid}) => steamid === id)
+        searchedUser.name = idResponse.personaname;
+        searchedUser.avatar = idResponse.avatarmedium;
+        searchedUser.online = idResponse.profilestate;
+        console.log("Tada!");
+>>>>>>> parent of cdcc8b0 (v1.0)
     }
 
 
