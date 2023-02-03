@@ -99,6 +99,7 @@
 
     }
 
+console.log("Teilabschnitt 1 geladen");
 
 //Abfrage der Daten von Steam-Web-API
 
@@ -197,7 +198,7 @@
             }
     }
 
-
+console.log("Teilabschnitt 2 geladen");
 
 //EN: request to save a Steam ID if there is non in local storage
 //DE: Abfrage, ob eine Steam-ID im localStorage ist und ein paar Darstellungsänderungen
@@ -266,7 +267,7 @@
         document.getElementById("homeButton").style.display="none";
     }
 
-
+console.log("Teilabschnitt 3 geladen");
 
 //Sleep functions
 
@@ -304,6 +305,8 @@
 
       console.log("Done");
     }
+
+console.log("Teilabschnitt 4 geladen");
 
 //Folgendes ist probably useless:
 
