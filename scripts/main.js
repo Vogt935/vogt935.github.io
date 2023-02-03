@@ -55,11 +55,13 @@
         fillOwnedGames(mySteamID, actingUser);
         console.log("fill-Sachen durchgelaufen.")
             loadingAnimationFreunde(80, 0, false);
-            console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
 
-        console.log("Warten rum?")
+
+
         sleep(6000);
+        console.log("Warten rum?")
         lengthFL = actingUser.friends.length;
+                    console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
         buildFriendsList();
         loadingAnimationFreunde(20, 80, true);
 
