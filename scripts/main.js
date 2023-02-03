@@ -168,7 +168,7 @@ console.log("Teilabschnitt 1 geladen");
                     i++;
                     } 
             } 
-=======
+
                  document.getElementById("friendslist").appendChild(friendEntry);
                 
                 
