@@ -111,20 +111,11 @@ function sortAllSteamGames(){
 function sortTableByOwnersCount() {
     let table = document.getElementById("ergebnisListe");
     table.innerHTML = "";
-    let sortedGamesList = filteredGamesList.sort((a, b) => b.owners.length - a.owners.length);
+    let sortedGamesList = filteredGamesList.filter(game => game.owners.length >= 2)
+                                           .sort((a, b) => b.owners.length - a.owners.length);
     let data = Object.keys(sortedGamesList[0]);
     buildingProgress(data, sortedGamesList, table);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 function selectTableForAdHocGroup(){
