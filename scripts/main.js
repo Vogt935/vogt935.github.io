@@ -298,7 +298,7 @@ function userDataList(){
         actingUser.friendsListObjects.forEach((element) => {element.adHocGroup = false});
         buildGamesList();
         document.getElementById("deleteAdHocGroup").style.visibility="hidden";
-                                             )
+    
     }
 
 
