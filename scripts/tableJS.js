@@ -9,7 +9,7 @@ function buildGamesList() {
     
     filteredGamesList.forEach((element) => {
         element.owner = actingUser;
-        element.playtime_forever = element.playtime_forever / 60;
+        element.playtime_forever = Math.round(element.playtime_forever / 60;)
     });
                     
                                             ;  
