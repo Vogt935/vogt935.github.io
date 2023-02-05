@@ -7,9 +7,12 @@ function buildGamesList() {
     
     filteredGamesList.forEach((element) => {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
     
-    filteredGamesList.forEach((element) => function(conversionToHours){
+    filteredGamesList.forEach((element) => {
+        element.owner = actingUser;
         element.playtime_forever = element.playtime_forever / 60;
-    });  
+    });
+                    
+                                            ;  
     filteredGamesList.forEach((element) => function(addActingUser) {
         element.owners = actingUser;
     });
