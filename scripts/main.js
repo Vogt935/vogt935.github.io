@@ -191,7 +191,9 @@ console.log("Teilabschnitt 2 geladen");
                     i++;
                     } 
                 
-            } 
+            }
+    }
+    
 
 
 function restartFL(){
@@ -235,7 +237,7 @@ function restartFL(){
 console.log("Teilabschnitt 3 geladen");
 
 
-
+/*
 //Diese Funktion befüllt die Friends-Objekte mit Infos
     function fillUserData(searchedUser){
         let id = ""+searchedUser.steamID;
@@ -282,7 +284,7 @@ console.log("Teilabschnitt 3 geladen");
     }
 
 console.log("Teilabschnitt 2 geladen");
-
+*/
 
 
 //EN: request to save a Steam ID if there is non in local storage
