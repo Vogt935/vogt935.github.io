@@ -282,9 +282,10 @@ function userDataList(){
         actingUser.friendsListObjects.forEach((element) => {element.adHocGroup = false});
         adHocCounter = 0;
         
-        document.querySelectorAll("flButton").forEach(function(changeBGColor){
-            button.style.background="#c5c3c0";
-        });
+        while (k <= actingUser.friendsListObjects.length){
+            document.getElementById("friend"+k).style.background="#c5c3c0";
+            k++
+        }
         buildGamesList();
         document.getElementById("deleteAdHocGroup").style.visibility="hidden";
     
