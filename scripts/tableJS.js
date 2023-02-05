@@ -3,21 +3,31 @@ var filteredGamesList;
 function buildGamesList(){
     let table = document.getElementById("ergebnisListe");
     table.innerHTML="";
-    filteredGamesList = actingUser.ownedGames;
-    filteredGamesList.forEach(function(umrechnung){
-        filteredGamesList.playtime_forever = filteredGamesList.playtime_forever / 60;
-    });
-        
-    }
+    filteredGamesList = actingUser.ownedGames;    
     
     filteredGamesList.forEach((element) => {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
+    
+    filteredGamesList.forEach(function(conversionToHours){
+        filteredGamesList.playtime_forever = filteredGamesList.playtime_forever / 60;
+    });  
+    filteredGamesList.forEach(function(addActingUser) {
+        filteredGamesList.owners = actingUser;
+    });
+    
     let data = Object.keys(filteredGamesList[0]);
     var reducedList = filteredGamesList.slice(0,20);
+    buildingProgress();
+}
+
+
+function buildingProgress(){
+    
     generateTableHead(table, data);
     generateTable(table, reducedList);
-
-    generateTableAvatars();
+    let input, filter, tr, td, txtValue;
     generateTableButtons();
+    generateTableAvatars();
+    
 }
 
 
@@ -29,12 +39,8 @@ function sortTablePlaytimeMost(){
     let sortedGamesList = filteredGamesList.sort((a,b) => b.playtime_forever - a.playtime_forever);
     let data = Object.keys(sortedGamesList[0]);
     let reducedList = sortedGamesList.filter(sortedGamesList => sortedGamesList.playtime_forever > 60);
-    generateTableHead(table, data);
-    generateTable(table, reducedList);
-    let input, filter, tr, td, txtValue;
-    generateTableButtons();
-    generateTableAvatars();
-
+    
+    buildingProgress();
 
 }
 
@@ -43,12 +49,8 @@ function sortTablePlaytimeLeast(){
     table.innerHTML="";
     let sortedGamesList = filteredGamesList.sort((a,b) => a.playtime_forever - b.playtime_forever);
     let data = Object.keys(sortedGamesList[0]);
-    generateTableHead(table, data);
-    generateTable(table, sortedGamesList);
-    let input, filter, tr, td, txtValue;
-    generateTableButtons();
-    generateTableAvatars();
-
+  
+    buildingProgress();
 }
 
 function sortAllSteamGames(){
@@ -56,11 +58,8 @@ function sortAllSteamGames(){
     table.innerHTML="";
     filteredGamesList = ownedGames.response.games;
     let data = Object.keys(filteredGamesList[0]);
-    generateTableHead(table, data);
-    generateTable(table, filteredGamesList);
-    generateTableButtons();
-    generateTableAvatars();
 
+    buildingProgress();
 }
 
 
