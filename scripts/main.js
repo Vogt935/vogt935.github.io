@@ -190,7 +190,7 @@ function restartFL(){
     lengthFL = (actingUser.friendsListObjects.length)-1;
     document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
     document.getElementById("adHocCounter").style.visibility="visible";
-    document.getElementById("deleteSteamID").style.visibility="visible"
+    document.getElementById("deleteSteamID").style.visibility="visible";
             
     let i = 0;
                             console.log("i ist wieder: "+i);
@@ -295,8 +295,9 @@ function userDataList(){
 
 
     function eraseAdHocGroup(){
-        actingUser.friendsListObjects.forEach((element) => {element.adHocGroup = false}
+        actingUser.friendsListObjects.forEach((element) => {element.adHocGroup = false});
         buildGamesList();
+        document.getElementById("deleteAdHocGroup").style.visibility="hidden";
                                              )
     }
 
@@ -304,6 +305,7 @@ function userDataList(){
 //reload the number of friends in AdHoc-Group
     function reloadAdHocStatus(){
         document.getElementById("adHocCounter").innerHTML=adHocCounter;
+        document.getElementById("deleteAdHocGroup").style.visibility="visible";
         buildGamesList();
         }
 
@@ -328,7 +330,8 @@ function userDataList(){
             //reload counterFriends
             adHocCounter++; 
             reloadAdHocStatus();
-        }}
+        }
+    }
 
 
     function hideHomeText(){
