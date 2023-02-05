@@ -6,21 +6,22 @@ function buildGamesList() {
     filteredGamesList = actingUser.ownedGames;    
     
     filteredGamesList.forEach((element) => {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
+
+filteredGamesList.forEach((element) => element.yourPlaytime_forever = element.playtime_forever);
     
 filteredGamesList.forEach((element) => {
-element.owners = [actingUser];
-if (actingUser.friendsListObjects) {
-actingUser.friendsListObjects.forEach((friend) => {
-if (friend.ownedGames) {
-friend.ownedGames.forEach((game) => {
-if (game && game.appid === element.appid) {
-element.owners.push(friend);
-}
-});
-}
-});
-}
-element.playtime_forever = Math.round(element.playtime_forever / 60);
+    element.owners = [actingUser];
+    if (actingUser.friendsListObjects) { actingUser.friendsListObjects.forEach((friend) => {
+        if (friend.ownedGames) {
+            friend.ownedGames.forEach((game) => {
+            if (game && game.appid === element.appid) {
+                element.owners.push(friend);
+                element.playtime_forever += Math.round(game.playtime_forever / 60);
+                }
+            });
+        }
+    });
+    }
 });
                     
                                             ;  
@@ -109,7 +110,7 @@ function searchFunctionErgebnisliste() {
 function generateTableHead(table, data){
     let thead = table.createTHead();
     let row = thead.insertRow();
-    for (let j=0; j<4; j++){
+    for (let j=0; j<5; j++){
         let th = document.createElement("th");
         let text = document.createTextNode("...");
         th.appendChild(text);
@@ -119,7 +120,8 @@ function generateTableHead(table, data){
     headers[0].innerHTML = "";
     headers[1].innerHTML = "Titel des Spiels";
     headers[2].innerHTML = "Spielzeit Gesamt (Stunden)";
-    headers[3].innerHTML = "Freunde, die das Spiel besitzen";
+    headers[3].innerHTML = "";
+    headers[4].innerHTML = "Freunde, die das Spiel besitzen";
     
 }
 
