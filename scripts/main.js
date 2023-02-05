@@ -50,7 +50,8 @@
 //functions: 
 //main function, set Steam ID, fetch information from Steam Web API
     function routineActingUser(mySteamID){
-        cosole.log(actingUser);
+        console.log(actingUser);
+        console.log("Start routine");
         actingUser.steamID = mySteamID;
                 cosole.log(actingUser);
         fillUserStats(mySteamID, actingUser);
@@ -84,7 +85,7 @@
 //function to set the Users Steam ID and save it as "name" in local storage
     function getAndSaveUserID() {
         console.log("Erstmal alten Kram löschen!")
-        //deleteSteamIDfromLocalStorage();
+        deleteSteamIDfromLocalStorage();
         //console.log("get input!");
         let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:", "76561198101457809");
         //console.log("got input!");
@@ -197,7 +198,7 @@ function restartFL(){
                 var id = "entryFriend"+i;
                 let friendEntry = document.getElementById(id);
                 
-                let avatar = document.createElement("img");
+                let atar = document.createElement("img");
                     avatar.src = actingUser.friendsListObjects[i].avatar;
                     avatar.classList.add("friendsPic");
                     friendEntry.appendChild(avatar);
@@ -346,7 +347,7 @@ console.log("Teilabschnitt 3 geladen");
     async function loadingAnimationFreunde(duration, start, reloadNeeded) {
         let i = start;
         while (i < duration) {
-            //console.log("Loading: " + i + "%");
+            console.log("Loading: " + i + "%");
             document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
             await sleep(55);
             i++;
@@ -365,7 +366,7 @@ console.log("Teilabschnitt 3 geladen");
             i++;
             await sleep(35);
 
-      }
+        }
         document.getElementById("platzhalterLadebalken").innerHTML="";
         buildGamesList();
         console.log("Done");
