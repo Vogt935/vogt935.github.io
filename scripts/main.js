@@ -47,6 +47,7 @@
 
 
 
+
 //functions: 
 //main function, set Steam ID, fetch information from Steam Web API
     function routineActingUser(mySteamID){
@@ -81,6 +82,21 @@
         
     document.getElementById("absatzListe").style.display="inline";
     }
+
+
+
+
+// delete the saved Steam-ID
+    function deleteSteamIDfromLocalStorage(){
+        localStorage.removeItem("savedIDstring");
+        window.location.reload();
+        alert("Steam-ID gelöscht!");
+        
+}
+}
+
+
+
 
 //function to set the Users Steam ID and save it as "name" in local storage
     function getAndSaveUserID() {
@@ -289,14 +305,7 @@ if (!localStorage.getItem("savedIDstring")) {
     }
 
 
-// delete the saved Steam-ID
-    function deleteSteamIDfromLocalStorage(){
-        localStorage.removeItem("savedIDstring");
-        window.location.reload();
-        alert("Steam-ID gelöscht!");
-        
-}
-}
+
 
 //reload the number of friends in AdHoc-Group
     function reloadAdHocStatus(){
