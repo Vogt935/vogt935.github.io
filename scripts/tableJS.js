@@ -4,6 +4,11 @@ function buildGamesList(){
     let table = document.getElementById("ergebnisListe");
     table.innerHTML="";
     filteredGamesList = actingUser.ownedGames;
+    filteredGamesList.forEach(function(umrechnung){
+        filteredGamesList.playtime_forever = filteredGamesList.playtime_forever / 60;
+    });
+        
+    }
     
     filteredGamesList.forEach((element) => {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
     let data = Object.keys(filteredGamesList[0]);
@@ -100,7 +105,7 @@ function generateTableHead(table, data){
     var headers = document.getElementsByTagName("th");
     headers[0].innerHTML = "";
     headers[1].innerHTML = "Titel des Spiels";
-    headers[2].innerHTML = "Spielzeit Gesamt";
+    headers[2].innerHTML = "Spielzeit Gesamt (Stunden)";
     headers[3].innerHTML = "Freunde, die das Spiel besitzen";
     
 }
