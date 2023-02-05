@@ -215,34 +215,6 @@ function restartFL(){
 
 
 
-
-/*
-
-//Diese Funktion befüllt die Friends-Objekte mit Infos
-    function fillUserData(searchedUser){
-        let id = ""+searchedUser.steamID;
-        let idResponse = friendsUserData.response.players.find(({steamid}) => steamid === id)
-        searchedUser.name = idResponse.personaname;
-        searchedUser.avatar = idResponse.avatarmedium;
-        searchedUser.online = idResponse.profilestate;
-        console.log("Tada!");
-    }
-
-//Alle Friendsobjekte werden befüllt
-function userDataList(){
-    actingUser.friendsListObjects.forEach(element => fillUserData(element));
-}
-
-*/
-
-
-
-
-
-
-
-
-
 //request to save a Steam ID if there is non in local storage
 
 
@@ -259,23 +231,13 @@ function userDataList(){
         newSIDButton.textContent = "Gespeicherte Steam-ID ändern";
     }
 
-/*
-//Erstellung der Friendslist
-    const lengthFl= actingUser.friends.length-1;
-    if(lengthFl > 0) {
-        document.getElementById("friendlist").innerHTML="Es sind "+actingUser.friendsListObjects.length+" Freunde online:";
-    }
-*/
-
 
 // delete the saved Steam-ID
     function deleteSteamIDfromLocalStorage(){
         localStorage.removeItem("savedIDstring");
         window.location.reload();
         alert("Steam-ID gelöscht!");
-        
-}
-
+        }
 
 
     function eraseAdHocGroup(){
@@ -288,7 +250,6 @@ function userDataList(){
         }
         buildGamesList();
         document.getElementById("deleteAdHocGroup").style.visibility="hidden";
-    
     }
 
 
