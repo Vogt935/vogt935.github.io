@@ -50,13 +50,18 @@
 //functions: 
 //main function, set Steam ID, fetch information from Steam Web API
     function routineActingUser(mySteamID){
+        cosole.log(actingUser);
         actingUser.steamID = mySteamID;
+                cosole.log(actingUser);
         fillUserStats(mySteamID, actingUser);
+                cosole.log(actingUser);
         fillFriendList(mySteamID, actingUser);
+                cosole.log(actingUser);
         fillOwnedGames(mySteamID, actingUser);
+                cosole.log(actingUser);
         console.log("fill-Sachen durchgelaufen.")
             loadingAnimationFreunde(80, 0, false);
-
+                cosole.log(actingUser);
 
 
         sleep(6000);
