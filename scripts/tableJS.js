@@ -16,11 +16,11 @@ function buildGamesList() {
     
     let data = Object.keys(filteredGamesList[0]);
     var reducedList = filteredGamesList.slice(0,20);
-    buildingProgress(data, reducedList);
+    buildingProgress(data, reducedList,table);
 }
 
 
-function buildingProgress(data, list){
+function buildingProgress(data, list, table){
     
     generateTableHead(table, data);
     generateTable(table, list);
@@ -40,7 +40,7 @@ function sortTablePlaytimeMost(){
     let data = Object.keys(sortedGamesList[0]);
     let reducedList = sortedGamesList.filter(sortedGamesList => sortedGamesList.playtime_forever > 60);
     
-    buildingProgress(data, reducedList);
+    buildingProgress(data, reducedList, table);
 
 }
 
@@ -50,7 +50,7 @@ function sortTablePlaytimeLeast(){
     let sortedGamesList = filteredGamesList.sort((a,b) => a.playtime_forever - b.playtime_forever);
     let data = Object.keys(sortedGamesList[0]);
   
-    buildingProgress(data, sortedGamesList);
+    buildingProgress(data, sortedGamesList, table);
 }
 
 function sortAllSteamGames(){
@@ -59,7 +59,7 @@ function sortAllSteamGames(){
     filteredGamesList = ownedGames.response.games;
     let data = Object.keys(filteredGamesList[0]);
 
-    buildingProgress(data, filteredGamesList);
+    buildingProgress(data, filteredGamesList, table);
 }
 
 
