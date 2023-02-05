@@ -7,17 +7,21 @@ function buildGamesList() {
     
     filteredGamesList.forEach((element) => {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
     
-    filteredGamesList.forEach((element) => {
-        element.owner = [actingUser];
-            actingUser.friendsListObjects.forEach((friend) => {
-                friend.ownedGames.forEach((ownedGame) => {
-                    if (ownedGame.appid === element.appid) {
-                        element.owners.push(friend);
-                    }
-                });
-            });         
-        element.playtime_forever = Math.round(element.playtime_forever / 60);
-    });
+filteredGamesList.forEach((element) => {
+element.owners = [actingUser];
+if (actingUser.friendsListObjects) {
+actingUser.friendsListObjects.forEach((friend) => {
+if (friend.ownedGames) {
+friend.ownedGames.forEach((game) => {
+if (game && game.appid === element.appid) {
+element.owners.push(friend);
+}
+});
+}
+});
+}
+element.playtime_forever = Math.round(element.playtime_forever / 60);
+});
                     
                                             ;  
     filteredGamesList.forEach((element) => function(addActingUser) {
