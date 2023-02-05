@@ -294,15 +294,16 @@ console.log("Teilabschnitt 2 geladen");
 //DE: Abfrage, ob eine Steam-ID im localStorage ist und ein paar Darstellungsänderungen
 function start (){
 
-if (!localStorage.getItem("savedIDstring")) {
-        userHeading.textContent = "";
-    } else {
-        const storedIDstring = localStorage.getItem("savedIDstring");
-        routineActingUser(storedIDstring);
-        actingUser.savedID = true;
-//        mySID.textContent = "Willkommen zurück, "+actingUser.name;
-        newSIDButton.textContent = "Gespeicherte Steam-ID ändern";
-    }
+    if (!localStorage.getItem("savedIDstring")) {
+            userHeading.textContent = "";
+        } else {
+            const storedIDstring = localStorage.getItem("savedIDstring");
+            routineActingUser(storedIDstring);
+            actingUser.savedID = true;
+    //        mySID.textContent = "Willkommen zurück, "+actingUser.name;
+            newSIDButton.textContent = "Gespeicherte Steam-ID ändern";
+        }
+}
 
 
 
