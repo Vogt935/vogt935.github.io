@@ -282,9 +282,9 @@ function userDataList(){
         actingUser.friendsListObjects.forEach((element) => {element.adHocGroup = false});
         adHocCounter = 0;
         
-        while (k <= actingUser.friendsListObjects.length){
-            document.getElementById("friend"+k).style.background="#c5c3c0";
-            k++
+        while (i <= actingUser.friendsListObjects.length){
+            document.getElementById("friend"+i).style.background="#c5c3c0";
+            i++
         }
         buildGamesList();
         document.getElementById("deleteAdHocGroup").style.visibility="hidden";
