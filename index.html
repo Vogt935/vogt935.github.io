@@ -9,10 +9,7 @@
 
 <body>
 
-        <script src="scripts/testdaten.js"></script>
-    <script src="scripts/userData.js"></script>
     <script src="https://kit.fontawesome.com/6e40f6aa4b.js" crossorigin="anonymous"></script>
-
     <script src="scripts/tableJS.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/requestSteamJS.js"></script>
@@ -47,7 +44,7 @@
                 
             <ergebnisListe id="absatzListe">
                 <p>Über diese Buttons könnt Ihr die unten zu findende Spieleliste filtern:</p>
-                 
+                
                 <input type="text" id="inputSearchErgebnisliste" onkeyup="searchFunctionErgebnisliste()" placeholder="Such nach einem Spiel">
                 
                 <navList> 
@@ -71,7 +68,7 @@
         <button class="newSteamID" id="my-steamid-button" onclick="getAndSaveUserID()"> Neue Steam ID eingeben</button>
         <flHeader>
             <p id="userHeading">Nicht angemeldet...</p>       
-            <button id="deleteSteamID" class="fa-regular fa-trash-can" onclick="deleteSteamIDfromLocalStorage()"> </button>
+            <button id="deleteSteamID" class="fa-regular fa-trash-can" onclick="eraseSteamIDfromLocalStorage()"> </button>
         </flHeader>
 
         
