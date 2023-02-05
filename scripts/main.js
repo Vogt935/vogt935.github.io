@@ -54,16 +54,16 @@
         console.log(actingUser);
         console.log("Start routine");
         actingUser.steamID = mySteamID;
-                cosole.log(actingUser);
+                console.log(actingUser);
         fillUserStats(mySteamID, actingUser);
-                cosole.log(actingUser);
+                console.log(actingUser);
         fillFriendList(mySteamID, actingUser);
-                cosole.log(actingUser);
+                console.log(actingUser);
         fillOwnedGames(mySteamID, actingUser);
-                cosole.log(actingUser);
+                console.log(actingUser);
         console.log("fill-Sachen durchgelaufen.")
             loadingAnimationFreunde(80, 0, false);
-                cosole.log(actingUser);
+                console.log(actingUser);
 
 
         sleep(6000);
@@ -71,7 +71,7 @@
         //lengthFL = actingUser.friends.length;
                     //console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
         buildFriendsList();
-        loadingAnimationFreunde(20, 80, true);
+        loadingAnimationFreunde(101, 80, true);
 
         document.getElementById("userHeading").textContent = `Angemeldet mit Steam-ID: ${mySteamID}`;
         if (localStorage.getItem("homeHidden") == true) {
@@ -355,10 +355,10 @@ console.log("Teilabschnitt 3 geladen");
 
 
     async function loadingAnimationFreunde(duration, start, reloadNeeded) {
-        let i = start;
-        while (i < duration) {
-            console.log("Loading: " + i + "%");
-            document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
+        let j = start;
+        while (j < duration) {
+            console.log("Loading: " + j + "%");
+            document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+j+" %";
             await sleep(55);
             i++;
         }
