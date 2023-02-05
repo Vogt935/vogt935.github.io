@@ -25,6 +25,7 @@
             this.friendsListObjects = [];
             this.savedID= false;
             this.adHocGroup=false;
+            this.friends=[];
         }            
     }
 
