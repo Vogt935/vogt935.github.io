@@ -128,7 +128,7 @@ function searchFunctionErgebnisliste() {
 function generateTableHead(table, data){
     let thead = table.createTHead();
     let row = thead.insertRow();
-    for (let j=0; j<5; j++){
+    for (let j=0; j<6; j++){
         let th = document.createElement("th");
         let text = document.createTextNode("...");
         th.appendChild(text);
@@ -139,6 +139,7 @@ function generateTableHead(table, data){
     headers[1].innerHTML = "Titel des Spiels";
     headers[2].innerHTML = "Deine Spielzeit (Stunden)";
     headers[3].innerHTML = "Spielzeit Gruppe (Stunden)";
+    headers[4].innerHTML = "";
     headers[5].innerHTML = "Freunde, die das Spiel besitzen";
     
 }
