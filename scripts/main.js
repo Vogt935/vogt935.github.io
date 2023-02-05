@@ -301,6 +301,7 @@ function userDataList(){
 //reload the number of friends in AdHoc-Group
     function reloadAdHocStatus(){
         document.getElementById("adHocCounter").innerHTML=adHocCounter;
+        buildGamesList();
         }
 
 //add friend to AdHoc-Group by clicking on his Name

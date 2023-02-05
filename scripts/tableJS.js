@@ -15,16 +15,16 @@ function buildGamesList() {
     filteredGamesList.forEach((element) => {
         element.owners = [actingUser];
         if (actingUser.friendsListObjects) { actingUser.friendsListObjects.forEach((friend) => {
-            if (friend.ownedGames && friend.adHocGroupe === true) {
+            if (friend.ownedGames && friend.adHocGroup === true) {
                 friend.ownedGames.forEach((game) => {
                 if (game && game.appid === element.appid) {
                     element.owners.push(friend);
-                    element.playtime_forever += game.playtime_forever);
+                    element.playtime_forever += game.playtime_forever;
                     }
                 });
-            })
-        }});
-    }
+            }
+        })};
+    })}
         
     else {
         filteredGamesList.forEach((element) => {
@@ -34,12 +34,12 @@ function buildGamesList() {
                 friend.ownedGames.forEach((game) => {
                 if (game && game.appid === element.appid) {
                     element.owners.push(friend);
-                    element.playtime_forever += game.playtime_forever);
+                    element.playtime_forever += game.playtime_forever;
                     }
-                });
-            })
-        }});
-    }
+                };
+            )}
+        });
+    }}
 
         
     filteredGamesList.forEach((element) => {
