@@ -64,21 +64,7 @@ function sortTablePlaytimeMost(){
 
 }
 
-function selectTableForAdHocGroup(){
-    let table = document.getElementById("ergebnisListe");
-    table.innerHTML="";
-    let selectedGamesList = filteredGamesList.filter(game => {
-        let isAdHoc = false;
-        game.owners.forEach(owner => {
-            if (owner.adHocGroup === true){
-                isAdHoc = true;
-            }
-        })
-        return isAdHoc;
-    })
-    
-    buildingProgress(data, selectedGamesList, table)
-}
+
 
 function sortTablePlaytimeLeast(){
     let table = document.getElementById("ergebnisListe");
@@ -97,6 +83,48 @@ function sortAllSteamGames(){
 
     buildingProgress(data, filteredGamesList, table);
 }
+
+
+
+
+function sortTableByOwnersCount() {
+    let table = document.getElementById("ergebnisListe");
+    table.innerHTML = "";
+    let sortedGamesList = filteredGamesList.sort((a, b) => b.owners.length - a.owners.length);
+    let data = Object.keys(sortedGamesList[0]);
+    buildingProgress(data, sortedGamesList, table);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function selectTableForAdHocGroup(){
+    let table = document.getElementById("ergebnisListe");
+    table.innerHTML="";
+    let selectedGamesList = filteredGamesList.filter(game => {
+        let isAdHoc = false;
+        game.owners.forEach(owner => {
+            if (owner.adHocGroup === true){
+                isAdHoc = true;
+            }
+        })
+        return isAdHoc;
+    })
+    
+    buildingProgress(data, selectedGamesList, table)
+}
+
+
+
+
 
 
 //Searchbar function
