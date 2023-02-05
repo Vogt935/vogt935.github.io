@@ -100,7 +100,6 @@ function sortTablePlaytimeLeast(){
 function sortAllSteamGames(){
     let table = document.getElementById("ergebnisListe");
     table.innerHTML="";
-    filteredGamesList = ownedGames.response.games;
     let data = Object.keys(filteredGamesList[0]);
 
     buildingProgress(data, filteredGamesList, table);
@@ -190,9 +189,8 @@ function generateTableHead(table, data){
     var headers = document.getElementsByTagName("th");
     headers[0].innerHTML = "";
     headers[1].innerHTML = "Titel des Spiels";
-    headers[2].innerHTML = "Deine Spielzeit (Stunden)";
-    headers[3].innerHTML = "Spielzeit Gruppe (Stunden)";
-    
+    headers[2].innerHTML = "Spielzeit Gruppe (Stunden)";
+    headers[3].innerHTML = "Deine Spielzeit (Stunden)";
     headers[4].innerHTML = "";
     headers[5].innerHTML = "Freunde, die das Spiel besitzen";
     
