@@ -99,9 +99,7 @@ function sortTableByOwnersCount() {
 
 
 
-function selectAdHocGroup (){
-    
-}
+
 
 
 
