@@ -190,13 +190,8 @@ console.log("Teilabschnitt 2 geladen");
                     document.getElementById("friendslist").appendChild(friendEntry);
                     i++;
                     } 
+                
             } 
-
-                 document.getElementById("friendslist").appendChild(friendEntry);
-                
-                
-                i++;
-                } 
 
 
 function restartFL(){
@@ -360,7 +355,7 @@ console.log("Teilabschnitt 3 geladen");
             console.log("Loading: " + j + "%");
             document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+j+" %";
             await sleep(55);
-            i++;
+            j++;
         }
         if (reloadNeeded == true){
             restartFL();
