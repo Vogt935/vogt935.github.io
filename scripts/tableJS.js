@@ -61,6 +61,22 @@ function sortTablePlaytimeMost(){
 
 }
 
+function selectTableForAdHocGroup(){
+    let table = document.getElementById("ergebnisListe");
+    table.innerHTML="";
+    let selectedGamesList = filteredGamesList.filter(game => {
+        let isAdHoc = false;
+        game.owners.forEach(owner => {
+            if (owner.adHocGroup === true){
+                isAdHoc = true;
+            }
+        })
+        return isAdHoc;
+    })
+    
+    buildingProgress(data, selectedGamesList, table)
+}
+
 function sortTablePlaytimeLeast(){
     let table = document.getElementById("ergebnisListe");
     table.innerHTML="";
@@ -122,8 +138,8 @@ function generateTableHead(table, data){
     headers[0].innerHTML = "";
     headers[1].innerHTML = "Titel des Spiels";
     headers[2].innerHTML = "Deine Spielzeit (Stunden)";
-    headers[4].innerHTML = "Spielzeit Gruppe (Stunden)";
-    headers[4].innerHTML = "Freunde, die das Spiel besitzen";
+    headers[3].innerHTML = "Spielzeit Gruppe (Stunden)";
+    headers[5].innerHTML = "Freunde, die das Spiel besitzen";
     
 }
 

@@ -361,7 +361,7 @@ function sleep(ms){
 async function loadingAnimationFreunde() {
   let i = 0;
   while (i < 100) {
-    console.log("Loading: " + i + "%");
+    //console.log("Loading: " + i + "%");
     document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
     i++;
     await sleep(35);
@@ -375,7 +375,7 @@ async function loadingAnimationFreunde() {
 async function loadingAnimationSpiele() {
   let i = 0;
   while (i < 100) {
-    console.log("Loading: " + i + "%");
+    //console.log("Loading: " + i + "%");
     document.getElementById("platzhalterLadebalken").innerHTML="Spiele werden geladen: "+i+" %";
     i++;
     await sleep(35);
