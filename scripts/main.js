@@ -245,12 +245,12 @@ function restartFL(){
         adHocCounter = 0;
         i = 0;
         while (i <= actingUser.friendsListObjects.length){
-            document.getElementById("friend"+i).style.background="#577e87";
-            document.getElementById("friend"+i).style.color="white";
-            i++
+                document.getElementById("friend"+clickedFriend).style.background="#c5c3c0";
+                document.getElementById("friend"+clickedFriend).style.color="black";
+                i++
         }
-        buildGamesList();
         document.getElementById("deleteAdHocGroup").style.visibility="hidden";
+        reloadAdHocStatus();
     }
 
 
