@@ -8,8 +8,7 @@ function buildGamesList() {
     filteredGamesList.forEach((element) => {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
 
 filteredGamesList.forEach((element) =>          
-                          {element.yourPlaytime_forever = element.playtime_forever;
-        element.yourPlaytime_forever = Math.round(element.yourPlaytime_forever)});
+                          {element.yourPlaytime_forever = element.playtime_forever});
     
 filteredGamesList.forEach((element) => {
     element.owners = [actingUser];
@@ -18,13 +17,17 @@ filteredGamesList.forEach((element) => {
             friend.ownedGames.forEach((game) => {
             if (game && game.appid === element.appid) {
                 element.owners.push(friend);
-                element.playtime_forever += Math.round(game.playtime_forever / 60);
+                element.playtime_forever += game.playtime_forever);
                 }
             });
         }
     });
     }
 });
+filteredGamesList.forEach((element) => {
+    element.playtime_forever = Math.round(element.playtime_forever / 60);
+    element.yourPlaytime_forever = Math.round(element.yourPlaytime_forever / 60);
+})
                     
                                             ;  
     filteredGamesList.forEach((element) => function(addActingUser) {
