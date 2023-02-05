@@ -87,7 +87,7 @@
 
 
 // delete the saved Steam-ID
-    function deleteSteamIDfromLocalStorage(){
+    function eraseSteamIDfromLocalStorage(){
         localStorage.removeItem("savedIDstring");
         window.location.reload();
         alert("Steam-ID gelöscht!");
@@ -101,7 +101,7 @@
 //function to set the Users Steam ID and save it as "name" in local storage
     function getAndSaveUserID() {
         console.log("Erstmal alten Kram löschen!")
-        deleteSteamIDfromLocalStorage();
+        eraseSteamIDfromLocalStorage();
         //console.log("get input!");
         let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:", "76561198101457809");
         //console.log("got input!");
