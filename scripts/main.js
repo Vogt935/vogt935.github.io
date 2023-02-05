@@ -43,15 +43,6 @@
    // const webApiKey = "9DE0CBEBE65E780B49D58853EA3CAA15";
     const actingUser = new User();
 
-    var apiResponse;
-
-
-       
-
-
-    
-    
-
     let i = 0;
     let n = 0;
     let clickedFriend=10;
@@ -64,7 +55,6 @@
 //main function, set Steam ID, fetch information from Steam Web API
     function routineActingUser(mySteamID){
         
-        var apiResponse;
         actingUser.steamID = mySteamID;
         fillUserStats(mySteamID, actingUser);
 
@@ -277,12 +267,6 @@ function userDataList(){
     }
 */
 
-//onclick function for starting a chat with friends
-
-    function startChatWithThisID(id){
-        re
-    }
-
 
 // delete the saved Steam-ID
     function deleteSteamIDfromLocalStorage(){
@@ -297,7 +281,10 @@ function userDataList(){
     function eraseAdHocGroup(){
         actingUser.friendsListObjects.forEach((element) => {element.adHocGroup = false});
         adHocCounter = 0;
-        document.getElementsByClassName("flButton").style.background="#c5c3c0";
+        
+        document.querySelectorAll("flButton").forEach(function(changeBGColor){
+            button.style.background="#c5c3c0";
+        });
         buildGamesList();
         document.getElementById("deleteAdHocGroup").style.visibility="hidden";
     
