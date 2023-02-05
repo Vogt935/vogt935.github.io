@@ -42,7 +42,7 @@
     let n = 0;
     let clickedFriend=10;
     let adHocCounter=0;
-    var lengthFL = 0;
+    //var lengthFL = 0;
 
 
 
@@ -59,9 +59,9 @@
 
 
         sleep(6000);
-        console.log("Warten rum?")
-        lengthFL = actingUser.friends.length;
-                    console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
+        console.log("Warten rum?"+actingUser.friends.length)
+        //lengthFL = actingUser.friends.length;
+                    //console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
         buildFriendsList();
         loadingAnimationFreunde(20, 80, true);
 
@@ -138,18 +138,18 @@ console.log("Teilabschnitt 1 geladen");
         console.log("Fill Friends List fertig")
     }
 
-
+console.log("Teilabschnitt 2 geladen");
 
 // build the frontend friendlist from the friendlist (not yet user-centered but input-centered)
     function buildFriendsList(){
-            lengthFL = (actingUser.friends.length)-1;
+            //lengthFL = (actingUser.friends.length)-1;
 
-            console.log("Die länge der Freundesliste ist: "+lengthFL);
+            //console.log("Die länge der Freundesliste ist: "+lengthFL);
             actingUser.friendsListObjects = [];
 
-            if(lengthFL > 0) {
+            if((actingUser.friends.length -1) > 0) {
                 let i = 0;
-                while (i <= lengthFL) {
+                while (i <= (actingUser.friends.length -1)) {
                     let id = "friend"+i;
 
                     console.log(id);
@@ -174,18 +174,17 @@ console.log("Teilabschnitt 1 geladen");
                 
                 i++;
                 } 
-        } 
-}
+
 
 function restartFL(){
-    lengthFL = (actingUser.friendsListObjects.length)-1;
-    document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
+    //lengthFL = (actingUser.friendsListObjects.length-1);
+    //document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
     document.getElementById("adHocCounter").style.visibility="visible";
     document.getElementById("deleteSteamID").style.visibility="visible"
             
     let i = 0;
-                            console.log("i ist wieder: "+i);
-            while (i <= lengthFL){
+            console.log("i ist wieder: "+i);
+            while (i <= (actingUser.friendsListObjects.length-1)){
                 console.log("start der erstellung");
 
                             
@@ -215,9 +214,9 @@ function restartFL(){
 }
 
 
+console.log("Teilabschnitt 3 geladen");
 
 
-/*
 
 //Diese Funktion befüllt die Friends-Objekte mit Infos
     function fillUserData(searchedUser){
@@ -227,18 +226,18 @@ function restartFL(){
         searchedUser.avatar = idResponse.avatarmedium;
         searchedUser.online = idResponse.profilestate;
         console.log("Tada!");
->>>>>>> parent of cdcc8b0 (v1.0)
+
     }
 
 
     function restartFL(){
-        lengthFL = (actingUser.friendsListObjects.length)-1;
-        document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
+        //lengthFL = (actingUser.friendsListObjects.length)-1;
+        //document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
         document.getElementById("adHocCounter").style.visibility="visible";
         document.getElementById("deleteSteamID").style.visibility="visible"
 
         let i = 0;
-            while (i <= lengthFL){
+            while (i <= (actingUser.friendsListObjects.length)-1){
                     console.log("start der Erstellung der Freundesliste");
 
                     var id = "entryFriend"+i;
@@ -388,38 +387,7 @@ Das Friendpic mit Playtime-Nummer, was in index.html lag:
         return userProfile.Name
     }
 
-//TO BE USED oder zu ersetzen:
 
-
-//Fetch-Funktionen? -> Nach node.js erst notwendig bzw. für Node.js notwendig
-/* 
-function fetchOwnedGames(userProfile){
-    gameslist = [1,2];
-    //fetch gameslist from steam API
-    this.myOwnedGames = gameslist;
-    console.log("function finished");
-}
-
-function fetchSetFriendsList(userProfile){
-    friendsList = [4,5];
-    //fetc friendList from steam API
-    userProfile.myFriendsList = friendsList;
-    console.log("function finished");
-}
-
-function setSteamUser(inputSteamID, steamUser){
-    //get Steam ID from Input per Button
-    owningSteamUser.mySteamid = inputSteamID;
-    //buildUpByNewSteamID(owningSteamUser.mySteamid);
-    console.log("function finished");
-    
-}
-
-
-function buildUpByNewSteamID(activeSteamUser){
-    fetchFriendsList(activeSteamUser);
-    fetchGameStats(activeSteamUser);
-    }
 */
 
 
@@ -430,12 +398,9 @@ function buildUpByNewSteamID(activeSteamUser){
       const data = await response.json();
       return data;
     }
-
-/*    getPlayerSummary(actingUser.steamID).then(response => {
-      console.log(response.response.players);
-    });
-*/
-
+   
+   
+   
     async function getFriendList(reqsid2) {
       const response = await fetch(`http://157.245.17.114:3000/friend_list/${reqsid2}`);
       const data = await response.json();
@@ -450,6 +415,10 @@ function buildUpByNewSteamID(activeSteamUser){
 
 
 /*
+    getPlayerSummary(actingUser.steamID).then(response => {
+    console.log(response.response.players);
+    });
+
     getPlayerSummary(actingUser.steamID).then(response => {
       console.log(response.response.players);
     });
