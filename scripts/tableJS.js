@@ -20,11 +20,14 @@ function buildGamesList() {
                 if (game && game.appid === element.appid) {
                     element.owners.push(friend);
                     element.playtime_forever += game.playtime_forever;
-                    }
-                });
-            }
-        })};
-    })}
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
+        
         
     else {
         filteredGamesList.forEach((element) => {
@@ -35,12 +38,13 @@ function buildGamesList() {
                 if (game && game.appid === element.appid) {
                     element.owners.push(friend);
                     element.playtime_forever += game.playtime_forever;
-                    }
-                };
-            )}
-        });
-    }}
-
+                        }
+                    });
+                }
+            });
+        }
+    });
+}
         
     filteredGamesList.forEach((element) => {
         element.playtime_forever = Math.round(element.playtime_forever / 60);
