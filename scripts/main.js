@@ -245,8 +245,8 @@ function restartFL(){
         adHocCounter = 0;
         i = 0;
         while (i <= actingUser.friendsListObjects.length){
-                document.getElementById("friend"+clickedFriend).style.background="#c5c3c0";
-                document.getElementById("friend"+clickedFriend).style.color="black";
+                document.getElementById("friend"+i).style.background="#c5c3c0";
+                document.getElementById("friend"+i).style.color="black";
                 i++
         }
         document.getElementById("deleteAdHocGroup").style.visibility="hidden";
