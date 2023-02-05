@@ -293,6 +293,14 @@ function userDataList(){
 }
 
 
+
+    function eraseAdHocGroup(){
+        actingUser.friendsListObjects.forEach((element) => {element.adHocGroup = false}
+        buildGamesList();
+                                             )
+    }
+
+
 //reload the number of friends in AdHoc-Group
     function reloadAdHocStatus(){
         document.getElementById("adHocCounter").innerHTML=adHocCounter;
