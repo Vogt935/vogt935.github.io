@@ -121,8 +121,8 @@ function generateTableHead(table, data){
     var headers = document.getElementsByTagName("th");
     headers[0].innerHTML = "";
     headers[1].innerHTML = "Titel des Spiels";
-    headers[2].innerHTML = "Spielzeit Gesamt (Stunden)";
-    headers[3].innerHTML = "";
+    headers[2].innerHTML = "Deine Spielzeit (Stunden)";
+    headers[4].innerHTML = "Spielzeit Gruppe (Stunden)";
     headers[4].innerHTML = "Freunde, die das Spiel besitzen";
     
 }
