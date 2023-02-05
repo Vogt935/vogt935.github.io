@@ -9,6 +9,13 @@ function buildGamesList() {
     
     filteredGamesList.forEach((element) => {
         element.owner = [actingUser];
+            actingUser.friendsListObjects.forEach((friend) => {
+                friend.ownedGames.forEach((ownedGame) => {
+                    if (ownedGame.appid === element.appid) {
+                        element.owners.push(friend);
+                    }
+                });
+            });         
         element.playtime_forever = Math.round(element.playtime_forever / 60);
     });
                     
@@ -138,24 +145,21 @@ function generateTableButtons(){
 }
 
 
-function generateTableAvatars(){
+function generateTableAvatars() {
     let table = document.getElementById("ergebnisListe").firstChild;
-        for (let l = 1; l < table.childElementCount; l++){
+    for (let l = 1; l < table.childElementCount; l++) {
         let owner = document.createElement("td");
-            for (let o = 0; o < 5; o++){    
+        let game = filteredGamesList[l - 1];
+        for (let o = 0; o < game.owners.length; o++) {    
             let picAvatar = document.createElement("img");
             picAvatar.classList.add("friendsPic");
-            let picSrc = actingUser.friendsListObjects[o].avatar;
-            picAvatar.src=picSrc;
+            let picSrc = game.owners[o].avatar;
+            picAvatar.src = picSrc;
             owner.appendChild(picAvatar);
-            }
-        table.children[l].appendChild(owner);
-            
-            
-            //'<img src="https://avatars.akamai.steamstatic.com/08b4b85ea46ed3ee30726e87a3ef787194c9dcbd_medium.jpg" class="friendsPic" ><img>'
-            
         }
+        table.children[l].appendChild(owner);
     }
+}
 
 
 
