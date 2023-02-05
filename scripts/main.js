@@ -93,7 +93,7 @@
         alert("Steam-ID gelöscht!");
         
 }
-}
+
 
 
 
