@@ -1,102 +1,90 @@
-var filteredGamesList;
+// Table-specific variable
+    var filteredGamesList;
 
-function buildGamesList() {
-    let table = document.getElementById("ergebnisListe");
-    table.innerHTML="";
-    filteredGamesList = actingUser.ownedGames;    
-    
-    filteredGamesList.forEach((element) => {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
-
-    filteredGamesList.forEach((element) =>          
-                              {element.yourPlaytime_forever = element.playtime_forever});
-    
-    if (adHocCounter > 0){
-    
-    filteredGamesList.forEach((element) => {
-        element.owners = [actingUser];
-        if (actingUser.friendsListObjects) { actingUser.friendsListObjects.forEach((friend) => {
-            if (friend.ownedGames && friend.adHocGroup === true) {
-                friend.ownedGames.forEach((game) => {
-                if (game && game.appid === element.appid) {
-                    element.owners.push(friend);
-                    element.playtime_forever += game.playtime_forever;
+// Function to build the games list from informations in actingUser object
+    function buildGamesList() {
+        let table = document.getElementById("ergebnisListe");
+        table.innerHTML="";
+        filteredGamesList = actingUser.ownedGames;    
+        filteredGamesList.forEach((element) => 
+                                  {delete element.img_icon_url; delete element.has_community_visible_stats; delete element.playtime_linux_forever; delete element.playtime_mac_forever; delete element.playtime_windows_forever; delete element.rtime_last_played; delete element.has_leaderboards; delete element.content_descriptorids; delete element.playtime_2weeks});
+        filteredGamesList.forEach((element) =>          
+                                  {element.yourPlaytime_forever = element.playtime_forever});
+        if (adHocCounter > 0){
+            filteredGamesList.forEach((element) => {
+                element.owners = [actingUser];
+                if (actingUser.friendsListObjects) { actingUser.friendsListObjects.forEach((friend) => {
+                    if (friend.ownedGames && friend.adHocGroup === true) {
+                        friend.ownedGames.forEach((game) => {
+                        if (game && game.appid === element.appid) {
+                            element.owners.push(friend);
+                            element.playtime_forever += game.playtime_forever;
+                                }
+                            });
                         }
                     });
                 }
             });
         }
-    });
-}
-        
-        
-    else {
+        else {
+            filteredGamesList.forEach((element) => {
+            element.owners = [actingUser];
+            if (actingUser.friendsListObjects) { actingUser.friendsListObjects.forEach((friend) => {
+                if (friend.ownedGames) {
+                    friend.ownedGames.forEach((game) => {
+                    if (game && game.appid === element.appid) {
+                        element.owners.push(friend);
+                        element.playtime_forever += game.playtime_forever;
+                            }
+                        });
+                    }
+                });
+            }
+            });
+        }
         filteredGamesList.forEach((element) => {
-        element.owners = [actingUser];
-        if (actingUser.friendsListObjects) { actingUser.friendsListObjects.forEach((friend) => {
-            if (friend.ownedGames) {
-                friend.ownedGames.forEach((game) => {
-                if (game && game.appid === element.appid) {
-                    element.owners.push(friend);
-                    element.playtime_forever += game.playtime_forever;
-                        }
-                    });
-                }
-            });
-        }
-    });
-}
-        
-    filteredGamesList.forEach((element) => {
-        element.playtime_forever = Math.round(element.playtime_forever / 60);
-        element.yourPlaytime_forever = Math.round(element.yourPlaytime_forever / 60);
-    })
-                    
-                                            ;  
-    filteredGamesList.forEach((element) => function(addActingUser) {
-        element.owners = actingUser;
-    });
-    
-    let data = Object.keys(filteredGamesList[0]);
-    var reducedList = filteredGamesList.slice(0,20);
-    buildingProgress(data, reducedList,table);
-}
+                                    element.playtime_forever = Math.round(element.playtime_forever / 60);
+                                    element.yourPlaytime_forever = Math.round(element.yourPlaytime_forever / 60);});  
+        filteredGamesList.forEach((element) => function(addActingUser) {
+                                    element.owners = actingUser;});     
+        let data = Object.keys(filteredGamesList[0]);
+        var reducedList = filteredGamesList.slice(0,20);
+        buildingProgress(data, reducedList,table);
+    }
 
 
-function buildingProgress(data, list, table){
-    
-    generateTableHead(table, data);
-    generateTable(table, list);
-    let input, filter, tr, td, txtValue;
-    generateTableButtons();
-    generateTableAvatars();
-    
-}
+// Main process to build the table object
+    function buildingProgress(data, list, table){
+        generateTableHead(table, data);
+        generateTable(table, list);
+        let input, filter, tr, td, txtValue;
+        generateTableButtons();
+        generateTableAvatars();
+    }
 
 
-//Sort Array of Games functions:
+// Sort table array for games with most playtime
+    function sortTablePlaytimeMost(){
+        let table = document.getElementById("ergebnisListe");
+        table.innerHTML="";
+        let sortedGamesList = filteredGamesList.sort((a,b) => b.playtime_forever - a.playtime_forever);
+        let data = Object.keys(sortedGamesList[0]);
+        let reducedList = sortedGamesList.filter(sortedGamesList => sortedGamesList.playtime_forever > 60);
 
-function sortTablePlaytimeMost(){
-    let table = document.getElementById("ergebnisListe");
-    table.innerHTML="";
-    let sortedGamesList = filteredGamesList.sort((a,b) => b.playtime_forever - a.playtime_forever);
-    let data = Object.keys(sortedGamesList[0]);
-    let reducedList = sortedGamesList.filter(sortedGamesList => sortedGamesList.playtime_forever > 60);
-    
-    buildingProgress(data, reducedList, table);
+        buildingProgress(data, reducedList, table);
+    }
 
-}
+// Sort table array for games with least playtime
+    function sortTablePlaytimeLeast(){
+        let table = document.getElementById("ergebnisListe");
+        table.innerHTML="";
+        let sortedGamesList = filteredGamesList.sort((a,b) => a.playtime_forever - b.playtime_forever);
+        let data = Object.keys(sortedGamesList[0]);
 
+        buildingProgress(data, sortedGamesList, table);
+    }
 
-
-function sortTablePlaytimeLeast(){
-    let table = document.getElementById("ergebnisListe");
-    table.innerHTML="";
-    let sortedGamesList = filteredGamesList.sort((a,b) => a.playtime_forever - b.playtime_forever);
-    let data = Object.keys(sortedGamesList[0]);
-  
-    buildingProgress(data, sortedGamesList, table);
-}
-
+// Show all games in table
 function sortAllSteamGames(){
     let table = document.getElementById("ergebnisListe");
     table.innerHTML="";
@@ -105,130 +93,122 @@ function sortAllSteamGames(){
     buildingProgress(data, filteredGamesList, table);
 }
 
+// Sort table by most friends who own the game
+    function sortTableByOwnersCount() {
+        let table = document.getElementById("ergebnisListe");
+        table.innerHTML = "";
+        let sortedGamesList = filteredGamesList.sort((a, b) => b.owners.length - a.owners.length);
+        let data = Object.keys(sortedGamesList[0]);
+        buildingProgress(data, sortedGamesList, table);
+    }
 
 
 
-function sortTableByOwnersCount() {
-    let table = document.getElementById("ergebnisListe");
-    table.innerHTML = "";
-    let sortedGamesList = filteredGamesList.sort((a, b) => b.owners.length - a.owners.length);
-    let data = Object.keys(sortedGamesList[0]);
-    buildingProgress(data, sortedGamesList, table);
-}
-
-
-function selectTableForAdHocGroup(){
-    let table = document.getElementById("ergebnisListe");
-    table.innerHTML="";
-    let selectedGamesList = filteredGamesList.filter(game => {
-        let isAdHoc = false;
-        game.owners.forEach(owner => {
-            if (owner.adHocGroup === true){
-                isAdHoc = true;
-            }
+// Rebuild the table just considering users who are marked as Ad Hoc Group by user
+    function selectTableForAdHocGroup(){
+        let table = document.getElementById("ergebnisListe");
+        table.innerHTML="";
+        let selectedGamesList = filteredGamesList.filter(game => {
+            let isAdHoc = false;
+            game.owners.forEach(owner => {
+                if (owner.adHocGroup === true){
+                    isAdHoc = true;
+                }
+            })
+            return isAdHoc;
         })
-        return isAdHoc;
-    })
-    
-    buildingProgress(data, selectedGamesList, table)
-}
-
-
-
-
+        buildingProgress(data, selectedGamesList, table)
+    }
 
 
 //Searchbar function
+    function searchFunctionErgebnisliste() {
+      // Variablen für die Suchleiste etablieren
+          input = document.getElementById("inputSearchErgebnisliste");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("ergebnisListe");
+          tr = table.getElementsByTagName("tr");
 
-function searchFunctionErgebnisliste() {
-  // Variablen für die Suchleiste etablieren
-      input = document.getElementById("inputSearchErgebnisliste");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("ergebnisListe");
-      tr = table.getElementsByTagName("tr");
-
-      // Durch die einzelnen Reihen laufen
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1];
-        if (td) {
-            txtValue = td.innerHTML;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = ""; 
+          // Durch die einzelnen Reihen laufen
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.innerHTML;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = ""; 
+                } 
+                else {
+                tr[i].style.display = "none";
+                      console.log(5); 
+                } 
             } 
-            else {
-            tr[i].style.display = "none";
-                  console.log(5); 
-            } 
-        } 
-      } 
-}
+          } 
+    }
 
 
 //Generate Table functions:
 
 
-function generateTableHead(table, data){
-    let thead = table.createTHead();
-    let row = thead.insertRow();
-    for (let j=0; j<6; j++){
-        let th = document.createElement("th");
-        let text = document.createTextNode("...");
-        th.appendChild(text);
-        row.appendChild(th);
+    function generateTableHead(table, data){
+        let thead = table.createTHead();
+        let row = thead.insertRow();
+        for (let j=0; j<6; j++){
+            let th = document.createElement("th");
+            let text = document.createTextNode("...");
+            th.appendChild(text);
+            row.appendChild(th);
+            }
+        var headers = document.getElementsByTagName("th");
+        headers[0].innerHTML = "";
+        headers[1].innerHTML = "Titel des Spiels";
+        headers[2].innerHTML = "Spielzeit Gruppe (Stunden)";
+        headers[3].innerHTML = "Deine Spielzeit (Stunden)";
+        headers[4].innerHTML = "";
+        headers[5].innerHTML = "Freunde, die das Spiel besitzen";
+
+    }
+
+    function generateTable(table, data) {
+      for (let element of data) {
+        let row = table.insertRow();
+        for (key in element) {
+            let cell = row.insertCell();
+            let text = document.createTextNode(element[key]);
+            cell.appendChild(text);
+
         }
-    var headers = document.getElementsByTagName("th");
-    headers[0].innerHTML = "";
-    headers[1].innerHTML = "Titel des Spiels";
-    headers[2].innerHTML = "Spielzeit Gruppe (Stunden)";
-    headers[3].innerHTML = "Deine Spielzeit (Stunden)";
-    headers[4].innerHTML = "";
-    headers[5].innerHTML = "Freunde, die das Spiel besitzen";
-    
-}
-
-function generateTable(table, data) {
-  for (let element of data) {
-    let row = table.insertRow();
-    for (key in element) {
-        let cell = row.insertCell();
-        let text = document.createTextNode(element[key]);
-        cell.appendChild(text);
-        
-    }
-  }
-}
-
-
-function generateTableButtons(){
-
-    let table = document.getElementById("ergebnisListe").firstChild;
-    console.log(table.childElementCount);
-    for (let l = 1; l < table.childElementCount; l++){
-        let varAppID = table.children[l].firstChild.innerHTML;
-        //console.log(varAppID);
-        document.getElementById("ergebnisListe").firstChild.children[l].firstChild.innerHTML='<a href="steam://rungameid/'+varAppID+'"><button class="iconButton" > <i class="fa-solid fa-share"></i> Spiel starten!</button></a>';
+      }
     }
 
-}
 
+    function generateTableButtons(){
 
-function generateTableAvatars() {
-    let table = document.getElementById("ergebnisListe").firstChild;
-    for (let l = 1; l < table.childElementCount; l++) {
-        let owner = document.createElement("td");
-        let game = filteredGamesList[l - 1];
-        for (let o = 0; o < game.owners.length; o++) {    
-            let picAvatar = document.createElement("img");
-            picAvatar.classList.add("friendsPic");
-            let picSrc = game.owners[o].avatar;
-            picAvatar.src = picSrc;
-            owner.appendChild(picAvatar);
+        let table = document.getElementById("ergebnisListe").firstChild;
+        console.log(table.childElementCount);
+        for (let l = 1; l < table.childElementCount; l++){
+            let varAppID = table.children[l].firstChild.innerHTML;
+            //console.log(varAppID);
+            document.getElementById("ergebnisListe").firstChild.children[l].firstChild.innerHTML='<a href="steam://rungameid/'+varAppID+'"><button class="iconButton" > <i class="fa-solid fa-share"></i> Spiel starten!</button></a>';
         }
-        table.children[l].appendChild(owner);
+
     }
-}
 
 
+    function generateTableAvatars() {
+        let table = document.getElementById("ergebnisListe").firstChild;
+        for (let l = 1; l < table.childElementCount; l++) {
+            let owner = document.createElement("td");
+            let game = filteredGamesList[l - 1];
+            for (let o = 0; o < game.owners.length; o++) {    
+                let picAvatar = document.createElement("img");
+                picAvatar.classList.add("friendsPic");
+                let picSrc = game.owners[o].avatar;
+                picAvatar.src = picSrc;
+                owner.appendChild(picAvatar);
+            }
+            table.children[l].appendChild(owner);
+        }
+    }
 
 
 console.log("Skript tableJS durchgelaufen.")

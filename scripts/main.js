@@ -1,13 +1,8 @@
-//ÜberTODO: Import JSON; Get Game Infos; Show it all; 
-
-
 //TODO:     Friendslist nur Online-Friends
-//TODO:     Bug: Wenn man die Steam-ID löscht, auch die Freundesliste löschen!!!
 //lowTODO:     Home ausblenden in LocalStorage
-//lateTODO:     Chatfunktion in node.js, websockets? Gibts da ein NPM Package? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
-//lateTODO:     Share-Button in Friendslist einbauen
-//lateTODO:     Icons der besessenen Spiele in Tabelle einfügen usw.
-
+//TODO:     Chatfunktion in node.js, websockets? Gibts da ein NPM Package? Anhand der Steam-ID eine Sitzung erstellen, die dann geteilt werden kann?
+//TODO:     Share-Button in Friendslist einbauen
+//TODO:     Icons der Spiele in Tabelle einfügen
 
 
 
@@ -32,15 +27,13 @@
     }
     
 
-//variables:
+// declaring variables
 // frontend
     let newSIDButton = document.getElementById("my-steamid-button");
     let mySID = document.getElementById("my-steam-ID");
     let userHeading =document.getElementById("userHeading");
 
-    
 // backend
-   // const webApiKey = "9DE0CBEBE65E780B49D58853EA3CAA15";
     const actingUser = new User();
 
     let i = 0;
@@ -78,86 +71,67 @@
         loadingAnimationSpiele();
         
         
- document.getElementById("absatzListe").style.display="inline";
+        document.getElementById("absatzListe").style.display="inline";
     }
 
+
 //function to set the Users Steam ID and save it as "name" in local storage
-function getAndSaveUserID() {
-    console.log("get input!");
-    let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:", "76561198101457809");
-    console.log("got input!");
-            
-        //Check, ob die Zahl in Ordnung ist
+    function getAndSaveUserID() {
+        let myIDstring = prompt("Bitte geben Sie Ihre Steam-ID ein:", "76561198101457809");
+            //Check, if the input is a number
             let myIDnumber = parseFloat(myIDstring);
-            console.log("myIDnumber ist vom Typ:"); console.log(typeof myIDnumber); console.log(myIDstring); console.log(myIDnumber);
             let numberCheck = Number.isInteger(myIDnumber);
             while (numberCheck == false){
             myIDstring = prompt("Bitte geben Sie NUR Zahlen ein. Ihre Steam-ID besteht ausschließlich aus Zahlen.")
-            console.log(myIDstring);
-            console.log("try to change MyIDNUMBER")
             myIDnumber = Number(myIDstring);
-            console.log(myIDnumber);
-            console.log("Neue Eingabe myIDnumber"); console.log(typeof myIDnumber)
             numberCheck = Number.isInteger(myIDnumber);
-
+        }
+        localStorage.setItem("savedIDstring", myIDstring);
+        routineActingUser(myIDstring);  
     }
-        
-    localStorage.setItem("savedIDstring", myIDstring);
-    routineActingUser(myIDstring);  
-
-    
-}
 
 
-//Abfrage der Daten von Steam-Web-API
-
-function fillUserStats(steamID, user){
-    getPlayerSummary(steamID).then(({response}) => {
-    const players = response.players;
-    user.name = players[0].personaname;
-    user.lastlogoff = players[0].lastlogoff;
-    user.name = players[0].personaname;
-    user.avatar = players[0].avatarfull;
-});
-        console.log("Fill UserStats fertig")
-}
+//start the request-function and fill the received informations into the user objects
+    function fillUserStats(steamID, user){
+        getPlayerSummary(steamID).then(({response}) => {
+            const players = response.players;
+            user.name = players[0].personaname;
+            user.lastlogoff = players[0].lastlogoff;
+            user.name = players[0].personaname;
+            user.avatar = players[0].avatarfull;
+            });
+        console.log("Fill UserStats finished")
+    }
     
 
-function fillOwnedGames(steamID, user){
-    getOwnedGames(steamID).then(({response}) => {
-        const games = response.games;
-        console.log(games);
-        user.ownedGames = games;
-    });
-        console.log("Fill OwnedGames fertig")
-}
+//start the request-function and fill the received informations into the actingUser object
+    function fillOwnedGames(steamID, user){
+        getOwnedGames(steamID).then(({response}) => {
+            const games = response.games;
+            console.log(games);
+            user.ownedGames = games;
+            });
+        console.log("Fill OwnedGames finished")
+    }
 
-
-function fillFriendList(steamID, user) {
-  getFriendList(steamID).then(({ friendslist }) => {
-    const { friends } = friendslist;
-    user.friends = friends;
-  });
-    console.log("Fill Friends List fertig")
-}
-
+//start the request-function and fill the received informations into the users objects
+    function fillFriendList(steamID, user) {
+        getFriendList(steamID).then(({ friendslist }) => {
+            const { friends } = friendslist;
+            user.friends = friends;
+            });
+        console.log("Fill Friends List finished")
+    }
 
 
 // build the frontend friendlist from the friendlist (not yet user-centered but input-centered)
-function buildFriendsList(){
+    function buildFriendsList(){
         lengthFL = (actingUser.friends.length)-1;
-        
-        console.log("Die länge der Freundesliste ist: "+lengthFL);
         actingUser.friendsListObjects = [];
-
         if(lengthFL > 0) {
-
-
             let i = 0;
             while (i <= lengthFL) {
                 let id = "friend"+i;
-
-                console.log(id);
                 let friendToAdd = new User(actingUser.friends[i].steamid);
                 fillUserStats(friendToAdd.steamID, friendToAdd);
                 fillOwnedGames(friendToAdd.steamID, friendToAdd); 
@@ -165,65 +139,52 @@ function buildFriendsList(){
                 console.log("Freund hinzugefügt: "+friendToAdd.name);
                 
                 let friendEntry = document.createElement("p");
-                    friendEntry.classList.add("friendEntry");
-                    friendEntry.id="entryFriend"+i;
+                friendEntry.classList.add("friendEntry");
+                friendEntry.id="entryFriend"+i;
 
-                 document.getElementById("friendslist").appendChild(friendEntry);
-                
-                
+                document.getElementById("friendslist").appendChild(friendEntry);
                 i++;
-                } 
+            } 
         } 
-}
+    }
 
-function restartFL(){
-    lengthFL = (actingUser.friendsListObjects.length)-1;
-    document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
-    document.getElementById("adHocCounter").style.visibility="visible";
-    document.getElementById("deleteSteamID").style.visibility="visible";
-            
-    let i = 0;
-                            console.log("i ist wieder: "+i);
-            while (i <= lengthFL){
-                console.log("start der erstellung");
-
-                            
-                var id = "entryFriend"+i;
-                let friendEntry = document.getElementById(id);
-                
-                let avatar = document.createElement("img");
-                    avatar.src = actingUser.friendsListObjects[i].avatar;
-                    avatar.classList.add("friendsPic");
-                    friendEntry.appendChild(avatar);
-                    
-                let friendButton = document.createElement("button");
-                    friendButton.innerHTML= (""+actingUser.friendsListObjects[i].name+" ");
-                    friendButton.classList.add("flButton");
-                    friendButton.id="friend"+i;
-                    let n = ""+i;
-                    friendButton.onclick=function(){addToAdHocGroup(n)};
-                    friendEntry.appendChild(friendButton);
-                                      
-
-                let link = document.createElement('chatLink');
-                    link.innerHTML='<a href="steam://friends/message/'+actingUser.friendsListObjects[i].steamID+'"><button class="chatButton" > <i class="fa-regular fa-message"></i> </button></a>';
-                    friendEntry.appendChild(link);       
-
-                i++;
-}
-}
+//function to refresh the Friendslist after changes
+    function restartFL(){
+        lengthFL = (actingUser.friendsListObjects.length)-1;
+        document.getElementById("friendlist").innerHTML="Es sind "+(lengthFL+1)+" Freunde online:";
+        document.getElementById("adHocCounter").style.visibility="visible";
+        document.getElementById("deleteSteamID").style.visibility="visible";
+        let i = 0;
+        while (i <= lengthFL){
+            console.log("Starting to build friendslist");
+            var id = "entryFriend"+i;
+            let friendEntry = document.getElementById(id);
+            let avatar = document.createElement("img");
+                avatar.src = actingUser.friendsListObjects[i].avatar;
+                avatar.classList.add("friendsPic");
+                friendEntry.appendChild(avatar);
+            let friendButton = document.createElement("button");
+                friendButton.innerHTML= (""+actingUser.friendsListObjects[i].name+" ");
+                friendButton.classList.add("flButton");
+                friendButton.id="friend"+i;
+            let n = ""+i;
+                friendButton.onclick=function(){addToAdHocGroup(n)};
+                friendEntry.appendChild(friendButton);
+            let link = document.createElement('chatLink');
+                link.innerHTML='<a href="steam://friends/message/'+actingUser.friendsListObjects[i].steamID+'"><button class="chatButton" > <i class="fa-regular fa-message"></i> </button></a>';
+            friendEntry.appendChild(link);       
+            i++;
+        }
+    }
 
 
-
-//request to save a Steam ID if there is non in local storage
-
-
-
+//request, if a Steam-ID is saved in local storage
 //Abfrage, ob eine Steam-ID im localStorage ist und ein paar Darstellungsänderungen
     if (!localStorage.getItem("savedIDstring")) {
         mySID.textContent = "Nicht angemeldet!";
         userHeading.textContent = "";
-    } else {
+    } 
+    else {
         const storedIDstring = localStorage.getItem("savedIDstring");
         routineActingUser(storedIDstring);
         actingUser.savedID = true;
@@ -245,9 +206,9 @@ function restartFL(){
         adHocCounter = 0;
         i = 0;
         while (i < actingUser.friendsListObjects.length){
-                document.getElementById("friend"+i).style.background="#c5c3c0";
-                document.getElementById("friend"+i).style.color="black";
-                i++
+            document.getElementById("friend"+i).style.background="#c5c3c0";
+            document.getElementById("friend"+i).style.color="black";
+            i++
         }
         document.getElementById("deleteAdHocGroup").style.visibility="hidden";
         reloadAdHocStatus();
@@ -264,18 +225,16 @@ function restartFL(){
 //add friend to AdHoc-Group by clicking on his Name
     function addToAdHocGroup(clickedFriend){
         if (actingUser.friendsListObjects[clickedFriend].adHocGroup == true){
-                actingUser.friendsListObjects[clickedFriend].adHocGroup = false;
-                    //console.log("Changed adHocGroup for Friend "+clickedFriend+" to false. Adhoc-group is "+(adHocCounter-1)+" friends.");
-                document.getElementById("friend"+clickedFriend).style.background="#c5c3c0";
-                document.getElementById("friend"+clickedFriend).style.color="black";
+            actingUser.friendsListObjects[clickedFriend].adHocGroup = false;
+            document.getElementById("friend"+clickedFriend).style.background="#c5c3c0";
+            document.getElementById("friend"+clickedFriend).style.color="black";
             //start routine to reload the tables
             //reload counterFriends
-                adHocCounter--;
-                reloadAdHocStatus();
+            adHocCounter--;
+            reloadAdHocStatus();
             }
-        else{
+        else {
             actingUser.friendsListObjects[clickedFriend].adHocGroup=true;
-                //console.log("Changed adHocGroup for Friend "+clickedFriend+" to true. Adhoc-group is "+(adHocCounter+1)+" friends.");
             document.getElementById("friend"+clickedFriend).style.background="#577e87";
             document.getElementById("friend"+clickedFriend).style.color="white";
             //start routine to reload the tables
@@ -285,15 +244,11 @@ function restartFL(){
         }
     }
 
-
+//function to hide or show the "home"-text 
     function hideHomeText(){
         document.getElementById("home").style.display="none";
         localStorage.setItem("homeHidden", true);
        document.getElementById("homeButton").style.display="block";
-        
-        
-        //document.getElementById("xHome").innerHTML="Home";
-
     }
     
     function showHomeText(){
@@ -302,8 +257,7 @@ function restartFL(){
     }
 
 
-//eventhandling
-    
+//eventhandling    
     newSIDButton.onclick = () => {
         getAndSaveUserID();
         alert("User-ID geändert!")
@@ -311,130 +265,79 @@ function restartFL(){
     };
 
 
+//function to set a sleep-timer
+    function sleep(ms){
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
 
-function sleep(ms){
-            return new Promise(resolve => setTimeout(resolve, ms));
+//loading with a counter, including a sleep timer, waiting for requests of friends info to be fulfilled 
+//TODO: Add an animated loading bar
+    async function loadingAnimationFreunde() {
+        let i = 0;
+        while (i < 100) {
+            document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
+            i++;
+            await sleep(35);
         }
-
-
-async function loadingAnimationFreunde() {
-  let i = 0;
-  while (i < 100) {
-    //console.log("Loading: " + i + "%");
-    document.getElementById("friendlist").innerHTML="Freunde werden geladen: "+i+" %";
-    i++;
-    await sleep(35);
-      
-  }
-    restartFL();
-  
-  console.log("Done");
-}
-
-async function loadingAnimationSpiele() {
-  let i = 0;
-  while (i < 100) {
-    //console.log("Loading: " + i + "%");
-    document.getElementById("platzhalterLadebalken").innerHTML="Spiele werden geladen: "+i+" %";
-    i++;
-    await sleep(35);
-      
-  }
-    document.getElementById("platzhalterLadebalken").innerHTML="";
-    buildGamesList();
-
-  
-  console.log("Done");
-}
-
-//Folgendes ist probably useless:
-
-
-/*
-Das Friendpic mit Playtime-Nummer, was in index.html lag:
-
-           <friendPic>
-            <img class="friendsPic" src="https://avatars.akamai.steamstatic.com/08b4b85ea46ed3ee30726e87a3ef787194c9dcbd_medium.jpg" >
-            <playtimeNumber>12345</playtimeNumber>
-        </friendPic>
-            </home>
-
-
-
-//Access functions
-    function getUserName(userProfile) {
-        console.log("function started");
-        return userProfile.Name
+        restartFL();
+        console.log("Loading friends done");
     }
 
-//TO BE USED oder zu ersetzen:
-
-
-//Fetch-Funktionen? -> Nach node.js erst notwendig bzw. für Node.js notwendig
-/* 
-function fetchOwnedGames(userProfile){
-    gameslist = [1,2];
-    //fetch gameslist from steam API
-    this.myOwnedGames = gameslist;
-    console.log("function finished");
-}
-
-function fetchSetFriendsList(userProfile){
-    friendsList = [4,5];
-    //fetc friendList from steam API
-    userProfile.myFriendsList = friendsList;
-    console.log("function finished");
-}
-
-function setSteamUser(inputSteamID, steamUser){
-    //get Steam ID from Input per Button
-    owningSteamUser.mySteamid = inputSteamID;
-    //buildUpByNewSteamID(owningSteamUser.mySteamid);
-    console.log("function finished");
-    
+//loading with a counter, including a sleep timer, waiting for requests of games information to be fulfilled 
+//TODO: Add an animated loading bar
+    async function loadingAnimationSpiele() {
+        let i = 0;
+        while (i < 100) {
+            document.getElementById("platzhalterLadebalken").innerHTML="Spiele werden geladen: "+i+" %";
+            i++;
+            await sleep(35);
+        }
+        document.getElementById("platzhalterLadebalken").innerHTML="";
+        buildGamesList();
+        console.log("Loading games done");
 }
 
 
-function buildUpByNewSteamID(activeSteamUser){
-    fetchFriendsList(activeSteamUser);
-    fetchGameStats(activeSteamUser);
+//actual functions to request informations from the wcwp-server 
+//function to request information on player from the wcwp-server
+    async function getPlayerSummary(reqsid1) {
+        const response = await fetch(`http://157.245.17.114:3000/player_summaries/${reqsid1}`);
+        const data = await response.json();
+        return data;
     }
-*/
 
-async function getPlayerSummary(reqsid1) {
-  const response = await fetch(`http://157.245.17.114:3000/player_summaries/${reqsid1}`);
-  const data = await response.json();
-  return data;
-}
+//function to request information on friends from the wcwp-server
+    async function getFriendList(reqsid2) {
+        const response = await fetch(`http://157.245.17.114:3000/friend_list/${reqsid2}`);
+        const data = await response.json();
+        return data;
+    }
 
-getPlayerSummary(actingUser.steamID).then(response => {
-  console.log(response.response.players);
-});
-    
-
-async function getFriendList(reqsid2) {
-  const response = await fetch(`http://157.245.17.114:3000/friend_list/${reqsid2}`);
-  const data = await response.json();
-  return data;
-}
-
-async function getOwnedGames(reqsid3) {
-  const response = await fetch(`http://157.245.17.114:3000/owned_games/${reqsid3}`);
-  const data = await response.json();
-  return data;
-}
+//function to request information on games from the wcwp-server
+    async function getOwnedGames(reqsid3) {
+        const response = await fetch(`http://157.245.17.114:3000/owned_games/${reqsid3}`);
+        const data = await response.json();
+        return data;
+    }
 
 
-console.log("Ende des Skripts");
 
 getPlayerSummary(actingUser.steamID).then(response => {
   console.log(response.response.players);
 });
 
+getPlayerSummary(actingUser.steamID).then(response => {
+  console.log(response.response.players);
+});
 
 getPlayerSummary(actingUser.friendsListObjects[0].steamID).then(response => {
   console.log(response.response.players);
 });
+
 getPlayerSummary(actingUser.friendsListObjects[3].steamID).then(response => {
   console.log(response.response.players);
 });
+
+
+
+console.log("Ende des main-Skripts");
