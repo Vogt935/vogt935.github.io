@@ -78,15 +78,10 @@ body {
 
                                     /* Formatting */
 
-h2 {
-    font-size: 30px;
-    text-align: right;
-}
-
-
 h1 {
-    font-size: 40px;
-    text-align: left;
+    font-size: 36px;
+    text-align: right;
+    margin: 0px;
 }
 
 ul {
