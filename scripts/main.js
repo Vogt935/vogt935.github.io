@@ -49,18 +49,15 @@
     function routineActingUser(mySteamID){
         
         actingUser.steamID = mySteamID;
+        //start the three core functions to get data
         fillUserStats(mySteamID, actingUser);
-
         fillFriendList(mySteamID, actingUser);
-        
-        
         fillOwnedGames(mySteamID, actingUser);
-        console.log("fill-Sachen durchgelaufen.")
-                console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
-        // actingUser.steamID=myID;
-        //  actingUser.friendsListInput=myFriendslist.friendslist.friends;
-        //formInputToUsers(actingUser.friendsListInput)
         
+        console.log("fill-Sachen durchgelaufen.")
+        console.log("1. Die Länge der Freundesliste ist: "+lengthFL);
+        
+        //start building the games list
         buildFriendsList();
         loadingAnimationFreunde();        
         
@@ -69,8 +66,6 @@
                 homeText[0].innerHTML="";
         }
         loadingAnimationSpiele();
-        
-        
         document.getElementById("absatzListe").style.display="inline";
     }
 
@@ -87,6 +82,9 @@
             numberCheck = Number.isInteger(myIDnumber);
         }
         localStorage.setItem("savedIDstring", myIDstring);
+        alert("User-ID geändert!")
+        
+        //start the core routine to get data etc.
         routineActingUser(myIDstring);  
     }
 
@@ -99,7 +97,7 @@
             user.lastlogoff = players[0].lastlogoff;
             user.name = players[0].personaname;
             user.avatar = players[0].avatarfull;
-            });
+            }); //just copy selected data to the object
         console.log("Fill UserStats finished")
     }
     
@@ -110,7 +108,7 @@
             const games = response.games;
             console.log(games);
             user.ownedGames = games;
-            });
+            }); //get the games list response and copy it to the user-objects own games list
         console.log("Fill OwnedGames finished")
     }
 
@@ -119,7 +117,7 @@
         getFriendList(steamID).then(({ friendslist }) => {
             const { friends } = friendslist;
             user.friends = friends;
-            });
+            }); //get friends information an copy it to the user-object own friends list
         console.log("Fill Friends List finished")
     }
 
@@ -244,31 +242,26 @@
         }
     }
 
-//function to hide or show the "home"-text 
+//function to hide the "home"-text 
     function hideHomeText(){
         document.getElementById("home").style.display="none";
         localStorage.setItem("homeHidden", true);
-       document.getElementById("homeButton").style.display="block";
+        document.getElementById("homeButton").style.display="block";
     }
-    
+
+//function to show the "home"-text 
     function showHomeText(){
         document.getElementById("home").style.display="";
         document.getElementById("homeButton").style.display="none";
     }
 
 
-//eventhandling    
-    newSIDButton.onclick = () => {
-        getAndSaveUserID();
-        alert("User-ID geändert!")
-        mySID.textContent = "Willkommen, "+actingUser.name;
-    };
-
 
 //function to set a sleep-timer
     function sleep(ms){
                 return new Promise(resolve => setTimeout(resolve, ms));
             }
+
 
 //loading with a counter, including a sleep timer, waiting for requests of friends info to be fulfilled 
 //TODO: Add an animated loading bar
@@ -321,7 +314,7 @@
     }
 
 
-
+/*
 getPlayerSummary(actingUser.steamID).then(response => {
   console.log(response.response.players);
 });
@@ -337,7 +330,7 @@ getPlayerSummary(actingUser.friendsListObjects[0].steamID).then(response => {
 getPlayerSummary(actingUser.friendsListObjects[3].steamID).then(response => {
   console.log(response.response.players);
 });
-
+*/
 
 
 console.log("Ende des main-Skripts");
