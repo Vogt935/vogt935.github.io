@@ -9,25 +9,18 @@
 //classes:
     class User {
         constructor(steamID){
-            this.name = "Test"; //fetchGetName
+            this.name = "tbs"; 
             this.steamID = steamID;
-            //this.online = false; //fetchStatus
-            this.ownedGames = [0]; //fetchOwnedGames
-            //this.friendsListInput = [] //fetchFriendlist
+            //this.online = false; //TODO: incorporate online status
+            this.ownedGames = [0]; 
             this.friendsListObjects = [];
             this.savedID= false;
             this.adHocGroup=false;
         }            
     }
 
-    class steamApp {
-        constructor(appid){
-            this.appid = appid;
-        }
-    }
-    
 
-// declaring variables
+// variables
 // frontend
     let newSIDButton = document.getElementById("my-steamid-button");
     let mySID = document.getElementById("my-steam-ID");
@@ -122,6 +115,7 @@
     }
 
 
+// Functions about the Friends list creation
 // build the frontend friendlist from the friendlist (not yet user-centered but input-centered)
     function buildFriendsList(){
         lengthFL = (actingUser.friends.length)-1;
@@ -153,6 +147,8 @@
         document.getElementById("adHocCounter").style.visibility="visible";
         document.getElementById("deleteSteamID").style.visibility="visible";
         let i = 0;
+        
+        //for every friend-object in the acting user friends list there will be build a corresponding html item
         while (i <= lengthFL){
             console.log("Starting to build friendslist");
             var id = "entryFriend"+i;
@@ -174,6 +170,7 @@
             i++;
         }
     }
+
 
 
 //request, if a Steam-ID is saved in local storage
@@ -199,6 +196,9 @@
         }
 
 
+
+// Functions for the AdHoc-Group
+// set the AdHoc-attribute of every friend to false and change back the styling
     function eraseAdHocGroup(){
         actingUser.friendsListObjects.forEach((element) => {element.adHocGroup = false});
         adHocCounter = 0;
@@ -212,15 +212,14 @@
         reloadAdHocStatus();
     }
 
-
-//reload the number of friends in AdHoc-Group
+// reload the number of friends in AdHoc-Group
     function reloadAdHocStatus(){
         document.getElementById("adHocCounter").innerHTML=adHocCounter;
         document.getElementById("deleteAdHocGroup").style.visibility="visible";
         buildGamesList();
         }
 
-//add friend to AdHoc-Group by clicking on his Name
+// add friend to AdHoc-Group by clicking on his Name
     function addToAdHocGroup(clickedFriend){
         if (actingUser.friendsListObjects[clickedFriend].adHocGroup == true){
             actingUser.friendsListObjects[clickedFriend].adHocGroup = false;
@@ -242,14 +241,17 @@
         }
     }
 
-//function to hide the "home"-text 
+
+
+// Functions for the welcoming "Home"-text
+// function to hide the "home"-text 
     function hideHomeText(){
         document.getElementById("home").style.display="none";
         localStorage.setItem("homeHidden", true);
         document.getElementById("homeButton").style.display="block";
     }
 
-//function to show the "home"-text 
+// function to show the "home"-text 
     function showHomeText(){
         document.getElementById("home").style.display="";
         document.getElementById("homeButton").style.display="none";
@@ -257,7 +259,32 @@
 
 
 
-//function to set a sleep-timer
+// Functions to request informations from the wcwp-server 
+// function to request information on player from the wcwp-server
+    async function getPlayerSummary(reqsid1) {
+        const response = await fetch(`http://157.245.17.114:3000/player_summaries/${reqsid1}`);
+        const data = await response.json();
+        return data;
+    }
+
+// function to request information on friends from the wcwp-server
+    async function getFriendList(reqsid2) {
+        const response = await fetch(`http://157.245.17.114:3000/friend_list/${reqsid2}`);
+        const data = await response.json();
+        return data;
+    }
+
+// function to request information on games from the wcwp-server
+    async function getOwnedGames(reqsid3) {
+        const response = await fetch(`http://157.245.17.114:3000/owned_games/${reqsid3}`);
+        const data = await response.json();
+        return data;
+    }
+
+
+
+// Other Functions
+// function to set a sleep-timer
     function sleep(ms){
                 return new Promise(resolve => setTimeout(resolve, ms));
             }
@@ -289,48 +316,6 @@
         buildGamesList();
         console.log("Loading games done");
 }
-
-
-//actual functions to request informations from the wcwp-server 
-//function to request information on player from the wcwp-server
-    async function getPlayerSummary(reqsid1) {
-        const response = await fetch(`http://157.245.17.114:3000/player_summaries/${reqsid1}`);
-        const data = await response.json();
-        return data;
-    }
-
-//function to request information on friends from the wcwp-server
-    async function getFriendList(reqsid2) {
-        const response = await fetch(`http://157.245.17.114:3000/friend_list/${reqsid2}`);
-        const data = await response.json();
-        return data;
-    }
-
-//function to request information on games from the wcwp-server
-    async function getOwnedGames(reqsid3) {
-        const response = await fetch(`http://157.245.17.114:3000/owned_games/${reqsid3}`);
-        const data = await response.json();
-        return data;
-    }
-
-
-/*
-getPlayerSummary(actingUser.steamID).then(response => {
-  console.log(response.response.players);
-});
-
-getPlayerSummary(actingUser.steamID).then(response => {
-  console.log(response.response.players);
-});
-
-getPlayerSummary(actingUser.friendsListObjects[0].steamID).then(response => {
-  console.log(response.response.players);
-});
-
-getPlayerSummary(actingUser.friendsListObjects[3].steamID).then(response => {
-  console.log(response.response.players);
-});
-*/
 
 
 console.log("Ende des main-Skripts");
