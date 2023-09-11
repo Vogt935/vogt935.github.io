@@ -1,3 +1,0 @@
-Rechtsklick auf die Datei "index.html"
-
--> Öffnen mit einem Webbrowser
