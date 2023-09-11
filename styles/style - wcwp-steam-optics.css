@@ -114,11 +114,6 @@ ul {
             background: #d2d1ce;
         }
 
-        button.navbar{
-            background: #d2d1ce;
-            
-        }
-
         button#moreFriends{
             visibility: hidden;
             width: 16em;
