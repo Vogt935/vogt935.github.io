@@ -12,7 +12,7 @@ html {
 img.friendsPic{
         width: 40px;
         height: 40px;
-        border: 6px #d2a747 solid;
+        border: 6px #d6d5f0 solid;
         border-radius: 400px;
 }
 
@@ -99,7 +99,8 @@ li{
 
                                     /* Buttons */
     button {
-        background-color:   #d2a747;
+        background-color: #504f6c;
+        color: #e7e7e7;
         width: 20em;
         height: 3em;
         margin: 10px; 
@@ -109,22 +110,22 @@ li{
     }
 
         button:hover {
-            background-color: #ffe1a0;
+            background-color: #8886b8;
         }
 
         button.flButton {
-            background-color:#c5c3c0;
+            background-color:#8886b8;
             height: 3em;
             width: 60%;
             margin-top: 8px;
         }
         
         button.friendslist:hover{
-            background: #d2d1ce;
+            background: #8886b8;
         }
 
         button.navbar{
-            background: #d2d1ce;
+            background: #8886b8;
             
         }
 
