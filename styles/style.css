@@ -111,6 +111,11 @@ li{
         text-align: center;
         font-size: large;
     }
+    
+    button.navbar{
+        width: 6em;
+    }
+
 
         button:hover {
             background-color: #8886b8;

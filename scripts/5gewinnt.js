@@ -19,10 +19,10 @@ function reshuffle(){
     
     else{
         
-        let testBoxVisibilty= document.getElementsByClassName("box-Mitspieler");
-        if(testBoxVisibilty.hasAttribute(visibility="hidden")== true){
-            testBoxVisibilty.setAttribute(visibility="visible")
-        }
+        let value = document.getElementsByClassName("box-Mitspieler").getAttribute(hidden);
+            if (value == true){
+                document.getElementsByClassName("box-Mitspieler").setAttribute(hidden, false);
+            }
         
         let wechselkandidat1;
         let wechselkandidat2;
