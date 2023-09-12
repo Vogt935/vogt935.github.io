@@ -191,7 +191,8 @@ function sortAllSteamGames(){
         for (let l = 1; l < table.childElementCount; l++){
             let varAppID = table.children[l].firstChild.innerHTML;
             //console.log(varAppID);
-            document.getElementById("ergebnisListe").firstChild.children[l].firstChild.innerHTML='<a href="steam://rungameid/'+varAppID+'"><button class="iconButton" > <i class="fa-solid fa-share"></i> Spiel starten!</button></a>';
+            document.getElementById("ergebnisListe").firstChild.children[l].firstChild.innerHTML=
+            '<a href="steam://rungameid/'+varAppID+'"><button class="iconButton"><i class="fa-solid fa-share"></i> Spiel starten!</button></a>';
         }
 
     }
