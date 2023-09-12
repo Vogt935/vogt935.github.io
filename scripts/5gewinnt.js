@@ -24,8 +24,6 @@ function reshuffle(){
             testBoxVisibilty.setAttribute(visibility="visible")
         }
         
-        
-
         let wechselkandidat1;
         let wechselkandidat2;
         
