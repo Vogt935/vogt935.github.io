@@ -243,6 +243,7 @@ li{
 
         th {
             background: #959595;
+            color: #f1f1f1;
             text-align: center;
             padding: 10px;
         }
@@ -250,6 +251,7 @@ li{
         th:first-child{
             width: 18%;
             border-radius: 14px 0px 0px 0px;
+
         }
 
         th:last-child{
@@ -267,11 +269,16 @@ li{
             padding: 10px;
 
         }
-
+        td > button{
+            display: none;
+        }
         tr:last-child{
             border-bottom: 0px solid black;
         }
 
+        td:first-child{
+            color: #c5c3c0
+        }
 
     #absatzListe {
     display: none;
