@@ -29,7 +29,8 @@ body {
     display: flex; 
     margin: auto auto;
     color: #c5c3c0; 
-    background: linear-gradient(90deg, rgba(27,40,56,1) 0%, rgba(46,66,90,1) 25%, rgba(51,73,98,1) 50%, rgba(37,54,74,1) 75%, rgba(27,40,56,1) 100%);
+    background: rgb(84,66,78);
+    background: linear-gradient(90deg, rgba(84,66,78,1) 0%, rgba(135,96,123,1) 33%, rgba(231,222,228,1) 100%);
     justify-content: space-evenly;
 }
 
