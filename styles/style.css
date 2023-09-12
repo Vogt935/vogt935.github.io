@@ -28,9 +28,9 @@ img.shareButton{
 body {
     display: flex; 
     margin: auto auto;
-    color: #c5c3c0; 
-    background: rgb(103,105,146);
-    background: linear-gradient(90deg, rgba(103,105,146,1) 0%, rgba(209,208,240,1) 18%, rgba(241,241,241,1) 81%, rgba(230,230,230,1) 100%);
+    color: #242424; 
+    background: rgb(209,208,240);
+    background: linear-gradient(90deg, rgba(209,208,240,1) 2%, rgba(241,241,241,1) 42%, rgba(230,230,230,1) 100%);
     justify-content: space-evenly;
 }
 
@@ -45,7 +45,7 @@ body {
         align-items: center;
         text-align: center;
         width: 40%;
-        background: #d1d0f0;
+        background: #f1f1f1;
         border: 2px #0c1118 solid;
         box-shadow: 4px 4px 20px #0c1118;
     }
@@ -60,7 +60,7 @@ body {
 
 
     nav {
-        background: #d1d0f0;
+        background: #f1f1f1;
         padding: 1em 2em 2em 2em;
         order: 1;
         border-radius: 0 0 14px 14px;
