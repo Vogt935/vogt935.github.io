@@ -46,7 +46,6 @@ body {
         text-align: center;
         width: 40%;
         background: rgb(161,155,159);
-        background: linear-gradient(90deg, rgba(161,155,159,1) 0%, rgba(164,149,158,1) 51%, rgba(231,222,228,1) 100%);
         border: 2px #0c1118 solid;
         box-shadow: 4px 4px 20px #0c1118;
     }
@@ -61,7 +60,7 @@ body {
 
 
     nav {
-        background-color: #d6d6d6;
+        background: rgb(161,155,159);
         padding: 1em 2em 2em 2em;
         order: 1;
         border-radius: 0 0 14px 14px;
