@@ -14,10 +14,18 @@ turnoverCounter=0;
 function reshuffle(){
     
     if (drin1 == ""){
-        alert("Bitte erstmal Namen eingeben und bestätigen!");
+        alert("Bitte Namen eingeben und bestätigen!");
     }
     
     else{
+        
+        let testBoxVisibilty= document.getElementsByClassName("box-Mitspieler");
+        if(testBoxVisibilt.hasAttribute(visibility="hidden")== true){
+            testBoxVisibilty.setAttribute(visibility="visible")
+        }
+        
+        
+
         let wechselkandidat1;
         let wechselkandidat2;
         

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="d">
+<head>
+    <meta charset="utf-8">
+    <title>What could we play?!</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <script src="https://kit.fontawesome.com/6e40f6aa4b.js" crossorigin="anonymous"></script>
+
+    <script src="scripts/tableJS.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/requestSteamJS.js"></script>
+    
+    
+   <left>
+       <nav>
+    	    <img src="https://github.com/Vogt935/vogt935.github.io/blob/main/wcwplogo2.png?raw=true" width="140" height="140"> <h1>What could we play?!</h1>
+
+           <button id="homeButton" onclick="showHomeText()">Home</button>
+           <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="5gewinnt.html">5Gewinnt</a></li>
+            <li><a href="wcwp.html">WCWP</a></li>
+        </ul>
+       </nav>
+       
+       <section>
+
+           <home id="home">
+                <button class="xHome" id="xHome" onclick=hideHomeText()>x</button>
+               <p color="red"> BITTE BEACHTEN SIE, DASS AUFGRUND EINES FEHLERS DIE STEAM-ID BEIM ERSTEN LOGIN ZWEIMAL EINGEGEBEN WERDEN MUSS!</p> 
+               <p>Hallo! Schön das Ihr da seid! Mit "What could we play" (WCWP) könnt Ihr:</p>
+                <ul>
+                    <li>endlich sehen, welche Spiele eure Freunde haben</li>
+                    <li>sehen, welche Spiele ihr mit euren Freunden teilt</li>
+                    <li>Vorschläge bekommen, was eure Gruppe spielen könnte</li>
+                </ul>
+                <p>Was Ihr tun müsst? Gebt einfach eure Steam-ID über den Button oben rechts ein.</p>
+                <p>Rechts seht ihr eure Steam-Freunde. Klick Sie an, um eine AdHocGruppe zu bilden, welche die WCWP-Tabelle filtert.</p>
+         
+               
+           </home>
+           
+
+                
+            <ergebnisListe id="absatzListe">
+                <p>Über diese Buttons könnt Ihr die unten zu findende Spieleliste filtern:</p>
+                 
+                <input type="text" id="inputSearchErgebnisliste" onkeyup="searchFunctionErgebnisliste()" placeholder="Such nach einem Spiel">
+                
+                <navList> 
+                     <button class="tablink" onclick="sortTableByOwnersCount()"><i class="fa-solid fa-user-group"></i>   Meisten Freunde</button>                   <button class="tablink" onclick="sortTablePlaytimeMost()"><i class="fa-solid fa-clock"></i>   Meiste Spielzeit</button>
+                    <button class="tablink" onclick="sortTablePlaytimeLeast()"><i class="fa-solid fa-champagne-glasses"></i>   Vorschläge</button>
+                    <button class="tablink" onclick="sortAllSteamGames()"><i class="fa-brands fa-steam"></i>   Alle Steam-Spiele</button>
+                </navList>
+                
+                <p id="platzhalterLadebalken"></p>
+                <table id="ergebnisListe"></table>
+            </ergebnisListe>
+
+	   </section>
+       
+    </left>
+
+      
+    <right>
+
+        <button class="newSteamID" id="my-steamid-button" onclick="getAndSaveUserID()"> Neue Steam ID eingeben</button>
+        <flHeader>
+            <p id="userHeading">Nicht angemeldet...</p>       
+            <button id="deleteSteamID" class="fa-regular fa-trash-can" onclick="deleteSteamIDfromLocalStorage()"> </button>
+        </flHeader>
+
+        
+        <friendslist id="friendslist"> 
+            <p><a id="friendlist"></a></p>
+
+        </friendslist>
+
+        <flBottom>
+            <p>
+                <button id="moreFriends"></button>
+                <a id="adHocCounter">0</a>
+                <button id="deleteAdHocGroup" class="fa-regular fa-trash-can" onclick="eraseAdHocGroup()"> </button>
+            </p>
+        </flBottom>  
+    </right>
+      
+
+
+ </body>
+ </html>

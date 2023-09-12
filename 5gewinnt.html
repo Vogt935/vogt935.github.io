@@ -12,7 +12,7 @@
 
     <script src="https://kit.fontawesome.com/6e40f6aa4b.js" crossorigin="anonymous"></script>
 
-    <script src="/5gewinnt/scripts/main.js"></script>
+    <script src="/5gewinnt/scripts/5gewinnt.js"></script>
     
     
    <left>
@@ -39,8 +39,7 @@
         <button onclick="teamInput()">Namen bestaetigen</button>
         
         
-        <p id="d">Sind drin: <a id="drin1"></a>, <a id="drin2"></a>, <a id="drin3"></a>.</p>
-        <p id="r">Setzt aus: <a id="raus1"></a>, <a id="raus2"></a>.</p>
+
         <button onclick="reshuffle()"> Nächste Runde! </button>
 
 	   </section>
@@ -50,8 +49,16 @@
       
     <right>
         
-            <p>Rundencounter: <a id="counter"></a></p>
-            <p>Vollständige Runde: <a id="turnoverCounter"></a></p>
+            <div class="box-Mitspieler">     
+                <p id="d">Sind drin: <a id="drin1"></a>, <a id="drin2"></a>, <a id="drin3"></a>.</p>
+                <p id="r">Setzt aus: <a id="raus1"></a>, <a id="raus2"></a>.</p> 
+            </div>
+
+            <div class="box-Counter">
+                <p>Rundencounter: <a id="counter"></a></p>
+                <p>Vollständige Runde: <a id="turnoverCounter"></a></p>
+            </div>
+
 
     </right>
       

@@ -257,6 +257,12 @@ li{
     }
 
 
+                                    /* 5gewinnt */
+    div.box-Mitspieler{
+        visibility: hidden;
+    }
+
+
 
                                     /* Friendslist */
     p.friendEntry {
