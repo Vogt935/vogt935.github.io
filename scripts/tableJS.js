@@ -165,7 +165,8 @@ function sortAllSteamGames(){
         headers[2].innerHTML = "Spielzeit Gruppe (Stunden)";
         headers[3].innerHTML = "Deine Spielzeit (Stunden)";
         headers[4].innerHTML = "";
-        headers[5].innerHTML = "Freunde, die das Spiel besitzen";
+        headers[5].innerHTML = "";
+        headers[6].innerHTML = "Freunde, die das Spiel besitzen";
 
     }
 
