@@ -115,8 +115,8 @@ li{
     }
     
     button.navbar{
-        width: 12em;
-        background-color: #504f6c;
+        background: #8886b8;
+        flex-grow: 1;
     }
 
     button.counterButton{
@@ -138,11 +138,6 @@ li{
         
         button.friendslist:hover{
             background: #8886b8;
-        }
-
-        button.navbar{
-            background: #8886b8;
-            
         }
 
         button.homeLinkButton{
