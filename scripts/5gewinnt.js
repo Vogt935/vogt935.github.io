@@ -20,7 +20,7 @@ function reshuffle(){
     else{
         
         let testBoxVisibilty= document.getElementsByClassName("box-Mitspieler");
-        if(testBoxVisibilt.hasAttribute(visibility="hidden")== true){
+        if(testBoxVisibilty.hasAttribute(visibility="hidden")== true){
             testBoxVisibilty.setAttribute(visibility="visible")
         }
         
