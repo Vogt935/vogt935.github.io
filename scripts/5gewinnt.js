@@ -19,10 +19,8 @@ function reshuffle(){
     
     else{
         
-        let value = document.getElementsByClassName("box-Mitspieler").getAttribute(hidden);
-            if (value == true){
-                document.getElementsByClassName("box-Mitspieler").setAttribute(hidden, false);
-            }
+        document.getElementById("box-Mitspieler").style.display="block";
+        document.getElementById("box-Counter").style.display="block";
         
         let wechselkandidat1;
         let wechselkandidat2;
@@ -53,6 +51,8 @@ function reshuffle(){
 
 function teamInput(){
     
+    document.getElementById("box-Mitspieler").style.display="none";
+    document.getElementById("box-Counter").style.display="none";
     drin1= document.getElementById("n1").value;
     drin2= document.getElementById("n2").value;
     drin3= document.getElementById("n3").value;

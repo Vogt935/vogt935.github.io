@@ -75,11 +75,11 @@ body {
         order: 2;
     }
 
-    section.fgewinnt{
-        font-size: 20px
+    div.box-Mitspieler, div.box-Counter{
+        font-size: 24px;
+        margin-top: 5em;
+        display: none;
     }
-
-
 
                                     /* Formatting */
 
@@ -104,7 +104,7 @@ li{
     button {
         background-color: #504f6c;
         color: #e7e7e7;
-        width: 20em;
+        width: 10em;
         height: 3em;
         margin: 10px; 
         border-radius: 8px;
@@ -113,7 +113,8 @@ li{
     }
     
     button.navbar{
-        width: 6em;
+        width: 8em;
+        background-color: #504f6c;
     }
 
 
@@ -266,9 +267,6 @@ li{
 
 
                                     /* 5gewinnt */
-    div.box-Mitspieler{
-        visibility: hidden;
-    }
 
 
 
