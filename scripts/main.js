@@ -204,8 +204,8 @@
         adHocCounter = 0;
         i = 0;
         while (i < actingUser.friendsListObjects.length){
-            document.getElementById("friend"+i).style.background="#c5c3c0";
-            document.getElementById("friend"+i).style.color="black";
+            document.getElementById("friend"+i).style.background="#8886b8";
+            document.getElementById("friend"+i).style.color="#e7e7e7";
             i++
         }
         document.getElementById("deleteAdHocGroup").style.visibility="hidden";
@@ -223,8 +223,8 @@
     function addToAdHocGroup(clickedFriend){
         if (actingUser.friendsListObjects[clickedFriend].adHocGroup == true){
             actingUser.friendsListObjects[clickedFriend].adHocGroup = false;
-            document.getElementById("friend"+clickedFriend).style.background="#c5c3c0";
-            document.getElementById("friend"+clickedFriend).style.color="black";
+            document.getElementById("friend"+clickedFriend).style.background="#8886b8";
+            document.getElementById("friend"+clickedFriend).style.color="#e7e7e7";
             //start routine to reload the tables
             //reload counterFriends
             adHocCounter--;
