@@ -85,9 +85,17 @@ h1 {
     margin: 0px;
 }
 
-ul {
-    list-style-type: circle;
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
+li{
+    background-color: #0c1118;
+    color: #d2d1ce;
+}
+
 
                                     /* Buttons */
     button {
