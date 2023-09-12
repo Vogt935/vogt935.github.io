@@ -44,7 +44,7 @@ body {
         justify-content: flex-start;
         align-items: center;
         text-align: center;
-        width: 40%;
+        
         background: #f1f1f1;
         border: 2px #0c1118 solid;
         box-shadow: 4px 4px 20px #0c1118;
@@ -81,6 +81,8 @@ body {
         display: none;
     }
 
+
+
                                     /* Formatting */
 
 h1 {
@@ -113,10 +115,15 @@ li{
     }
     
     button.navbar{
-        width: 8em;
+        width: 12em;
         background-color: #504f6c;
     }
 
+    button.counterButton{
+        width: 24em;
+        background-color: #504f6c;
+        align-items: center;
+    }
 
         button:hover {
             background-color: #8886b8;
@@ -136,6 +143,11 @@ li{
         button.navbar{
             background: #8886b8;
             
+        }
+
+        button.homeLinkButton{
+            width:32em;
+            margin-left: 10em;
         }
 
         button#moreFriends{
@@ -310,4 +322,6 @@ playtimeNumber{
     top: -40px;
 }
 
-
+a.fpBox{
+    display: none;
+}
