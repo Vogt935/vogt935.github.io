@@ -20,37 +20,43 @@
             <button type="navbar" onclick="window.location.href='wcwp.html'">WCWP - What could we play?</button>
             <button type="navbar" onclick="window.location.href='5gewinnt.html'">5gewinnt - 5 Player Hunt calculator</button>
         </navlist>
-       
-       <section>
 
-        <h1>Willkommen bei 5gewinnt</h1>
-        <a id="ober">Bitte Namen eingeben:</a>
-        <p>Name 1:<input type="text" id="n1" value="Maik"></input></p>
-        <p>Name 2:<input type="text" id="n2" value="Michi"></input></p>
-        <p>Name 3:<input type="text" id="n3" value="Kevin"></input></p>
-        <p>Name 4:<input type="text" id="n4" value="Lukas"></input></p>
-        <p>Name 5:<input type="text" id="n5" value="Fabsi"></input></p>
-        
-        <p>
-            <button onclick="teamInput()">Namen bestätigen</button>
-            <button onclick="reshuffle()"> Nächste Runde! </button>
-        </p>
-	   </section>
+
+        <section class="fgewinnt">
+            <h1>Willkommen bei 5gewinnt</h1>
+            <div class="box-Mitspieler">     
+                <p id="d">Sind drin: <a id="drin1"></a>, <a id="drin2"></a>, <a id="drin3"></a>.</p>
+                <p id="r">Setzt aus: <a id="raus1"></a>, <a id="raus2"></a>.</p> 
+            </div>
+    
+            <div class="box-Counter">
+                <p>Rundencounter: <a id="counter"></a></p>
+                <p>Vollständige Runde: <a id="turnoverCounter"></a></p>
+            </div>
+        </section>
+
+
        
     </left>
 
       
     <right>
-            <div class="box-Mitspieler">     
-                <p id="d">Sind drin: <a id="drin1"></a>, <a id="drin2"></a>, <a id="drin3"></a>.</p>
-                <p id="r">Setzt aus: <a id="raus1"></a>, <a id="raus2"></a>.</p> 
-            </div>
 
-            <div class="box-Counter">
-                <p>Rundencounter: <a id="counter"></a></p>
-                <p>Vollständige Runde: <a id="turnoverCounter"></a></p>
-            </div>
+            <section>
 
+
+                <a id="ober">Bitte Namen eingeben:</a>
+                <p>Name 1:<input type="text" id="n1" value="Maik"></input></p>
+                <p>Name 2:<input type="text" id="n2" value="Michi"></input></p>
+                <p>Name 3:<input type="text" id="n3" value="Kevin"></input></p>
+                <p>Name 4:<input type="text" id="n4" value="Lukas"></input></p>
+                <p>Name 5:<input type="text" id="n5" value="Fabsi"></input></p>
+                
+                <p>
+                    <button onclick="teamInput()">Namen bestätigen</button>
+                    <button onclick="reshuffle()"> Nächste Runde! </button>
+                </p>
+               </section>
 
     </right>
       
