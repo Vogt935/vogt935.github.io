@@ -14,27 +14,28 @@
     <script src="/scripts/4play-calc.js"></script>
     
     
-   <left>
+     
+    <left>
         <navlist>
             <button class="navbar" onclick="window.location.href='index.html'">Home</button>      
             <button class="navbar" onclick="window.location.href='wcwp.html'">WCWP - What could we play?</button>
-            <button class="navbar" onclick="window.location.href='5gewinnt.html'">5gewinnt - 5P-Hunt-calc</button>
-            
-
+            <button class="navbar" onclick="window.location.href='4P-Calc.html'">4P-Hunt-Counter</button>
         </navlist>
 
 
-        <section>
-            <h1>4-Player-Counter</h1>
+        <section class="fgewinnt">
+            <h1>5gewinnt</h1>
             <p>Ihr wollt ein 3-Player-Game zu viert spielen? Kein Problem, wenn ihr euch nur abwechselt! Gebt rechts eure Namen ein und klickt auf "Namen bestätigen".
-                Danach müsst ihr nur denjenigen anklicken, der ausgesetzt hat. </p>
-            <a class="fpBox" id="4pBox">     
-                <p><button id="player1" class="counterButton" onclick="addValue(player1)"></button></p>
-                <p><button id="player2" class="counterButton" onclick="addValue(player2)"></button></p>
-                <p><button id="player3" class="counterButton" onclick="addValue(player3)"></button></p>
-                <p><button id="player4" class="counterButton" onclick="addValue(player4)"></button></p>
-                                
-            </a>
+                Danach werden euch für jede Runde die Namen der 3 Spieler ausgegeben, die spielen und separat die Namen der 2 Spieler, die aussetzen.</p>
+            <div class="box-Mitspieler" id="box-Mitspieler">     
+                <p id="d">Sind drin: <a id="drin1"></a>, <a id="drin2"></a>, <a id="drin3"></a>.</p>
+                <p id="r">Setzt aus: <a id="raus1"></a>.</p> 
+            </div>
+    
+            <div class="box-Counter" id="box-Counter">
+                <p>Rundencounter: <a id="counter"></a></p>
+                <p>Vollständige Runde: <a id="turnoverCounter"></a></p>
+            </div>
         </section>
 
 
@@ -48,15 +49,15 @@
 
 
                 <a id="ober">Bitte Namen eingeben:</a>
-                <p>Name 1:<input type="text" id="n1" value="Maik"></input></p>
+                <p>Name 1:<input type="text" id="n1" value="Fabsi"></input></p>
                 <p>Name 2:<input type="text" id="n2" value="Michi"></input></p>
                 <p>Name 3:<input type="text" id="n3" value="Kevin"></input></p>
                 <p>Name 4:<input type="text" id="n4" value="Lukas"></input></p>
+
                 
                 <p>
                     <button onclick="teamInput()">Namen bestätigen</button>
-                    <button onclick="nullen()">Nullen</button>
-                    <button onclick="reset()">Reset</button>
+                    <button onclick="reshuffle()"> Nächste Runde! </button>
                 </p>
                </section>
 
